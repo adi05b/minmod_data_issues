@@ -1,0 +1,24 @@
+# Problem 4: raw input of EPSG:4267 (Q702) records as stored in the KG. Read-only.
+# This returns the SOURCE WKT, which the fix does not change: use it to confirm the
+# input, then compare against problem4_nad27_spotcheck.sql (post-rebuild Postgres).
+# Predicates verified against MineralSite.to_triples() at upstream b6d467b.
+PREFIX mo: <https://minmod.isi.edu/ontology/>
+PREFIX mr: <https://minmod.isi.edu/resource/>
+
+SELECT ?site ?wkt WHERE {
+  VALUES ?site {
+    mr:site__doi-org-10-5066-p96mmrfd__at001__umn   # expect POINT (172.82 52.85)
+    mr:site__doi-org-10-5066-p96mmrfd__sl004__umn   # expect POINT (-171.823 63.458)
+    mr:site__doi-org-10-5066-p96mmrfd__ya005__umn   # expect POINT (-140.47 59.7)
+    mr:site__doi-org-10-5066-p96mmrfd__dl001__umn   # expect POINT (-162.8379 68.0704)
+    mr:site__doi-org-10-5066-p96mmrfd__id162__umn   # expect POINT (-158.2362 62.0497)
+  }
+  ?site mo:location_info ?li .
+  ?li mo:location ?wkt ;
+      mo:crs/mo:normalized_uri mr:Q702 .
+}
+
+# All EPSG:4267 records (expect 7,720 from ardf):
+# SELECT (COUNT(DISTINCT ?site) AS ?n) WHERE {
+#   ?site mo:location_info ?li . ?li mo:crs/mo:normalized_uri mr:Q702 .
+# }

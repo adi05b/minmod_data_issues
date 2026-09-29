@@ -1,0 +1,32 @@
+{
+  "upstream_commit": "caea95efcf838a84275dde8a919398825f0d42f6",
+  "pyproj": "3.7.0",
+  "proj": "9.4.1",
+  "proj_network": true,
+  "p1": {
+    "n": 24817,
+    "crs_matches_sheet": 24817,
+    "lat_valid": 24817,
+    "in_named_state": 24817,
+    "reproduces_sheet_stored_values": 0,
+    "wkt_path_agrees": 24817,
+    "no_raw_input": 1,
+    "no_raw_input_lat_valid": 0
+  },
+  "p4": {
+    "n": 7720,
+    "moved": 7720,
+    "unmoved": 0,
+    "err_vs_nadcon_m": {
+      "median": 0.0,
+      "p90": 0.0,
+      "max": 0.0,
+      "within_1m": 7720,
+      "within_5m": 7720
+    },
+    "operations_used": {
+      "axis order change (2D) + NAD27 to WGS 84 (85) + axis order change (2D) | accuracy=5.0": 6261,
+      "axis order change (2D) + NAD27 to WGS 84 (33) + axis order change (2D) | accuracy=2.0": 1459
+    }
+  }
+}

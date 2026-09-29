@@ -1,0 +1,7 @@
+upstream/
+data/
+__pycache__/
+.venv/
+*.pyc
+.pytest_cache/
+upstream-data/

@@ -1,0 +1,20 @@
+# Acceptance SQL run on a throwaway local Postgres loaded (via upstream SQLAlchemy models) with 3 Utah + 5 Alaska sites using UNPATCHED b6d467b, PROJ_NETWORK=ON
+ dedup_sites_lat_out_of_range 
+------------------------------
+                            3
+(1 row)
+
+    crs     | sites_lat_out_of_range 
+------------+------------------------
+ EPSG:26912 |                      3
+(1 row)
+
+                  site_id                   |   lat   |    lon    | expected_lat | expected_lon | approx_err_m 
+--------------------------------------------+---------+-----------+--------------+--------------+--------------
+ site__doi-org-10-5066-p96mmrfd__at001__umn |   52.85 |    172.82 |  52.84834456 |  172.8169732 |        274.5
+ site__doi-org-10-5066-p96mmrfd__dl001__umn | 68.0704 | -162.8379 |  68.06974892 | -162.8408531 |        142.6
+ site__doi-org-10-5066-p96mmrfd__id162__umn | 62.0497 | -158.2362 |   62.0490064 | -158.2386103 |        147.6
+ site__doi-org-10-5066-p96mmrfd__sl004__umn |  63.458 |  -171.823 |  63.45706406 | -171.8257914 |        173.6
+ site__doi-org-10-5066-p96mmrfd__ya005__umn |    59.7 |   -140.47 |  59.69963092 | -140.4720642 |        123.0
+(5 rows)
+

@@ -1,0 +1,38 @@
+From 04c0ba64f32a58d701fa6b7ebc0d746b2292bf67 Mon Sep 17 00:00:00 2001
+From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
+Date: Mon, 28 Sep 2026 18:03:03 -0700
+Subject: [PATCH] Set always_xy=True on both CRS transformers
+
+---
+ minmodkg/misc/geo.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/minmodkg/misc/geo.py b/minmodkg/misc/geo.py
+index 3f8b113..49d0f3c 100644
+--- a/minmodkg/misc/geo.py
++++ b/minmodkg/misc/geo.py
+@@ -72,7 +72,9 @@ def reproject_wkt(wkt: str, from_crs: str, to_crs: str) -> str:
+         return wkt
+ 
+     transformer = Transformer.from_crs(
+-        int(from_crs[len("EPSG:") :]), int(to_crs[len("EPSG:") :])
++        int(from_crs[len("EPSG:") :]),
++        int(to_crs[len("EPSG:") :]),
++        always_xy=True,
+     )
+ 
+     return dumps(shapely.ops.transform(transformer.transform, loads(wkt)))
+@@ -90,7 +92,9 @@ def reproject_geometry(geometry, from_crs: str, to_crs: str):
+         assert from_crs.startswith("EPSG:"), from_crs
+         assert to_crs.startswith("EPSG:"), to_crs
+         _transformation[from_crs, to_crs] = Transformer.from_crs(
+-            int(from_crs[len("EPSG:") :]), int(to_crs[len("EPSG:") :])
++            int(from_crs[len("EPSG:") :]),
++            int(to_crs[len("EPSG:") :]),
++            always_xy=True,
+         )
+ 
+     return shapely.ops.transform(_transformation[from_crs, to_crs].transform, geometry)
+-- 
+2.39.5 (Apple Git-154)
+

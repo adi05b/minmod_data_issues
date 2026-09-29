@@ -1,0 +1,31 @@
+{
+  "upstream_commit": "b6d467bae17fc66451ea2f83c363ebebbfdfa3dd",
+  "pyproj": "3.7.0",
+  "proj": "9.4.1",
+  "proj_network": false,
+  "p1": {
+    "n": 24817,
+    "crs_matches_sheet": 24817,
+    "lat_valid": 0,
+    "in_named_state": 0,
+    "reproduces_sheet_stored_values": 24817,
+    "wkt_path_agrees": 24817,
+    "no_raw_input": 1,
+    "no_raw_input_lat_valid": 0
+  },
+  "p4": {
+    "n": 7720,
+    "moved": 0,
+    "unmoved": 7720,
+    "err_vs_nadcon_m": {
+      "median": 126.52,
+      "p90": 150.49,
+      "max": 274.81,
+      "within_1m": 0,
+      "within_5m": 0
+    },
+    "operations_used": {
+      "Ballpark geographic offset from NAD27 to WGS 84 | accuracy=-1.0": 7720
+    }
+  }
+}

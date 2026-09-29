@@ -1,0 +1,36 @@
+{
+  "upstream_commit": "caea95efcf838a84275dde8a919398825f0d42f6",
+  "pyproj": "3.7.0",
+  "proj": "9.4.1",
+  "proj_network": false,
+  "p1": {
+    "n": 24817,
+    "crs_matches_sheet": 24817,
+    "lat_valid": 24817,
+    "in_named_state": 24817,
+    "reproduces_sheet_stored_values": 0,
+    "wkt_path_agrees": 24817,
+    "no_raw_input": 1,
+    "no_raw_input_lat_valid": 0
+  },
+  "p4": {
+    "n": 7720,
+    "moved": 7696,
+    "unmoved": 24,
+    "err_vs_nadcon_m": {
+      "median": 5.69,
+      "p90": 22.07,
+      "max": 244.23,
+      "within_1m": 185,
+      "within_5m": 3380
+    },
+    "operations_used": {
+      "axis order change (2D) + NAD27 to WGS 84 (7) + axis order change (2D) | accuracy=12.0": 6258,
+      "axis order change (2D) + NAD27 to WGS 84 (13) + axis order change (2D) | accuracy=8.0": 1368,
+      "axis order change (2D) + NAD27 to WGS 84 (21) + axis order change (2D) | accuracy=15.0": 60,
+      "axis order change (2D) + Ballpark geographic offset from NAD27 to WGS 84 + axis order change (2D) | accuracy=-1.0": 24,
+      "axis order change (2D) + NAD27 to WGS 84 (22) + axis order change (2D) | accuracy=18.0": 5,
+      "axis order change (2D) + NAD27 to WGS 84 (14) + axis order change (2D) | accuracy=10.0": 5
+    }
+  }
+}
