@@ -1,4 +1,4 @@
-From 74a41c68edad03044b165cb8a27bd84c67c5ac4a Mon Sep 17 00:00:00 2001
+From 5318bdf92bfe3be50191d6b41f732cd2ea180efc Mon Sep 17 00:00:00 2001
 From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
 Date: Mon, 5 Oct 2026 10:58:44 -0700
 Subject: [PATCH 1/2] Repair states that contradict the recorded country at
@@ -9,8 +9,6 @@ them (exact name, then admin and stop words dropped, then state_code), or
 dropped. Only location_view changes; the raw location, which goes to the KG,
 keeps the source's observed_name. Adds state_or_province.state_code and
 migration 005 for it.
-
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 ---
  .../005_state_or_province_state_code.down.sql |   6 +
  .../005_state_or_province_state_code.up.sql   |   8 +

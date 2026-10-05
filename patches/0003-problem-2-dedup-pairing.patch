@@ -1,4 +1,4 @@
-From f46de6e3ba709687aceb2dfb1f048f04b3abfed0 Mon Sep 17 00:00:00 2001
+From 9d6811121964536e819960964f16d221e1b329df Mon Sep 17 00:00:00 2001
 From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
 Date: Mon, 5 Oct 2026 11:07:37 -0700
 Subject: [PATCH 2/2] Take a merged entity's country and state from one record
@@ -7,8 +7,6 @@ from_sites and from_dedup_sites elected country and state in two independent
 scans, so a merged entity could pair one record's country with another's state.
 Prefer the highest-ranked site (or partial merge) carrying both, from one record;
 the existing scans are unchanged and remain the fallback.
-
-Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 ---
  minmodkg/models/kgrel/dedup_mineral_site.py | 32 +++++++++++++++++++++
  1 file changed, 32 insertions(+)

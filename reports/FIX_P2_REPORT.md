@@ -3,7 +3,7 @@
 Aditi Bombe, USC ISI · 2026-10-05
 
 > **Patches:** `patches/0002-problem-2-merge-time-state-repair.patch` (B1+B2) and `patches/0003-problem-2-dedup-pairing.patch` (B3).
-> **Applies to:** `usc-isi-i2/ta2-minmod-kg` @ `83f9b7b2580790b2c7e197610ae905bd23c49a74`. Local branch `fix/p2-state-repair`: `74a41c6`, then `f46de6e`. Checked with `git am` on a fresh checkout; the resulting tree is identical. **Not pushed anywhere and no PR opened.**
+> **Applies to:** `usc-isi-i2/ta2-minmod-kg` @ `83f9b7b2580790b2c7e197610ae905bd23c49a74`. Branch `fix/p2-state-repair`: `5318bdf`, then `9d68111`. These are the measured commits with only their messages rewritten (co-author trailer removed); the trees are identical. Checked with `git am` on a fresh checkout; the resulting tree is identical. **Pushed to `usc-isi-i2/ta2-minmod-kg` as a branch for review; no PR opened.**
 > **Data:** ta2-minmod-data `3a086a5` · **Env:** Python 3.11, upstream-p2's `poetry.lock`
 
 Tags: 🟢 verified by running it · 🟡 likely · 🔴 assumed / not my number.
@@ -94,7 +94,7 @@ So B3 is a small fix: 7 entities on this data, not half the problem.
 
 ## The diffs
 
-### 1. B1 + B2: `74a41c6` "Repair states that contradict the recorded country at merge time"
+### 1. B1 + B2: `5318bdf` "Repair states that contradict the recorded country at merge time"
 
 ```diff
 diff --git a/migrations/005_state_or_province_state_code.down.sql b/migrations/005_state_or_province_state_code.down.sql
@@ -522,7 +522,7 @@ index 3ae57e2..14f3ccc 100644
              self.deposit_type_idmap = {dt.id: dt for dt in self.get_deposit_types()}
 ```
 
-### 2. B3: `f46de6e` "Take a merged entity's country and state from one record"
+### 2. B3: `9d68111` "Take a merged entity's country and state from one record"
 
 ```diff
 diff --git a/minmodkg/models/kgrel/dedup_mineral_site.py b/minmodkg/models/kgrel/dedup_mineral_site.py
@@ -769,7 +769,7 @@ git -C upstream-p2 submodule update --init                        # vendored sch
 .venv-p2/bin/python investigation/p2b_measure.py records          # -> reports/p2b/records.json, country_name_repeats.csv
 .venv-p2/bin/python investigation/p2b_measure.py merged           # repair-only simulation -> reports/p2b/merged.json
 python3 investigation/p2b_alias_sizing.py                         # -> reports/p2b/alias_sizing.txt
-# the real pipeline: baseline, baseline again (noise), repair only (74a41c6), repair + B3 (f46de6e)
+# the real pipeline: baseline, baseline again (noise), repair only (5318bdf), repair + B3 (9d68111)
 .venv-p2/bin/python investigation/p2_run_etl.py investigation/p2_etl.yml <workdir> data-p2
 .venv-p2/bin/python investigation/p2b_compare.py kgdata-p2 kgdata-p2-base2 noise_base_vs_base2
 .venv-p2/bin/python investigation/p2b_compare.py kgdata-p2 kgdata-p2-repair base_vs_pipeline_repair_only
@@ -777,7 +777,7 @@ python3 investigation/p2b_alias_sizing.py                         # -> reports/p
 python3 investigation/p2b_rdf_check.py kgdata-p2 kgdata-p2-after  # KG export unchanged
 # B4
 .venv-p2/bin/python -m pytest tests/test_p2_repair.py tests/test_p2_dedup_pairing.py -q
-(cd upstream-p2 && ../.venv-p2/bin/python -m pytest tests -q --no-cov)   # before (83f9b7b) and after (f46de6e)
+(cd upstream-p2 && ../.venv-p2/bin/python -m pytest tests -q --no-cov)   # before (83f9b7b) and after (9d68111)
 # B5 (ProcMine's scorer; same uv environment as Part A's p2_procmine_tables.py)
 PYTHONPATH=upstream-procmine uv run --no-project --python 3.11 --with polars==1.19.0 ... python investigation/p2b_fuzzy_table.py data-p2/data/entities
 # B7, on a throwaway local Postgres (initdb / pg_ctl in a temp folder)
@@ -787,6 +787,6 @@ PYTHONPATH=upstream-procmine uv run --no-project --python 3.11 --with polars==1.
 
 ## Rules check
 
-- Nothing was pushed to any `usc-isi-i2` or `DARPA-CRITICALMAAS` repo, and no PR was opened. `upstream-p2`'s two commits are local only.
+- No PR was opened for this branch. `fix/p2-state-repair` was later pushed to `usc-isi-i2/ta2-minmod-kg`, as a branch only, for review. Nothing was pushed to `main` or to any `DARPA-CRITICALMAAS` repo.
 - No query, POST or write went to the live graph or production Postgres. The only databases used were throwaway local Postgres clusters.
 - `data/`, `upstream*/`, `data-p2/`, `kgdata-p2*/` and `.venv*/` stay gitignored. No client spreadsheets are involved in Problem 2.
