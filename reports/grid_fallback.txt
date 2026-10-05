@@ -1,0 +1,5 @@
+points PROJ puts on ca_nrc_ntv2_0.tif when every grid is available: 1459
+  with only us_noaa_alaska.tif, operations used: {'axis order change (2D) + NAD27 to WGS 84 (85) + axis order change (2D)': 1459}
+  distance from the both-grids result: median 1.18 m, p90 5.80 m, max 25.69 m, min 0.01 m
+  distance from the corrected values in the client file: median 1.18 m, max 25.69 m
+the other 6261 points: max distance between the two setups 0.000000 m
