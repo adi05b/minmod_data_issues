@@ -1,0 +1,2 @@
+2446 TTL files, 41,155,464 lines compared; files that differ: 0 []
+state_or_province.ttl byte-identical

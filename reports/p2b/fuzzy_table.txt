@@ -1,0 +1,7 @@
+observed          best state in the recorded country  folded  raw     verdict
+Michoacan      -> Michoacán de Ocampo    0.7269  0.6570  want
+Katanga        -> Haut-Katanga           0.7526  0.7526  one of four successors
+Valle D'Aosta  -> Aosta Valley           0.5713  0.5704  want
+Orissa         -> Odisha                 0.5425  0.5425  want
+Andalusia      -> Canarias               0.5032  0.5032  wrong
+Elko County    -> Puerto Rico            0.3711  0.3711  wrong

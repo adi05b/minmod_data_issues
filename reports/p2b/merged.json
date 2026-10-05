@@ -1,0 +1,121 @@
+{
+  "merged_entities": 419098,
+  "conflicted_before": 5856,
+  "harness_rebuilt": 5924,
+  "harness_country_state_mismatches": 0,
+  "outcome": {
+    "fixed: state repointed": "5178 (88.4%)",
+    "fixed: state dropped (empty)": "671 (11.5%)",
+    "still conflicted": "7 (0.1%)"
+  },
+  "conflicted_after": 7,
+  "gate3_newly_conflicted": 0,
+  "gate3_non_conflicted_state_changed": 0,
+  "still_conflicted": [
+    {
+      "id": "dedup_site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink",
+      "country": {
+        "value": [
+          "Q1176"
+        ],
+        "refid": "site__doi-org-10-5382-econgeo-2018-4590__aljustrel-1628__usc"
+      },
+      "state": {
+        "value": [
+          "Q2654"
+        ],
+        "refid": "site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink"
+      }
+    },
+    {
+      "id": "dedup_site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink",
+      "country": {
+        "value": [
+          "Q1038"
+        ],
+        "refid": "site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink"
+      },
+      "state": {
+        "value": [
+          "Q6901"
+        ],
+        "refid": "site__mrdata-usgs-gov-mrds__10156652__umn"
+      }
+    },
+    {
+      "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc",
+      "country": {
+        "value": [
+          "Q1231"
+        ],
+        "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc"
+      },
+      "state": {
+        "value": [
+          "Q6840"
+        ],
+        "refid": "site__doi-org-10-5066-p96mmrfd__md055__umn"
+      }
+    },
+    {
+      "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc",
+      "country": {
+        "value": [
+          "Q1231"
+        ],
+        "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc"
+      },
+      "state": {
+        "value": [
+          "Q6840"
+        ],
+        "refid": "site__mrdata-usgs-gov-sedznpb__493__umn"
+      }
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__1134__sri",
+      "country": {
+        "value": [
+          "Q1202"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__1619__umn"
+      },
+      "state": {
+        "value": [
+          "Q6210"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__1210__umn"
+      }
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__1__sri",
+      "country": {
+        "value": [
+          "Q1166"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__980__umn"
+      },
+      "state": {
+        "value": [
+          "Q2011"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__1__umn"
+      }
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__954__sri",
+      "country": {
+        "value": [
+          "Q1155"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__954__umn"
+      },
+      "state": {
+        "value": [
+          "Q2209"
+        ],
+        "refid": "site__mrdata-usgs-gov-phosphate__95__umn"
+      }
+    }
+  ]
+}

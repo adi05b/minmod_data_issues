@@ -1,0 +1,357 @@
+# before: kgdata-p2; Python count of conflicted merged entities = 5856
+ merged_entities_with_state_in_another_country 
+-----------------------------------------------
+                                          5856
+(1 row)
+
+                observed_name                |            countries             | merged_entities 
+---------------------------------------------+----------------------------------+-----------------
+ Florida                                     | United States                    |            1649
+ La Paz                                      | Bolivia                          |             531
+ Potosi                                      | Bolivia                          |             528
+ Bolivar                                     | Venezuela                        |             472
+ Santa Cruz                                  | Bolivia                          |             196
+ Oruro                                       | Bolivia                          |             177
+ Camaguey                                    | Cuba                             |             152
+ Orissa                                      | India                            |             152
+ Katanga                                     | Democratic Republic of the Congo |              93
+ Saint Andrew                                | Jamaica                          |              69
+ Granma                                      | Cuba                             |              64
+ Panama                                      | Panama                           |              62
+ Yukon Territory*                            | Canada                           |              62
+ San Jose                                    | Costa Rica                       |              54
+ Veraguas                                    | Panama                           |              50
+ Territory Of New Caledonia And Dependencies | France                           |              48
+ Central                                     | Zambia                           |              45
+ Niedersachsen                               | Germany                          |              43
+ Akita                                       | Japan                            |              38
+ Colon                                       | Panama                           |              38
+ Midlands                                    | Zimbabwe                         |              38
+ Herrera                                     | Panama                           |              35
+ CO                                          | United States                    |              32
+ Limon                                       | Costa Rica                       |              31
+ Victoria                                    | Australia                        |              31
+ Cartago                                     | Costa Rica                       |              28
+ CA                                          | United States                    |              25
+ Amazonas*                                   | Venezuela                        |              23
+ Canar                                       | Ecuador                          |              22
+ Saint Thomas                                | Jamaica                          |              21
+ Ekaterinburg                                | Russia                           |              19
+ Saint Ann                                   | Jamaica                          |              18
+ Yoro                                        | Honduras                         |              18
+ Bolivar                                     | Ecuador                          |              16
+ Darien                                      | Panama                           |              16
+ El Beni                                     | Bolivia                          |              16
+ Kochi                                       | Japan                            |              16
+ Greenland                                   | Denmark                          |              15
+ El Paraiso                                  | Honduras                         |              14
+ Hyogo                                       | Japan                            |              14
+ Katanga Province                            | Democratic Republic of the Congo |              14
+ ME                                          | United States                    |              14
+ Tarija                                      | Bolivia                          |              14
+ Attapu                                      | Laos                             |              13
+ Florida                                     | Uruguay                          |              13
+ Nara                                        | Japan                            |              13
+ Santa Ana                                   | El Salvador                      |              13
+ Buryatiya                                   | Russia                           |              12
+ Manchester                                  | Jamaica                          |              12
+ San Blas*                                   | Panama                           |              12
+ Santa Cruz                                  | Argentina                        |              12
+ Comayagua                                   | Honduras                         |              11
+ Copan                                       | Honduras                         |              11
+ Jalapa                                      | Guatemala                        |              11
+ MN                                          | United States                    |              11
+ Northern                                    | Ghana                            |              11
+ Saint Mary                                  | Jamaica                          |              11
+ Sucre                                       | Venezuela                        |              11
+ Valle                                       | Honduras                         |              11
+ Amazonas                                    | Peru                             |              10
+ Elazig                                      | Turkey                           |              10
+ Mexico                                      | Mexico                           |              10
+ Oita                                        | Japan                            |              10
+ AR                                          | United States                    |               9
+ MO                                          | United States                    |               9
+ Okayama                                     | Japan                            |               9
+ Savannakhet                                 | Laos                             |               9
+                                             | Argentina                        |               9
+ SC                                          | United States                    |               8
+ Saint James                                 | Jamaica                          |               8
+                                             | United States                    |               8
+ Cortes                                      | Honduras                         |               7
+ Nord                                        | Haiti                            |               7
+ Saida                                       | Algeria                          |               7
+ Wakayama                                    | Japan                            |               7
+ Zacapa                                      | Guatemala                        |               7
+ Aktyubinsk                                  | Kazakhstan                       |               6
+ Central                                     | Botswana                         |               6
+ Evvoia                                      | Greece                           |               6
+ Izabal                                      | Guatemala                        |               6
+ Karnten                                     | Austria                          |               6
+ Kukes                                       | Albania                          |               6
+ La Paz                                      | Honduras                         |               6
+ Osaka                                       | Japan                            |               6
+ Samar                                       | Philippines                      |               6
+ Steiermark                                  | Austria                          |               6
+ Amazonas                                    | Brazil                           |               5
+ Gifu                                        | Japan                            |               5
+ Ibaraki                                     | Japan                            |               5
+ Lappi                                       | Finland                          |               5
+ Miyagi                                      | Japan                            |               5
+ Niamey                                      | Niger                            |               5
+ North-Western                               | Zambia                           |               5
+ Northern                                    | Zambia                           |               5
+ Pulau Pinang                                | Malaysia                         |               5
+ SD                                          | United States                    |               5
+ Sogn Og Fjordane                            | Norway                           |               5
+ Territory Of Christmas Island               | Australia                        |               5
+ Yukon Territory                             | Canada                           |               5
+ Cayo                                        | Belize                           |               4
+ Ch'Ungch'Ong-Bukto                          | North Korea                      |               4
+ Colon                                       | Honduras                         |               4
+ Cordoba                                     | Colombia                         |               4
+ Eastern                                     | Zambia                           |               4
+ Hentiy                                      | Mongolia                         |               4
+ La Rioja                                    | Argentina                        |               4
+ Nicosia                                     | Cyprus                           |               4
+ Punjab                                      | Pakistan                         |               4
+ Yamagata                                    | Japan                            |               4
+                                             | Papua New Guinea                 |               4
+ Aichi                                       | Japan                            |               3
+ Bong                                        | Liberia                          |               3
+ Dabola                                      | Guinea                           |               3
+ Guantanamo                                  | Cuba                             |               3
+ G�vleborg                                   | Sweden                           |               3
+ Huila                                       | Angola                           |               3
+ Isabela                                     | Philippines                      |               3
+ Kagawa                                      | Japan                            |               3
+ Kankan                                      | Guinea                           |               3
+ Kareliya                                    | Russia                           |               3
+ Los Rios                                    | Ecuador                          |               3
+ Manica                                      | Mozambique                       |               3
+ Mat                                         | Albania                          |               3
+ Montserrat                                  | United Kingdom                   |               3
+ Morazan                                     | El Salvador                      |               3
+ Netherlands Antilles                        | Netherlands                      |               3
+ Nord                                        | France                           |               3
+ North-West Frontier                         | Pakistan                         |               3
+ Pando                                       | Bolivia                          |               3
+ Salavan                                     | Laos                             |               3
+ Samana                                      | Dominican Republic               |               3
+ Santa Catarina                              | Brazil                           |               3
+ Sidamo                                      | Ethiopia                         |               3
+ Sofiya                                      | Bulgaria                         |               3
+ Southern                                    | Zambia                           |               3
+ Toamasina                                   | Madagascar                       |               3
+ Toledo                                      | Belize                           |               3
+ Tuva                                        | Russia                           |               3
+                                             | Australia                        |               3
+ Agadir                                      | Morocco                          |               2
+ Al Bahr Al Ahmar                            | Egypt                            |               2
+ Al Kaf                                      | Tunisia                          |               2
+ Atlantico Nort                              | Nicaragua                        |               2
+ Azua                                        | Dominican Republic               |               2
+ Banska Bystricka Region                     | Central African Republic         |               2
+ Bihor                                       | Romania                          |               2
+ Boke                                        | Guinea                           |               2
+ Brabant                                     | Belgium                          |               2
+ British Virgin Islands                      | United Kingdom                   |               2
+ Central                                     | Ghana                            |               2
+ Chiba                                       | Japan                            |               2
+ Eastern Finland                             | Finland                          |               2
+ Fria                                        | Guinea                           |               2
+ Gangwon-do                                  | South Korea                      |               2
+ Gorj                                        | Romania                          |               2
+ Hamgyong-Namdo                              | North Korea                      |               2
+ Hong Kong Special Administrative Region     | China                            |               2
+ Irkutskaya Oblast'                          | Russia                           |               2
+ Khalkidhiki                                 | Greece                           |               2
+ Kindia                                      | Guinea                           |               2
+ Korce                                       | Albania                          |               2
+ Limassol                                    | Cyprus                           |               2
+ Mie                                         | Japan                            |               2
+ Mures                                       | Romania                          |               2
+ Niederosterreich                            | Austria                          |               2
+ Nograd                                      | Hungary                          |               2
+ North-West                                  | South Africa                     |               2
+ Oberosterreich                              | Austria                          |               2
+ Oriente                                     | Cuba                             |               2
+ Oulu Laani                                  | Finland                          |               2
+ PA                                          | United States                    |               2
+ Para                                        | Suriname                         |               2
+ Pest                                        | Hungary                          |               2
+ Piura                                       | Brazil                           |               2
+ Rapu-Rapu Island                            | Philippines                      |               2
+ San Juan                                    | Argentina                        |               2
+ San Miguel                                  | El Salvador                      |               2
+ Semipalatinsk                               | Kazakhstan                       |               2
+ Shimane                                     | Japan                            |               2
+ Son La Province                             | Vietnam                          |               2
+ Tov                                         | Mongolia                         |               2
+ Turku                                       | Finland                          |               2
+ Viti Levu Island                            | Fiji Islands                     |               2
+ Welega [Walaga]                             | Ethiopia                         |               2
+ Western                                     | Zambia                           |               2
+ Westland                                    | New Zealand                      |               2
+ Zaire                                       | Angola                           |               2
+ Zufar                                       | Oman                             |               2
+ Adana Province                              | Turkey                           |               1
+ Agusan del Norte Province                   | Philippines                      |               1
+ Aiwo                                        | Nauru                            |               1
+ Al Balqa'                                   | Jordan                           |               1
+ Al Buhayrah                                 | Egypt                            |               1
+ Alaska                                      | Canada                           |               1
+ Alaska                                      | Uganda                           |               1
+ Alto Alentejo                               | Portugal                         |               1
+ An Nil Al Azra                              | Sudan                            |               1
+ Andalusia                                   | Spain                            |               1
+ Araucania                                   | Chile                            |               1
+ BN                                          | Mexico                           |               1
+ BS                                          | Mexico                           |               1
+ Bacau                                       | Romania                          |               1
+ Bad Bleiberg                                | Austria                          |               1
+ Banská Bystrica                             | Slovakia                         |               1
+ Bayern [Bavaria, Germany]                   | Czech Republic                   |               1
+ Beyla                                       | Guinea                           |               1
+ Boffa                                       | Guinea                           |               1
+ British Columbia                            | Finland                          |               1
+ British Columbia                            | Portugal                         |               1
+ Bulgan                                      | Mongolia                         |               1
+ Buller                                      | New Zealand                      |               1
+ Burgas                                      | Bulgaria                         |               1
+ Buryatia                                    | Russia                           |               1
+ CO                                          | Mexico                           |               1
+ CT                                          | United States                    |               1
+ Cabanas                                     | El Salvador                      |               1
+ Calarasi                                    | Romania                          |               1
+ Caminha                                     | Portugal                         |               1
+ Castilla y León                             | Spain                            |               1
+ Cayman Islands                              | United Kingdom                   |               1
+ Central                                     | Malawi                           |               1
+ Central district                            | Botswana                         |               1
+ Ch'Ungch'Ong-Bukto                          | Democratic Republic of the Congo |               1
+ Ch'Ungch'Ong-Namdo                          | North Korea                      |               1
+ Ch'Ungch'Ong-Namdo                          | Democratic Republic of the Congo |               1
+ Chicha                                      | Peru                             |               1
+ Chitinskaya Oblast'                         | Russia                           |               1
+ Chui                                        | Kyrgyzstan                       |               1
+ Chungcheongnam-do                           | South Korea                      |               1
+ Cleveland                                   | United Kingdom                   |               1
+ Constanta                                   | Romania                          |               1
+ Copiapó                                     | Chile                            |               1
+ Cordoba                                     | Spain                            |               1
+ Cordoba Province                            | Spain                            |               1
+ County Tipperary                            | Ireland                          |               1
+ Cuscatlan                                   | El Salvador                      |               1
+ Côte d’Ivoire                               | Cote D'Ivoire (Ivory Coast)      |               1
+ District of Niari                           | Congo                            |               1
+ Distrito Federal*                           | Mexico                           |               1
+ Dornod                                      | Mongolia                         |               1
+ Dowa                                        | Malawi                           |               1
+ Eastern Guinea                              | Guinea                           |               1
+ Eastern Highland                            | Papua New Guinea                 |               1
+ Eastern Slovakia                            | Slovakia                         |               1
+ Elko County                                 | United States                    |               1
+ Erongo                                      | Namibia                          |               1
+ Esmeralda County                            | United States                    |               1
+ Extremadura                                 | Spain                            |               1
+ Galati                                      | Romania                          |               1
+ Ghowr [Ghor]                                | Afghanistan                      |               1
+ Guarayos                                    | Bolivia                          |               1
+ Gumma                                       | Japan                            |               1
+ Hakkari Province                            | Turkey                           |               1
+ Halmahera Island                            | Indonesia                        |               1
+ Harare                                      | Zimbabwe                         |               1
+ Haut -Katanga Province                      | Democratic Republic of the Congo |               1
+ Helmand                                     | Pakistan                         |               1
+ Hovsgol                                     | Mongolia                         |               1
+ Hwanghae-Bukto                              | North Korea                      |               1
+ Hwanghae-Namdo                              | North Korea                      |               1
+ Irian Jaya                                  | Indonesia                        |               1
+ Kainantu                                    | Papua New Guinea                 |               1
+ Kamchatskaya Oblast'                        | Russia                           |               1
+ Kangwon-Do                                  | South Korea                      |               1
+ Karas                                       | Namibia                          |               1
+ Karibib District                            | Namibia                          |               1
+ Khakassia                                   | Russia                           |               1
+ Kola Peninsula                              | Russia                           |               1
+ Kommune Kujalleq                            | Greenland                        |               1
+ Kondoz [Kunduz]                             | Afghanistan                      |               1
+ Kostenay Oblast                             | Kazakhstan                       |               1
+ Kujalleq                                    | Greenland                        |               1
+ Kuril Islands                               | Russia                           |               1
+ Kutahya Province                            | Turkey                           |               1
+ La Union                                    | El Salvador                      |               1
+ Labrador                                    | Canada                           |               1
+ Lapland                                     | Sweden                           |               1
+ Lilongwe                                    | Malawi                           |               1
+ Limousin                                    | France                           |               1
+ Luanda                                      | Angola                           |               1
+ MI                                          | United States                    |               1
+ Melsiripura                                 | Sri Lanka                        |               1
+ Michoacan                                   | Mexico                           |               1
+ Mirab Gojam                                 | Ethiopia                         |               1
+ Mirab Harerge                               | Ethiopia                         |               1
+ Montana                                     | Bulgaria                         |               1
+ Moramanga                                   | Madagascar                       |               1
+ Moskovskaya Oblast'                         | Russia                           |               1
+ Mpumalanga Province                         | South Africa                     |               1
+ Muhanga                                     | Rwanda                           |               1
+ Nasarawa State                              | Nigeria                          |               1
+ Nei Mongol                                  | China                            |               1
+ Nevada                                      | Canada                           |               1
+ Niassa                                      | Mozambique                       |               1
+ Norrbotten                                  | Sweden                           |               1
+ North-Western Province                      | Zambia                           |               1
+ Northern                                    | Sierra Leone                     |               1
+ Northwest Region                            | Yemen                            |               1
+ Nye                                         | United States                    |               1
+ Olt                                         | Romania                          |               1
+ Ostfold                                     | Norway                           |               1
+ Otjozondijupa                               | Namibia                          |               1
+ Oulu                                        | Finland                          |               1
+ Puke                                        | Albania                          |               1
+ Qaasuitsup                                  | Greenland                        |               1
+ Qaqortoq District                           | Greenland                        |               1
+ Queensland                                  | New Zealand                      |               1
+ REGIÓN AUTÓNOMA DE LA COSTA CARIBE NORTE    | Nicaragua                        |               1
+ Rio Negro                                   | Uruguay                          |               1
+ Rio Negro Province                          | Argentina                        |               1
+ Roi Et                                      | Solomon Islands                  |               1
+ SB                                          | Mexico                           |               1
+ SI                                          | Mexico                           |               1
+ Saitama                                     | Japan                            |               1
+ Sakhalinskaya Oblast'                       | Russia                           |               1
+ Setúbal District                            | Portugal                         |               1
+ Shandong [Shantung]                         | China                            |               1
+ Shiga                                       | Japan                            |               1
+ Siguiri                                     | Guinea                           |               1
+ Sirnak Province                             | Turkey                           |               1
+ Smaland                                     | Sweden                           |               1
+ Son La                                      | Vietnam                          |               1
+ Southeast Alaska                            | United States                    |               1
+ Suhbaatar                                   | Mongolia                         |               1
+ Sukhbaatar                                  | Mongolia                         |               1
+ Surigao                                     | Philippines                      |               1
+ Surigao*                                    | Philippines                      |               1
+ Tete                                        | Mozambique                       |               1
+ Thai Nguyen Province                        | Vietnam                          |               1
+ Thies                                       | Senegal                          |               1
+ Timor Island                                | Indonesia                        |               1
+ Toliara                                     | Madagascar                       |               1
+ Tougue                                      | Guinea                           |               1
+ Troms                                       | Norway                           |               1
+ Uige                                        | Angola                           |               1
+ Usak                                        | Turkey                           |               1
+ Usulutan                                    | El Salvador                      |               1
+ Valle D'Aosta                               | Italy                            |               1
+ Varna                                       | Bulgaria                         |               1
+ Vila Nova De Cerveira                       | Portugal                         |               1
+ Western Churchill Province                  | Canada                           |               1
+ Yakutia                                     | Russia                           |               1
+ York County                                 | Canada                           |               1
+ Zhitigara District                          | Kazakhstan                       |               1
+ Östergötlands Län                           | Sweden                           |               1
+                                             | Uganda                           |               1
+                                             | Zambia                           |               1
+(347 rows)
+

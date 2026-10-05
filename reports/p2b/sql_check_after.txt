@@ -1,0 +1,10 @@
+# after: kgdata-p2-after; Python count of conflicted merged entities = 0
+ merged_entities_with_state_in_another_country 
+-----------------------------------------------
+                                             0
+(1 row)
+
+ observed_name | countries | merged_entities 
+---------------+-----------+-----------------
+(0 rows)
+

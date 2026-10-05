@@ -1,0 +1,32 @@
+failed to connect to the docker API at unix:///Users/adiitii05/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/adiitii05/.docker/run/docker.sock: connect: no such file or directory
+failed to connect to the docker API at unix:///Users/adiitii05/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/adiitii05/.docker/run/docker.sock: connect: no such file or directory
+failed to connect to the docker API at unix:///Users/adiitii05/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/adiitii05/.docker/run/docker.sock: connect: no such file or directory
+failed to connect to the docker API at unix:///Users/adiitii05/.docker/run/docker.sock; check if the path is correct and if the daemon is running: dial unix /Users/adiitii05/.docker/run/docker.sock: connect: no such file or directory
+ERROR tests/api/test_api.py::TestAPI::test_document_count - subprocess.Called...
+ERROR tests/api/test_api.py::TestAPI::test_mineral_sites_count - subprocess.C...
+ERROR tests/api/test_api.py::TestAPI::test_mineral_inventories_count - subpro...
+ERROR tests/api/test_api.py::TestAPI::test_document_count_by_commodity - subp...
+ERROR tests/api/test_api.py::TestAPI::test_mineral_sites_count_by_commodity
+ERROR tests/api/test_api.py::TestAPI::test_mineral_inventories_count_by_commodity
+ERROR tests/api/test_mineral_site.py::TestMineralSite::test_create_first - su...
+ERROR tests/api/test_mineral_site.py::TestMineralSite::test_create_exist - su...
+ERROR tests/api/test_mineral_site.py::TestMineralSite::test_update_site - sub...
+ERROR tests/api/test_mineral_site.py::TestMineralSite::test_create_new_site
+ERROR tests/api/test_mineral_site.py::TestMineralSiteLinking::test_update_same_as
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTripleStore::test_insert - s...
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__InsertLock::test
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__DoesLockSuccess::test
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__RemoveLock::test
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__InsertLock__FailScenario1::test
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__InsertLock__FailScenario2::test
+ERROR tests/libraries/rdf/test_rdf_store.py::TestTransaction__InsertLock__FailScenario3::test
+ERROR tests/services/sync/test_backup_listener.py::TestBackupListener::test_add_site
+ERROR tests/services/sync/test_backup_listener.py::TestBackupListener::test_update_site
+ERROR tests/services/sync/test_backup_listener.py::TestBackupListener::test_update_same_as
+ERROR tests/services/sync/test_kgsync_listener.py::TestKGSyncListener::test_add_site
+ERROR tests/services/sync/test_kgsync_listener.py::TestKGSyncListener::test_update_site
+ERROR tests/services/sync/test_kgsync_listener.py::TestKGSyncListener::test_update_same_as
+ERROR tests/services/test_mineral_site_service.py::TestCreateMineralSite::test_create_mineral_site_first
+ERROR tests/services/test_mineral_site_service.py::TestUpsertMineralSite::test_upsert_mineral_site_first
+ERROR tests/services/test_mineral_site_service.py::TestLinkMineralSite::test_update_same_as
+63 passed, 1 warning, 27 errors in 7.25s

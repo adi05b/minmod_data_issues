@@ -1,0 +1,68 @@
+From f46de6e3ba709687aceb2dfb1f048f04b3abfed0 Mon Sep 17 00:00:00 2001
+From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
+Date: Mon, 5 Oct 2026 11:07:37 -0700
+Subject: [PATCH 2/2] Take a merged entity's country and state from one record
+
+from_sites and from_dedup_sites elected country and state in two independent
+scans, so a merged entity could pair one record's country with another's state.
+Prefer the highest-ranked site (or partial merge) carrying both, from one record;
+the existing scans are unchanged and remain the fallback.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ minmodkg/models/kgrel/dedup_mineral_site.py | 32 +++++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/minmodkg/models/kgrel/dedup_mineral_site.py b/minmodkg/models/kgrel/dedup_mineral_site.py
+index 7a7c08e..fb11295 100644
+--- a/minmodkg/models/kgrel/dedup_mineral_site.py
++++ b/minmodkg/models/kgrel/dedup_mineral_site.py
+@@ -218,6 +218,21 @@ class DedupMineralSite(MappedAsDataclass, Base):
+             ),
+             modified_at=max(dedup_site.modified_at for dedup_site in dedup_sites),
+         )
++        # As in from_sites: prefer the highest-ranked partial merge whose country and
++        # state come from one record; the two scans above stay as the fallback.
++        both = next(
++            (
++                site
++                for site, _ in rank_dedup_sites
++                if len(site.country.value) > 0
++                and len(site.state_or_province.value) > 0
++                and site.country.refid == site.state_or_province.refid
++            ),
++            None,
++        )
++        if both is not None:
++            merged_dedup_site.country = both.country
++            merged_dedup_site.state_or_province = both.state_or_province
+         merged_dedup_invs = merged_dedup_site.select_inventories(
+             {msi.ms.site_id: msi.invs for msi in sites}
+         )
+@@ -276,6 +291,23 @@ class DedupMineralSite(MappedAsDataclass, Base):
+             ),
+             RefListID([], rank_sites[0].site_id),
+         )
++        # Prefer the highest-ranked site carrying both a country and a state, so the
++        # merged pair is one a record actually asserts; the two independent scans
++        # above stay as the fallback when no site carries both.
++        both = next(
++            (
++                site
++                for site in rank_sites
++                if len(site.location_view.country) > 0
++                and len(site.location_view.state_or_province) > 0
++            ),
++            None,
++        )
++        if both is not None:
++            country = RefListID(both.location_view.country, both.site_id)
++            state_or_province = RefListID(
++                both.location_view.state_or_province, both.site_id
++            )
+ 
+         ranked_deposit_types = top_5_deposit_types(_rank_ss)
+         if len(ranked_deposit_types) > 0:
+-- 
+2.39.5 (Apple Git-154)
+

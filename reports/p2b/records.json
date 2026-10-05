@@ -1,0 +1,279 @@
+{
+  "state_candidates": 418313,
+  "conflicted_candidates": 6158,
+  "conflicted_records": 6155,
+  "repointed": 5421,
+  "repointed_pct": "88.0%",
+  "dropped": 737,
+  "dropped_pct": "12.0%",
+  "repointed_by_tier": {
+    "2 admin/stop words dropped": 2781,
+    "1 exact name": 2436,
+    "3 state_code": 179,
+    "fallback: own name, 1 exact name": 24,
+    "fallback: own name, 2 admin/stop words dropped": 1
+  },
+  "dropped_by_reason": {
+    "no hit": 722,
+    "ambiguous at tier 2": 15
+  },
+  "country_name_repeats": 72,
+  "country_name_repeats_by_outcome": [
+    {
+      "records": 62,
+      "observed_name": "Panama",
+      "country": "Panama",
+      "action": "repoint",
+      "to": "Q5076 Panamá Province"
+    },
+    {
+      "records": 10,
+      "observed_name": "Mexico",
+      "country": "Mexico",
+      "action": "repoint",
+      "to": "Q4540 Estado de México"
+    }
+  ],
+  "top_drops": [
+    {
+      "records": 187,
+      "observed_name": "Orissa",
+      "country": "India",
+      "why": "no hit"
+    },
+    {
+      "records": 93,
+      "observed_name": "Katanga",
+      "country": "Democratic Republic of the Congo",
+      "why": "no hit"
+    },
+    {
+      "records": 49,
+      "observed_name": "Territory Of New Caledonia And Dependencies",
+      "country": "France",
+      "why": "no hit"
+    },
+    {
+      "records": 43,
+      "observed_name": "Niedersachsen",
+      "country": "Germany",
+      "why": "no hit"
+    },
+    {
+      "records": 19,
+      "observed_name": "Ekaterinburg",
+      "country": "Russia",
+      "why": "no hit"
+    },
+    {
+      "records": 18,
+      "observed_name": "Katanga Province",
+      "country": "Democratic Republic of the Congo",
+      "why": "no hit"
+    },
+    {
+      "records": 15,
+      "observed_name": "Greenland",
+      "country": "Denmark",
+      "why": "no hit"
+    },
+    {
+      "records": 13,
+      "observed_name": "Attapu",
+      "country": "Laos",
+      "why": "no hit"
+    },
+    {
+      "records": 12,
+      "observed_name": "Buryatiya",
+      "country": "Russia",
+      "why": "no hit"
+    },
+    {
+      "records": 12,
+      "observed_name": "San Blas*",
+      "country": "Panama",
+      "why": "no hit"
+    },
+    {
+      "records": 7,
+      "observed_name": "Zacapa",
+      "country": "Guatemala",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "Kukes",
+      "country": "Albania",
+      "why": "ambiguous at tier 2"
+    },
+    {
+      "records": 6,
+      "observed_name": "Karnten",
+      "country": "Austria",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "Samar",
+      "country": "Philippines",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "Steiermark",
+      "country": "Austria",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "Evvoia",
+      "country": "Greece",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "North-Western",
+      "country": "Zambia",
+      "why": "no hit"
+    },
+    {
+      "records": 6,
+      "observed_name": "Aktyubinsk",
+      "country": "Kazakhstan",
+      "why": "no hit"
+    },
+    {
+      "records": 5,
+      "observed_name": "Sogn Og Fjordane",
+      "country": "Norway",
+      "why": "no hit"
+    },
+    {
+      "records": 5,
+      "observed_name": "Pulau Pinang",
+      "country": "Malaysia",
+      "why": "no hit"
+    },
+    {
+      "records": 5,
+      "observed_name": "Territory Of Christmas Island",
+      "country": "Australia",
+      "why": "no hit"
+    },
+    {
+      "records": 5,
+      "observed_name": "Lappi",
+      "country": "Finland",
+      "why": "no hit"
+    },
+    {
+      "records": 5,
+      "observed_name": "Niamey",
+      "country": "Niger",
+      "why": "no hit"
+    },
+    {
+      "records": 4,
+      "observed_name": "Oulu Laani",
+      "country": "Finland",
+      "why": "no hit"
+    },
+    {
+      "records": 4,
+      "observed_name": "Nicosia",
+      "country": "Cyprus",
+      "why": "no hit"
+    },
+    {
+      "records": 4,
+      "observed_name": "Westland",
+      "country": "New Zealand",
+      "why": "no hit"
+    },
+    {
+      "records": 4,
+      "observed_name": "Hentiy",
+      "country": "Mongolia",
+      "why": "no hit"
+    },
+    {
+      "records": 4,
+      "observed_name": "Ch'Ungch'Ong-Bukto",
+      "country": "North Korea",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Sofiya",
+      "country": "Bulgaria",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "North-West Frontier",
+      "country": "Pakistan",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Netherlands Antilles",
+      "country": "Netherlands",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Kankan",
+      "country": "Guinea",
+      "why": "ambiguous at tier 2"
+    },
+    {
+      "records": 3,
+      "observed_name": "Sidamo",
+      "country": "Ethiopia",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Kareliya",
+      "country": "Russia",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Montserrat",
+      "country": "United Kingdom",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Piura",
+      "country": "Brazil",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "Tuva",
+      "country": "Russia",
+      "why": "no hit"
+    },
+    {
+      "records": 3,
+      "observed_name": "G�vleborg",
+      "country": "Sweden",
+      "why": "no hit"
+    },
+    {
+      "records": 2,
+      "observed_name": "Banska Bystricka Region",
+      "country": "Central African Republic",
+      "why": "no hit"
+    },
+    {
+      "records": 2,
+      "observed_name": "York County",
+      "country": "Canada",
+      "why": "no hit"
+    }
+  ]
+}

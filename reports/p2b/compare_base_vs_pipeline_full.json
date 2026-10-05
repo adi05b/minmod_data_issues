@@ -1,0 +1,19 @@
+{
+  "label": "base_vs_pipeline_full",
+  "before": "kgdata-p2",
+  "after": "kgdata-p2-after",
+  "merged_entities": 419098,
+  "conflicted_before": 5856,
+  "conflicted_after": 0,
+  "outcome_of_conflicted": {
+    "fixed: state repointed": "5185 (88.5%)",
+    "fixed: state dropped (empty)": "671 (11.5%)"
+  },
+  "non_conflicted_entities": 413242,
+  "changes_on_non_conflicted": {
+    "refid only changed (election-only)": 1025,
+    "refid only changed (repair-reachable)": 11
+  },
+  "examples_state_value_changed": {},
+  "still_conflicted": []
+}

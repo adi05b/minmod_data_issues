@@ -1,0 +1,97 @@
+{
+  "label": "base_vs_pipeline_repair_only",
+  "before": "kgdata-p2",
+  "after": "kgdata-p2-repair",
+  "merged_entities": 419098,
+  "conflicted_before": 5856,
+  "conflicted_after": 7,
+  "outcome_of_conflicted": {
+    "fixed: state repointed": "5178 (88.4%)",
+    "fixed: state dropped (empty)": "671 (11.5%)",
+    "still conflicted": "7 (0.1%)"
+  },
+  "non_conflicted_entities": 413242,
+  "changes_on_non_conflicted": {
+    "refid only changed (election-only)": 140
+  },
+  "examples_state_value_changed": {},
+  "still_conflicted": [
+    {
+      "id": "dedup_site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink",
+      "country": [
+        "Portugal"
+      ],
+      "state": [
+        "Q2654"
+      ],
+      "country_refid": "site__doi-org-10-5382-econgeo-2018-4590__aljustrel-1628__usc",
+      "state_refid": "site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink"
+    },
+    {
+      "id": "dedup_site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink",
+      "country": [
+        "Canada"
+      ],
+      "state": [
+        "Q6901"
+      ],
+      "country_refid": "site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink",
+      "state_refid": "site__mrdata-usgs-gov-mrds__10156652__umn"
+    },
+    {
+      "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc",
+      "country": [
+        "Uganda"
+      ],
+      "state": [
+        "Q6840"
+      ],
+      "country_refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc",
+      "state_refid": "site__doi-org-10-5066-p96mmrfd__md055__umn"
+    },
+    {
+      "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc",
+      "country": [
+        "Uganda"
+      ],
+      "state": [
+        "Q6840"
+      ],
+      "country_refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc",
+      "state_refid": "site__mrdata-usgs-gov-sedznpb__493__umn"
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__1134__sri",
+      "country": [
+        "Solomon Islands"
+      ],
+      "state": [
+        "Q6210"
+      ],
+      "country_refid": "site__mrdata-usgs-gov-phosphate__1619__umn",
+      "state_refid": "site__mrdata-usgs-gov-phosphate__1210__umn"
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__1__sri",
+      "country": [
+        "Pakistan"
+      ],
+      "state": [
+        "Q2011"
+      ],
+      "country_refid": "site__mrdata-usgs-gov-phosphate__980__umn",
+      "state_refid": "site__mrdata-usgs-gov-phosphate__1__umn"
+    },
+    {
+      "id": "dedup_site__mrdata-usgs-gov-phosphate__954__sri",
+      "country": [
+        "New Zealand"
+      ],
+      "state": [
+        "Q2209"
+      ],
+      "country_refid": "site__mrdata-usgs-gov-phosphate__954__umn",
+      "state_refid": "site__mrdata-usgs-gov-phosphate__95__umn"
+    }
+  ]
+}
