@@ -71,3 +71,11 @@ data/nad27_stored_as_wgs84.csv         (7,720 rows; Google Sheets exports it as
 ```
 
 The raw source coordinates come from the public `ta2-minmod-data` repo (see Setup).
+
+## Problem 2 (state in the wrong country)
+
+Brief: [P2_RUN.md](P2_RUN.md). Reference rule: `reference/state_repair.py`, harness `reference/verify.py`.
+Part A findings: **[reports/P2_INVESTIGATION.md](reports/P2_INVESTIGATION.md)**. Scripts and SPARQL in
+`investigation/`, outputs in `reports/p2/`. `upstream-p2/`, `upstream-procmine/`, `data-p2/`, `kgdata-p2/`
+and `.venv-p2/` are local, read-only clones or generated output, gitignored. The report lists every command
+to rebuild them.

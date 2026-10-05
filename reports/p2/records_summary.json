@@ -1,0 +1,99 @@
+{
+  "files": 3769,
+  "state_candidates": 418313,
+  "sites_with_a_state": 418286,
+  "a1_by_source": {
+    "UMN Matching System-ProcMinev2": {
+      "nodes": 300045,
+      "present": 300045,
+      "conflicted": 5668,
+      "conflicted_present": 5668
+    },
+    "UMN Matching System v1": {
+      "nodes": 114857,
+      "present": 114857,
+      "conflicted": 322,
+      "conflicted_present": 322
+    },
+    "UMN Exact Match v1": {
+      "nodes": 1839,
+      "missing": 1839,
+      "conflicted": 25,
+      "conflicted_missing": 25
+    },
+    "Inferlink Extraction v3": {
+      "nodes": 1167,
+      "present": 1167,
+      "conflicted": 99,
+      "conflicted_present": 99
+    },
+    "SAND": {
+      "nodes": 372,
+      "present": 372,
+      "conflicted": 43,
+      "conflicted_present": 43
+    },
+    "https://minmod.isi.edu/users/u/jhammars": {
+      "nodes": 24,
+      "present": 24
+    },
+    "Inferlink Extraction v2": {
+      "nodes": 5,
+      "present": 5,
+      "conflicted": 1,
+      "conflicted_present": 1
+    },
+    "https://minmod.isi.edu/users/u/caknoblock": {
+      "nodes": 2,
+      "present": 2
+    },
+    "https://minmod.isi.edu/users/a/bvu": {
+      "nodes": 1,
+      "present": 1
+    },
+    "https://minmod.isi.edu/users/u/glederer": {
+      "nodes": 1,
+      "present": 1
+    }
+  },
+  "unknown_state_ids": 0,
+  "conflicted_candidates": 6158,
+  "conflicted_sites": 6155,
+  "conflicted_obs": {
+    "present": 6133,
+    "missing": 25
+  },
+  "conflicted_distinct_triples": 362,
+  "triples_covering_90pct": 70,
+  "a2_actions": {
+    "drop": 1012,
+    "repoint": 5146
+  },
+  "a2_actions_fallback": {
+    "drop": 987,
+    "repoint": 5171
+  },
+  "a2_actions_by_obs": {
+    "present": {
+      "drop": 987,
+      "repoint": 5146
+    },
+    "missing": {
+      "drop": 25
+    },
+    "empty": {}
+  },
+  "a2_fallback_rescues": 25,
+  "a4_conflicted_country_count": {
+    "1": 6158
+  },
+  "a4_all_multi_country_candidates": {
+    "records": 1,
+    "state_only_in_a_lower_confidence_country": 1
+  },
+  "a4_all_country_count": {
+    "1": 417299,
+    "0": 1013,
+    "2": 1
+  }
+}

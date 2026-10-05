@@ -1,0 +1,40 @@
+==============================================================================
+A. RECOVERY — the 117 entities ProcMine can never select
+==============================================================================
+  recovered to the correct entity : 104 / 117
+  actions                         : {'repoint': 104, 'keep': 11, 'drop': 2}
+
+==============================================================================
+B. REGRESSION — every assignment ProcMine already gets right
+==============================================================================
+  untouched : 4967
+  altered   : 0
+
+==============================================================================
+C. NO COUNTRY ON THE RECORD — rule must be inert
+==============================================================================
+  left alone when no country recorded: 5084 / 5084
+
+==============================================================================
+D. THE REPORTED CASES
+==============================================================================
+  observed         country    stored today                   after the fix
+  --------------------------------------------------------------------------
+  Florida          United Sta Florida, Puerto Rico           -> Q6850 Florida
+  La Paz           Bolivia    La Pampa, Argentina            -> Q2453 La Paz Department
+  Potosi           Bolivia    Porto, Portugal                -> Q2456 Potosí Department
+  Oruro            Bolivia    Koror, Palau                   -> Q2454 Oruro Department
+  Santa Cruz       Bolivia    Santa Cruz, Argentina          -> Q2457 Santa Cruz Department
+  Camaguey         Cuba       Camuy, Puerto Rico             -> Q2887 Camagüey Province
+  Bolivar          Venezuela  Bolivar, Colombia              -> Q6958 Bolívar
+  Saint Andrew     Jamaica    Saint Andrew, Barbados         -> Q3902 Saint Andrew
+  Tete             Mozambique Leyte, Philippines             -> Q4744 Tete Province
+  Yukon Territory* Canada     Northern Territory, Australia  -> Q2665 Yukon
+  Michoacan        Mexico     Michigan, United States        -> dropped (observed_name kept)
+  Valle D'Aosta    Italy      Valletta, Malta                -> dropped (observed_name kept)
+  Andalusia        Spain      Kandal, Cambodia               -> dropped (observed_name kept)
+  Orissa           India      Garissa, Kenya                 -> dropped (observed_name kept)
+  Katanga          Democratic Tanga, Tanzania                -> dropped (observed_name kept)
+  Elko County      United Sta Puerto Rico @0.371             -> dropped (observed_name kept)
+
+  repointed: 10    dropped: 6

@@ -1,0 +1,19 @@
+# A1. State candidate nodes carrying a normalized_uri, split by whether observed_name
+# is present, grouped by matcher (mo:source). OPTIONAL + BOUND throughout: a plain
+# triple pattern on mo:observed_name would silently drop the nodes being counted.
+PREFIX mo: <https://minmod.isi.edu/ontology/>
+SELECT ?source (COUNT(*) AS ?nodes) (SUM(?has) AS ?with_observed_name)
+       (COUNT(*) - SUM(?has) AS ?without_observed_name)
+WHERE {
+  SELECT ?ce (SAMPLE(?s) AS ?source)
+         (MAX(IF(BOUND(?obs) && STRLEN(STR(?obs)) > 0, 1, 0)) AS ?has)
+  WHERE {
+    ?li mo:state_or_province ?ce .
+    ?ce mo:normalized_uri ?uri .
+    OPTIONAL { ?ce mo:source ?s }
+    OPTIONAL { ?ce mo:observed_name ?obs }
+  }
+  GROUP BY ?ce
+}
+GROUP BY ?source
+ORDER BY DESC(?nodes)

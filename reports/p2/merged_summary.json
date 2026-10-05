@@ -1,0 +1,274 @@
+{
+  "merged_entities": 419098,
+  "merged_with_state": 374202,
+  "merged_conflicted_before": 5856,
+  "a3_split": {
+    "same site (conflict asserted by one record: upstream)": 5746,
+    "different sites (pairing invented by the merge)": 110
+  },
+  "a3_merge_invented_detail": {
+    "state's site is itself conflicted": 104,
+    "B3: top site with both is itself conflicted": 104,
+    "state's site is consistent with its own country": 6,
+    "B3: top site with both is consistent": 6
+  },
+  "merged_entities_with_a_conflicted_member": 5924,
+  "merged_conflicted_without_a_conflicted_member": 6,
+  "harness_check_rebuilt": 5924,
+  "harness_check_country_state_mismatches": 0,
+  "harness_check_order_dependent_field_mismatches": {
+    "geology_info": 5,
+    "mineral_form": 68,
+    "deposit_types": 1
+  },
+  "after_repair": {
+    "conflicted_before": 5856,
+    "outcome_of_conflicted": {
+      "fixed: state dropped (empty)": 854,
+      "fixed: state repointed": 4995,
+      "still conflicted": 7
+    },
+    "merged_conflicted_after": 7,
+    "newly_conflicted": 0,
+    "non_conflicted_entities_whose_state_changed": 0,
+    "still_conflicted": [
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink",
+        "country": {
+          "value": [
+            "Q1176"
+          ],
+          "refid": "site__doi-org-10-5382-econgeo-2018-4590__aljustrel-1628__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2654"
+          ],
+          "refid": "site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink",
+        "country": {
+          "value": [
+            "Q1038"
+          ],
+          "refid": "site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6901"
+          ],
+          "refid": "site__mrdata-usgs-gov-mrds__10156652__umn"
+        },
+        "has_a_conflicted_member": true
+      },
+      {
+        "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc",
+        "country": {
+          "value": [
+            "Q1231"
+          ],
+          "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6840"
+          ],
+          "refid": "site__doi-org-10-5066-p96mmrfd__md055__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc",
+        "country": {
+          "value": [
+            "Q1231"
+          ],
+          "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6840"
+          ],
+          "refid": "site__mrdata-usgs-gov-sedznpb__493__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__1134__sri",
+        "country": {
+          "value": [
+            "Q1202"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1619__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6210"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1210__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__1__sri",
+        "country": {
+          "value": [
+            "Q1166"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__980__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2011"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__954__sri",
+        "country": {
+          "value": [
+            "Q1155"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__954__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2209"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__95__umn"
+        },
+        "has_a_conflicted_member": false
+      }
+    ]
+  },
+  "after_repair+name_fallback": {
+    "conflicted_before": 5856,
+    "outcome_of_conflicted": {
+      "fixed: state dropped (empty)": 832,
+      "fixed: state repointed": 5017,
+      "still conflicted": 7
+    },
+    "merged_conflicted_after": 7,
+    "newly_conflicted": 0,
+    "non_conflicted_entities_whose_state_changed": 0,
+    "still_conflicted": [
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink",
+        "country": {
+          "value": [
+            "Q1176"
+          ],
+          "refid": "site__doi-org-10-5382-econgeo-2018-4590__aljustrel-1628__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2654"
+          ],
+          "refid": "site__api-cdr-land-v1-docs-documents__0283468d8e32eb2151b91e8f29b005238f1438c1258edddbc4f40471ae044bb892__inferlink"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink",
+        "country": {
+          "value": [
+            "Q1038"
+          ],
+          "refid": "site__api-cdr-land-v1-docs-documents__02c4dfe31bb57da226b14ffc1205519e8a56a6d087922f8346736f552d4cbdbf25__inferlink"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6901"
+          ],
+          "refid": "site__mrdata-usgs-gov-mrds__10156652__umn"
+        },
+        "has_a_conflicted_member": true
+      },
+      {
+        "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc",
+        "country": {
+          "value": [
+            "Q1231"
+          ],
+          "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__reef-ridge-837__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6840"
+          ],
+          "refid": "site__doi-org-10-5066-p96mmrfd__md055__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc",
+        "country": {
+          "value": [
+            "Q1231"
+          ],
+          "refid": "site__doi-org-10-1016-j-oregeorev-2016-08-010__su-lik-843__usc"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6840"
+          ],
+          "refid": "site__mrdata-usgs-gov-sedznpb__493__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__1134__sri",
+        "country": {
+          "value": [
+            "Q1202"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1619__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q6210"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1210__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__1__sri",
+        "country": {
+          "value": [
+            "Q1166"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__980__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2011"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__1__umn"
+        },
+        "has_a_conflicted_member": false
+      },
+      {
+        "id": "dedup_site__mrdata-usgs-gov-phosphate__954__sri",
+        "country": {
+          "value": [
+            "Q1155"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__954__umn"
+        },
+        "state_or_province": {
+          "value": [
+            "Q2209"
+          ],
+          "refid": "site__mrdata-usgs-gov-phosphate__95__umn"
+        },
+        "has_a_conflicted_member": false
+      }
+    ]
+  }
+}

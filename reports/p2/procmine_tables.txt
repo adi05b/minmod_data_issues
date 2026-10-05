@@ -1,0 +1,6 @@
+_selected_cols.pkl: {'commodity': ['name', 'aliases', 'geokb_name', 'mrds_code'], 'country': ['name', 'alt names', 'native'], 'deposit_type': ['deposit_type'], 'epsg': ['name'], 'material_form': ['name'], 'state_or_province': ['name'], 'unit': ['unit name', 'unit aliases']}
+state_or_province: keys 4967 | rows 5084 | unreachable ids 117
+  florida -> Q5307 | Q6850 reachable: False
+country: keys 393 | rows 250 | unreachable ids 0
+  primary names resolving to another country: 0 []
+ProcMine's real state table == verify.py's model: True

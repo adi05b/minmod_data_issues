@@ -1,0 +1,38 @@
+# Problem 2, Part A: the three upstream ETL stages that build the merged (kgrel)
+# entities, copied verbatim from upstream-p2/etl.yml @ 83f9b7b. Loaders (Docker,
+# Fuseki, Postgres) are left out: nothing here touches a database.
+version: 1
+
+services:
+  - name: kgrel.data.entities
+    classpath: minmodkg.etl.kgrel_entity.KGRelEntityETLService
+    args:
+      parallel: true
+  - name: kgrel.data.mineral_site
+    classpath: minmodkg.etl.mineral_site.MineralSiteETLService
+    args:
+      parallel: true
+  - name: kg.data.same_as
+    classpath: minmodkg.etl.same_as.SameAsService
+    args:
+      parallel: true
+
+pipeline:
+  - service: kgrel.data.entities
+    args:
+      input: ::REPO::data/entities
+      output: ::DATA_DIR::entities
+  - service: kg.data.same_as
+    args:
+      input: ::REPO::data/same-as/umn/*.csv
+      curated_input: ::REPO::data/same-as/*/*.csv
+      mineral_site_dir: ::REPO::data/mineral-sites
+      output:
+        base: ::DATA_DIR::same-as/
+        format: "{fileparent}_{filestem}.json"
+  - service: kgrel.data.mineral_site
+    args:
+      mineral_site_dir: ::REPO::data/mineral-sites
+      entity_dir: ::DATA_DIR::entities
+      same_as_group: ::DATA_DIR::same-as/final/groups.json
+      output: ::DATA_DIR::mineral-sites

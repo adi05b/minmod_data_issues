@@ -1,0 +1,25 @@
+# A1 on conflicted records only: the state's country (mo:country on the state entity,
+# a literal like "Q1235") is none of the record's normalized countries, and the record
+# has at least one. Same OPTIONAL + BOUND form.
+PREFIX mo: <https://minmod.isi.edu/ontology/>
+SELECT ?source (COUNT(*) AS ?conflicted_nodes) (SUM(?has) AS ?with_observed_name)
+       (COUNT(*) - SUM(?has) AS ?without_observed_name)
+WHERE {
+  SELECT ?ce (SAMPLE(?s) AS ?source)
+         (MAX(IF(BOUND(?obs) && STRLEN(STR(?obs)) > 0, 1, 0)) AS ?has)
+  WHERE {
+    ?li mo:state_or_province ?ce .
+    ?ce mo:normalized_uri ?st .
+    ?st mo:country ?stc .
+    ?li mo:country/mo:normalized_uri ?anyc .
+    FILTER NOT EXISTS {
+      ?li mo:country/mo:normalized_uri ?c .
+      FILTER(STRAFTER(STR(?c), "/resource/") = STR(?stc))
+    }
+    OPTIONAL { ?ce mo:source ?s }
+    OPTIONAL { ?ce mo:observed_name ?obs }
+  }
+  GROUP BY ?ce
+}
+GROUP BY ?source
+ORDER BY DESC(?conflicted_nodes)

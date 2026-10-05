@@ -1,0 +1,363 @@
+records,observed_name,state_id,state_name,state_country,recorded_country_ids,recorded_countries,action,new_state_id,new_state_name,action_with_name_fallback,new_state_id_fallback
+1609,Florida,Q5307,Florida,Puerto Rico,Q1235,United States,repoint,Q6850,Florida,repoint,Q6850
+586,La Paz,Q2181,La Pampa,Argentina,Q1025,Bolivia,repoint,Q2453,La Paz Department,repoint,Q2453
+552,Potosi,Q5270,Porto,Portugal,Q1025,Bolivia,repoint,Q2456,Potosí Department,repoint,Q2456
+475,Bolivar,Q2785,Bolívar,Colombia,Q1241,Venezuela,repoint,Q6958,Bolívar,repoint,Q6958
+216,Santa Cruz,Q2190,Santa Cruz,Argentina,Q1025,Bolivia,repoint,Q2457,Santa Cruz Department,repoint,Q2457
+191,Oruro,Q5038,Koror,Palau,Q1025,Bolivia,repoint,Q2454,Oruro Department,repoint,Q2454
+187,Orissa,Q3993,Garissa,Kenya,Q1101,India,drop,,,drop,
+158,Camaguey,Q5292,Camuy,Puerto Rico,Q1054,Cuba,repoint,Q2887,Camagüey Province,repoint,Q2887
+93,Katanga,Q6152,Tanga,Tanzania,Q1058,Democratic Republic of the Congo,drop,,,drop,
+69,Saint Andrew,Q2374,Saint Andrew,Barbados,Q1108,Jamaica,repoint,Q3902,Saint Andrew,repoint,Q3902
+65,Florida,Q6920,Florida,Uruguay,Q1235,United States,repoint,Q6850,Florida,repoint,Q6850
+64,Granma,Q6949,Sanma,Vanuatu,Q1054,Cuba,repoint,Q2890,Granma Province,repoint,Q2890
+62,Panama,Q2118,Naama,Algeria,Q1169,Panama,repoint,Q5076,Panamá Province,repoint,Q5076
+62,Yukon Territory*,Q2208,Northern Territory,Australia,Q1038,Canada,repoint,Q2665,Yukon,repoint,Q2665
+56,San Jose,Q6929,San José,Uruguay,Q1051,Costa Rica,repoint,Q2833,San José Province,repoint,Q2833
+51,Veraguas,Q5290,Caguas,Puerto Rico,Q1169,Panama,repoint,Q5077,Veraguas Province,repoint,Q5077
+50,CO,Q6917,Colonia,Uruguay,Q1235,United States,drop,,,drop,
+49,Territory Of New Caledonia And Dependencies,Q6964,Federal Dependencies of Venezuela,Venezuela,Q1075,France,drop,,,drop,
+46,CA,Q6915,Canelones,Uruguay,Q1235,United States,drop,,,drop,
+44,Akita,Q6095,Latakia,Syria,Q1109,Japan,repoint,Q3912,Akita Prefecture,repoint,Q3912
+43,Central,Q2299,Central,Bahrain,Q1248,Zambia,repoint,Q7065,Central Province,repoint,Q7065
+43,Niedersachsen,Q4251,Eschen,Liechtenstein,Q1082,Germany,drop,,,drop,
+39,Colon,Q6917,Colonia,Uruguay,Q1169,Panama,repoint,Q5068,Colón Province,repoint,Q5068
+39,Midlands,Q3565,Islands,Hong Kong S.A.R.,Q1249,Zimbabwe,repoint,Q7084,Midlands Province,repoint,Q7084
+35,Herrera,Q3818,Ferrara,Italy,Q1169,Panama,repoint,Q5072,Herrera Province,repoint,Q5072
+33,Limon,Q4883,Imo,Nigeria,Q1051,Costa Rica,repoint,Q2830,Limón Province,repoint,Q2830
+31,Victoria,Q4492,Victoria,Malta,Q1013,Australia,repoint,Q2212,Victoria,repoint,Q2212
+28,Cartago,Q5168,Caraga,Philippines,Q1051,Costa Rica,drop,,,drop,
+23,Amazonas*,Q2488,Amazonas,Brazil,Q1241,Venezuela,repoint,Q6953,Amazonas,repoint,Q6953
+22,Canar,Q5937,Canarias,Spain,Q1063,Ecuador,repoint,Q3078,Cañar,repoint,Q3078
+20,Saint Thomas,Q2383,Saint Thomas,Barbados,Q1108,Jamaica,repoint,Q3908,Saint Thomas Parish,repoint,Q3908
+19,Ekaterinburg,Q6678,Edinburgh,United Kingdom,Q1181,Russia,drop,,,drop,
+18,Katanga Province,Q6152,Tanga,Tanzania,Q1058,Democratic Republic of the Congo,drop,,,drop,
+18,Saint Ann,Q2374,Saint Andrew,Barbados,Q1108,Jamaica,repoint,Q3903,Saint Ann Parish,repoint,Q3903
+18,Yoro,Q5038,Koror,Palau,Q1097,Honduras,repoint,Q3562,Yoro Department,repoint,Q3562
+17,Kochi,Q6389,Kocaeli,Turkey,Q1109,Japan,repoint,Q3930,Kōchi Prefecture,repoint,Q3930
+16,MN,Q7082,Matabeleland North Province,Zimbabwe,Q1235,United States,drop,,,drop,
+16,El Beni,Q2102,El Menia,Algeria,Q1025,Bolivia,drop,,,drop,
+16,Bolivar,Q2785,Bolívar,Colombia,Q1063,Ecuador,repoint,Q3077,Bolívar,repoint,Q3077
+16,Darien,Q4490,Tarxien,Malta,Q1169,Panama,repoint,Q5069,Darién Province,repoint,Q5069
+15,ME,Q7079,Mashonaland East Province,Zimbabwe,Q1235,United States,drop,,,drop,
+15,Greenland,Q2214,Burgenland,Austria,Q1059,Denmark,drop,,,drop,
+15,Hyogo,Q4897,Oyo,Nigeria,Q1109,Japan,repoint,Q3923,Hyōgo Prefecture,repoint,Q3923
+14,El Paraiso,Q3316,Paris,France,Q1097,Honduras,repoint,Q3552,El Paraíso Department,repoint,Q3552
+14,Tarija,Q6298,Arima,Trinidad and Tobago,Q1025,Bolivia,repoint,Q2458,Tarija Department,repoint,Q2458
+13,Attapu,Q4434,Attard,Malta,Q1118,Laos,drop,,,drop,
+13,Santa Ana,Q3095,Santa Elena,Ecuador,Q1065,El Salvador,repoint,Q3138,Santa Ana Department,repoint,Q3138
+13,Florida,Q5307,Florida,Puerto Rico,Q1237,Uruguay,repoint,Q6920,Florida,repoint,Q6920
+13,Nara,Q5961,Navarra,Spain,Q1109,Japan,repoint,Q3938,Nara Prefecture,repoint,Q3938
+13,Manchester,Q6740,Manchester,United Kingdom,Q1108,Jamaica,repoint,Q3900,Manchester Parish,repoint,Q3900
+12,SD,Q7060,Saada,Yemen,Q1235,United States,drop,,,drop,
+12,Elazig,Q3830,Lazio,Italy,Q1227,Turkey,drop,,,drop,
+12,Jalapa,Q6947,Malampa,Vanuatu,Q1090,Guatemala,repoint,Q3462,Jalapa Department,repoint,Q3462
+12,Buryatiya,Q6621,Bury,United Kingdom,Q1181,Russia,drop,,,drop,
+12,San Blas*,Q2189,San Luis,Argentina,Q1169,Panama,drop,,,drop,
+12,Santa Cruz,Q2680,Santa Cruz,Cape Verde,Q1010,Argentina,repoint,Q2190,Santa Cruz,repoint,Q2190
+11,MO,Q6923,Montevideo,Uruguay,Q1235,United States,drop,,,drop,
+11,Valle,Q4491,Valletta,Malta,Q1097,Honduras,repoint,Q3561,Valle Department,repoint,Q3561
+11,Northern,Q2301,Northern,Bahrain,Q1083,Ghana,repoint,Q3400,Northern,repoint,Q3400
+11,Sucre,Q2807,Sucre,Colombia,Q1241,Venezuela,repoint,Q6973,Sucre,repoint,Q6973
+11,Comayagua,Q4852,Managua,Nicaragua,Q1097,Honduras,repoint,Q3549,Comayagua Department,repoint,Q3549
+11,Saint Mary,Q2167,Saint Mary Parish,Antigua and Barbuda,Q1108,Jamaica,repoint,Q3907,Saint Mary Parish,repoint,Q3907
+11,Copan,Q3081,Cotopaxi,Ecuador,Q1097,Honduras,repoint,Q3550,Copán Department,repoint,Q3550
+10,SC,Q7041,Saint Croix,Virgin Islands (US),Q1235,United States,drop,,,drop,
+10,AR,Q6914,Artigas,Uruguay,Q1235,United States,drop,,,drop,
+10,Amazonas,Q2488,Amazonas,Brazil,Q1172,Peru,repoint,Q5117,Amazonas,repoint,Q5117
+10,Mexico,Q6879,New Mexico,United States,Q1140,Mexico,drop,,,drop,
+10,Oita,Q6128,Geita,Tanzania,Q1109,Japan,repoint,Q3940,Ōita Prefecture,repoint,Q3940
+9,Savannakhet,Q3402,Savannah,Ghana,Q1118,Laos,repoint,Q4071,Savannakhet Province,repoint,Q4071
+9,Okayama,Q5309,Guayama,Puerto Rico,Q1109,Japan,repoint,Q3941,Okayama Prefecture,repoint,Q3941
+8,,Q6920,Florida,Uruguay,Q1235,United States,drop,,,repoint,Q6850
+8,Saint James,Q2376,Saint James,Barbados,Q1108,Jamaica,repoint,Q3906,Saint James Parish,repoint,Q3906
+8,,Q5348,San Juan,Puerto Rico,Q1010,Argentina,drop,,,repoint,Q2188
+7,Izabal,Q3186,Ba,Fiji Islands,Q1090,Guatemala,repoint,Q3461,Izabal Department,repoint,Q3461
+7,Osaka,Q6403,Sakarya,Turkey,Q1109,Japan,repoint,Q3943,Ōsaka Prefecture,repoint,Q3943
+7,Zacapa,Q4561,Zacatecas,Mexico,Q1090,Guatemala,drop,,,drop,
+7,Wakayama,Q5633,Takamaka,Seychelles,Q1109,Japan,repoint,Q3954,Wakayama Prefecture,repoint,Q3954
+7,Cortes,Q2177,Corrientes,Argentina,Q1097,Honduras,repoint,Q3551,Cortés Department,repoint,Q3551
+7,Saida,Q7060,Saada,Yemen,Q1003,Algeria,repoint,Q2124,Saïda,repoint,Q2124
+7,Nord,Q3310,Nord,France,Q1095,Haiti,repoint,Q3539,Nord,repoint,Q3539
+6,Amazonas,Q6953,Amazonas,Venezuela,Q1030,Brazil,repoint,Q2488,Amazonas,repoint,Q2488
+6,Gifu,Q5186,Ifugao,Philippines,Q1109,Japan,repoint,Q3919,Gifu Prefecture,repoint,Q3919
+6,Kukes,Q5917,Lakes,South Sudan,Q1002,Albania,drop,,,drop,
+6,Karnten,Q3670,Banten,Indonesia,Q1014,Austria,drop,,,drop,
+6,Samar,Q7053,Dhamar,Yemen,Q1173,Philippines,drop,,,drop,
+6,Steiermark,Q5233,Western Samar,Philippines,Q1014,Austria,drop,,,drop,
+6,La Paz,Q2181,La Pampa,Argentina,Q1097,Honduras,repoint,Q3556,La Paz Department,repoint,Q3556
+6,Evvoia,Q3329,Savoie,France,Q1085,Greece,drop,,,drop,
+6,Cordoba,Q2176,Córdoba,Argentina,Q1047,Colombia,repoint,Q2793,Córdoba,repoint,Q2793
+6,North-Western,Q2649,Northwest,Cameroon,Q1248,Zambia,drop,,,drop,
+6,Aktyubinsk,Q2387,Minsk,Belarus,Q1112,Kazakhstan,drop,,,drop,
+5,PA,Q6924,Paysandú,Uruguay,Q1235,United States,drop,,,drop,
+5,Miyagi,Q3115,Minya,Egypt,Q1109,Japan,repoint,Q3934,Miyagi Prefecture,repoint,Q3934
+5,Sogn Og Fjordane,Q3255,Dordogne,France,Q1164,Norway,drop,,,drop,
+5,Pulau Pinang,Q3685,Kepulauan Riau,Indonesia,Q1130,Malaysia,drop,,,drop,
+5,Territory Of Christmas Island,Q6236,Berry Islands,The Bahamas,Q1013,Australia,drop,,,drop,
+5,Lappi,Q5167,Capiz,Philippines,Q1074,Finland,drop,,,drop,
+5,Ibaraki,Q3964,Karak,Jordan,Q1109,Japan,repoint,Q3924,Ibaraki Prefecture,repoint,Q3924
+5,Niamey,Q5106,Canindeyú,Paraguay,Q1157,Niger,drop,,,drop,
+5,Yukon Territory,Q2208,Northern Territory,Australia,Q1038,Canada,repoint,Q2665,Yukon,repoint,Q2665
+4,Oulu Laani,Q5160,Bulacan,Philippines,Q1074,Finland,drop,,,drop,
+4,Cayo,Q3767,Mayo,Ireland,Q1021,Belize,repoint,Q2405,Cayo District,repoint,Q2405
+4,Nicosia,Q3434,Laconia,Greece,Q1056,Cyprus,drop,,,drop,
+4,Westland,Q5010,Vestland,Norway,Q1155,New Zealand,drop,,,drop,
+4,Hentiy,Q6699,Kent,United Kingdom,Q1144,Mongolia,drop,,,drop,
+4,Colon,Q6917,Colonia,Uruguay,Q1097,Honduras,repoint,Q3548,Colón Department,repoint,Q3548
+4,Izabal,Q5219,Rizal,Philippines,Q1090,Guatemala,repoint,Q3461,Izabal Department,repoint,Q3461
+4,Yamagata,Q4854,Matagalpa,Nicaragua,Q1109,Japan,repoint,Q3955,Yamagata Prefecture,repoint,Q3955
+4,Northern,Q2301,Northern,Bahrain,Q1248,Zambia,repoint,Q7071,Northern Province,repoint,Q7071
+4,Ch'Ungch'Ong-Bukto,Q2747,Chongqing,China,Q1161,North Korea,drop,,,drop,
+4,Punjab,Q3659,Punjab,India,Q1166,Pakistan,repoint,Q5031,Punjab,repoint,Q5031
+4,Central,Q2299,Central,Bahrain,Q1028,Botswana,repoint,Q2475,Central District,repoint,Q2475
+4,La Rioja,Q5952,La Rioja,Spain,Q1010,Argentina,repoint,Q2182,La Rioja,repoint,Q2182
+4,Santa Cruz,Q2680,Santa Cruz,Cape Verde,Q1025,Bolivia,repoint,Q2457,Santa Cruz Department,repoint,Q2457
+3,Son La Province,Q4743,Sofala Province,Mozambique,Q1242,Vietnam,repoint,Q7029,Sơn La,repoint,Q7029
+3,MI,Q7084,Midlands Province,Zimbabwe,Q1235,United States,drop,,,drop,
+3,Kagawa,Q4884,Jigawa,Nigeria,Q1109,Japan,repoint,Q3927,Kagawa Prefecture,repoint,Q3927
+3,Sofiya,Q5969,Soria,Spain,Q1033,Bulgaria,drop,,,drop,
+3,North-West Frontier,Q2482,North-West District,Botswana,Q1166,Pakistan,drop,,,drop,
+3,Netherlands Antilles,Q6797,Shetland Islands,United Kingdom,Q1153,Netherlands,drop,,,drop,
+3,Pando,Q2718,Mandoul,Chad,Q1025,Bolivia,repoint,Q2455,Pando Department,repoint,Q2455
+3,Morazan,Q2119,Oran,Algeria,Q1065,El Salvador,repoint,Q3134,Morazán Department,repoint,Q3134
+3,Kankan,Q2257,Lankaran,Azerbaijan,Q1092,Guinea,drop,,,drop,
+3,Samana,Q2029,Samangan,Afghanistan,Q1062,Dominican Republic,repoint,Q3066,Samaná Province,repoint,Q3066
+3,Manica,Q7077,Manicaland,Zimbabwe,Q1148,Mozambique,repoint,Q4738,Manica Province,repoint,Q4738
+3,Dabola,Q4471,Paola,Malta,Q1092,Guinea,repoint,Q3480,Dabola Prefecture,repoint,Q3480
+3,Sidamo,Q4466,Msida,Malta,Q1070,Ethiopia,drop,,,drop,
+3,Guantanamo,Q4541,Guanajuato,Mexico,Q1054,Cuba,repoint,Q2891,Guantánamo Province,repoint,Q2891
+3,Aichi,Q6200,Phichit,Thailand,Q1109,Japan,repoint,Q3911,Aichi Prefecture,repoint,Q3911
+3,Bong,Q3394,Bono,Ghana,Q1122,Liberia,repoint,Q4215,Bong County,repoint,Q4215
+3,Salavan,Q5965,Salamanca,Spain,Q1118,Laos,repoint,Q4070,Salavan Province,repoint,Q4070
+3,Toledo,Q5972,Toledo,Spain,Q1021,Belize,repoint,Q2409,Toledo District,repoint,Q2409
+3,Kareliya,Q6387,Kırklareli,Turkey,Q1181,Russia,drop,,,drop,
+3,Los Rios,Q2738,Los Ríos,Chile,Q1063,Ecuador,repoint,Q3088,Los Ríos,repoint,Q3088
+3,Montserrat,Q4224,Montserrado County,Liberia,Q1234,United Kingdom,drop,,,drop,
+3,Huila,Q2797,Huila,Colombia,Q1006,Angola,repoint,Q2155,Huíla Province,repoint,Q2155
+3,Mat,Q5578,Matam,Senegal,Q1002,Albania,repoint,Q2065,Mat District,repoint,Q2065
+3,Isabela,Q5317,Isabela,Puerto Rico,Q1173,Philippines,repoint,Q5191,Isabela,repoint,Q5191
+3,Santa Catarina,Q2678,Santa Catarina,Cape Verde,Q1030,Brazil,repoint,Q2508,Santa Catarina,repoint,Q2508
+3,Nord,Q3539,Nord,Haiti,Q1075,France,repoint,Q3310,Nord,repoint,Q3310
+3,Piura,Q5136,Piura,Peru,Q1030,Brazil,drop,,,drop,
+3,,Q4492,Victoria,Malta,Q1013,Australia,drop,,,repoint,Q2212
+3,,Q7074,Western Province,Zambia,Q1170,Papua New Guinea,drop,,,repoint,Q5098
+3,Toamasina,Q2211,Tasmania,Australia,Q1128,Madagascar,repoint,Q4349,Toamasina Province,repoint,Q4349
+3,G�vleborg,Q3702,Alborz,Iran,Q1213,Sweden,drop,,,drop,
+2,Banska Bystricka Region,Q5643,Banská Bystrica Region,Slovakia,Q1041,Central African Republic,drop,,,drop,
+2,Toliara,Q3199,Ra,Fiji Islands,Q1128,Madagascar,repoint,Q4350,Toliara Province,repoint,Q4350
+2,York County,Q2046,Gjirokastër County,Albania,Q1038,Canada,drop,,,drop,
+2,Cordoba Province,Q3186,Ba,Fiji Islands,Q1208,Spain,repoint,Q5942,Córdoba,repoint,Q5942
+2,Eastern Finland,Q2645,East,Cameroon,Q1074,Finland,drop,,,drop,
+2,Thai Nguyen Province,Q2148,Bié Province,Angola,Q1242,Vietnam,repoint,Q7032,Thái Nguyên,repoint,Q7032
+2,Agusan del Norte Province,Q3520,Norte Province,Guinea-Bissau,Q1173,Philippines,repoint,Q5143,Agusan del Norte,repoint,Q5143
+2,Setúbal District,Q3186,Ba,Fiji Islands,Q1176,Portugal,repoint,Q5272,Setúbal,repoint,Q5272
+2,Vila Nova De Cerveira,Q5930,Ávila,Spain,Q1176,Portugal,drop,,,drop,
+2,Caminha,Q2215,Carinthia,Austria,Q1176,Portugal,drop,,,drop,
+2,Zaire,Q2459,Bonaire,"Bonaire, Sint Eustatius and Saba",Q1006,Angola,repoint,Q2162,Zaire Province,repoint,Q2162
+2,Surigao*,Q4161,Riga,Latvia,Q1173,Philippines,drop,,,drop,
+2,Mures,Q3259,Eure,France,Q1180,Romania,repoint,Q5400,Mureș County,repoint,Q5400
+2,Al Bahr Al Ahmar,Q5558,Al Bahah,Saudi Arabia,Q1064,Egypt,drop,,,drop,
+2,Azua,Q3076,Azuay,Ecuador,Q1062,Dominican Republic,repoint,Q3045,Azua Province,repoint,Q3045
+2,Boke,Q4060,Bokeo Province,Laos,Q1092,Guinea,drop,,,drop,
+2,Nograd,Q5305,Dorado,Puerto Rico,Q1099,Hungary,repoint,Q3604,Nógrád County,repoint,Q3604
+2,Western,Q3406,Western,Ghana,Q1248,Zambia,repoint,Q7074,Western Province,repoint,Q7074
+2,Irkutskaya Oblast',Q6559,Cherkaska oblast,Ukraine,Q1181,Russia,drop,,,drop,
+2,Brabant,Q4477,Rabat,Malta,Q1020,Belgium,drop,,,drop,
+2,Kindia,Q6857,Indiana,United States,Q1092,Guinea,drop,,,drop,
+2,Fria,Q3693,Riau,Indonesia,Q1092,Guinea,repoint,Q3486,Fria Prefecture,repoint,Q3486
+2,Atlantico Nort,Q2783,Atlántico,Colombia,Q1156,Nicaragua,drop,,,drop,
+2,Bihor,Q3636,Bihar,India,Q1180,Romania,repoint,Q5376,Bihor County,repoint,Q5376
+2,Mie,Q4185,Valmiera,Latvia,Q1109,Japan,repoint,Q3933,Mie Prefecture,repoint,Q3933
+2,Pest,Q2652,West,Cameroon,Q1099,Hungary,repoint,Q3607,Pest County,repoint,Q3607
+2,Para,Q2500,Paraná,Brazil,Q1211,Suriname,repoint,Q6033,Para District,repoint,Q6033
+2,Kondoz [Kunduz],Q4895,Ondo,Nigeria,Q1000,Afghanistan,drop,,,drop,
+2,San Miguel,Q2684,São Miguel,Cape Verde,Q1065,El Salvador,repoint,Q3135,San Miguel Department,repoint,Q3135
+2,Eastern,Q3397,Eastern,Ghana,Q1248,Zambia,repoint,Q7067,Eastern Province,repoint,Q7067
+2,Khalkidhiki,Q6681,Falkirk,United Kingdom,Q1085,Greece,drop,,,drop,
+2,Shimane,Q4656,Benslimane,Morocco,Q1109,Japan,repoint,Q3947,Shimane Prefecture,repoint,Q3947
+2,Welega [Walaga],Q4518,Agalega Islands,Mauritius,Q1070,Ethiopia,drop,,,drop,
+2,Agadir,Q5874,Banaadir,Somalia,Q1147,Morocco,drop,,,drop,
+2,Central,Q2299,Central,Bahrain,Q1083,Ghana,repoint,Q3396,Central,repoint,Q3396
+2,Zufar,Q4903,Zamfara,Nigeria,Q1165,Oman,drop,,,drop,
+2,Hong Kong Special Administrative Region,Q5175,Cordillera Administrative,Philippines,Q1044,China,drop,,,drop,
+2,Korce,Q5038,Koror,Palau,Q1002,Albania,drop,,,drop,
+2,Southern,Q2302,Southern,Bahrain,Q1248,Zambia,repoint,Q7073,Southern Province,repoint,Q7073
+2,British Virgin Islands,Q6896,United States Virgin Islands,United States,Q1234,United Kingdom,drop,,,drop,
+2,Tov,Q2919,Chomutov,Czech Republic,Q1144,Mongolia,repoint,Q4623,Töv Province,repoint,Q4623
+2,Chiba,Q5298,Ceiba,Puerto Rico,Q1109,Japan,repoint,Q3914,Chiba Prefecture,repoint,Q3914
+2,Limassol,Q5131,Lima,Peru,Q1056,Cyprus,drop,,,drop,
+2,Gorj,Q4507,Gorgol,Mauritania,Q1180,Romania,repoint,Q5392,Gorj County,repoint,Q5392
+2,North-West,Q2649,Northwest,Cameroon,Q1204,South Africa,repoint,Q5894,North West,repoint,Q5894
+2,Oberosterreich,Q4658,Berrechid,Morocco,Q1014,Austria,drop,,,drop,
+2,Al Kaf,Q5559,Al Jawf,Saudi Arabia,Q1226,Tunisia,drop,,,drop,
+2,Buller,Q3226,Allier,France,Q1155,New Zealand,drop,,,drop,
+2,Central,Q3396,Central,Ghana,Q1028,Botswana,repoint,Q2475,Central District,repoint,Q2475
+2,Eastern,Q3564,Eastern,Hong Kong S.A.R.,Q1248,Zambia,repoint,Q7067,Eastern Province,repoint,Q7067
+2,San Juan,Q5348,San Juan,Puerto Rico,Q1010,Argentina,repoint,Q2188,San Juan,repoint,Q2188
+2,Central,Q3396,Central,Ghana,Q1248,Zambia,repoint,Q7065,Central Province,repoint,Q7065
+2,Tuva,Q5537,Atua,Samoa,Q1181,Russia,drop,,,drop,
+2,Turku,Q4029,Turkana,Kenya,Q1074,Finland,drop,,,drop,
+2,Viti Levu Island,Q6859,Jarvis Island,United States,Q1073,Fiji Islands,drop,,,drop,
+2,Rapu-Rapu Island,Q6251,Harbour Island,The Bahamas,Q1173,Philippines,drop,,,drop,
+2,Oriente,Q2177,Corrientes,Argentina,Q1054,Cuba,drop,,,drop,
+2,Semipalatinsk,Q2387,Minsk,Belarus,Q1112,Kazakhstan,drop,,,drop,
+1,Southeast Alaska,Q2645,East,Cameroon,Q1235,United States,drop,,,drop,
+1,Alaska,Q6840,Alaska,United States,Q1038,Canada,drop,,,drop,
+1,Son La,Q2139,Andorra la Vella,Andorra,Q1242,Vietnam,repoint,Q7029,Sơn La,repoint,Q7029
+1,REGIÓN AUTÓNOMA DE LA COSTA CARIBE NORTE,Q2139,Andorra la Vella,Andorra,Q1156,Nicaragua,drop,,,drop,
+1,Andalusia,Q2725,Sila,Chad,Q1208,Spain,drop,,,drop,
+1,Zhitigara District,Q2049,Has District,Albania,Q1112,Kazakhstan,drop,,,drop,
+1,North-Western Province,Q5998,North Western Province,Sri Lanka,Q1248,Zambia,drop,,,drop,
+1,Mpumalanga Province,Q4411,Malé,Maldives,Q1204,South Africa,repoint,Q5893,Mpumalanga,repoint,Q5893
+1,British Columbia,Q2654,British Columbia,Canada,Q1074,Finland,drop,,,drop,
+1,Gangwon-do,Q2496,Mato Grosso do Sul,Brazil,Q1206,South Korea,drop,,,drop,
+1,Karas,Q3199,Ra,Fiji Islands,Q1150,Namibia,repoint,Q4763,Karas Region,repoint,Q4763
+1,Elko County,Q2046,Gjirokastër County,Albania,Q1235,United States,drop,,,drop,
+1,County Tipperary,Q3199,Ra,Fiji Islands,Q1105,Ireland,repoint,Q3774,Tipperary,repoint,Q3774
+1,Banská Bystrica,Q3186,Ba,Fiji Islands,Q1200,Slovakia,repoint,Q5643,Banská Bystrica Region,repoint,Q5643
+1,Northwest Region,Q3627,Northwestern Region,Iceland,Q1247,Yemen,drop,,,drop,
+1,Eastern Guinea,Q2645,East,Cameroon,Q1092,Guinea,drop,,,drop,
+1,Qaqortoq District,Q2855,Sassandra-Marahoué District,Cote D'Ivoire (Ivory Coast),Q1086,Greenland,drop,,,drop,
+1,Castilla y León,Q3793,Asti,Italy,Q1208,Spain,drop,,,drop,
+1,Humboldt County,Q2052,Korçë County,Albania,Q1235,United States,drop,,,drop,
+1,Nye,Q4022,Nyeri,Kenya,Q1235,United States,drop,,,drop,
+1,Côte d’Ivoire,Q3251,Côte-d'Or,France,Q1052,Cote D'Ivoire (Ivory Coast),drop,,,drop,
+1,Liard Mining Division,Q2320,Dhaka Division,Bangladesh,Q1038,Canada,drop,,,drop,
+1,Eastern Highland,Q2645,East,Cameroon,Q1170,Papua New Guinea,drop,,,drop,
+1,Muhanga,Q4015,Murang'a,Kenya,Q1182,Rwanda,drop,,,drop,
+1,Eastern Slovakia,Q2645,East,Cameroon,Q1200,Slovakia,drop,,,drop,
+1,Kutahya Province,Q6897,Utah,United States,Q1227,Turkey,repoint,Q6391,Kütahya,repoint,Q6391
+1,Andalucía,Q3837,Lucca,Italy,Q1208,Spain,drop,,,drop,
+1,Moramanga,Q3199,Ra,Fiji Islands,Q1128,Madagascar,drop,,,drop,
+1,Haut -Katanga Province,Q6152,Tanga,Tanzania,Q1058,Democratic Republic of the Congo,repoint,Q3000,Haut-Katanga,repoint,Q3000
+1,Harare,Q3199,Ra,Fiji Islands,Q1249,Zimbabwe,repoint,Q7076,Harare Province,repoint,Q7076
+1,Esmeralda County,Q3199,Ra,Fiji Islands,Q1235,United States,drop,,,drop,
+1,Kostenay Oblast,Q5427,Jewish Autonomous Oblast,Russia,Q1112,Kazakhstan,drop,,,drop,
+1,Rio Negro Province,Q2148,Bié Province,Angola,Q1010,Argentina,repoint,Q2186,Río Negro,repoint,Q2186
+1,Usak,Q7069,Lusaka Province,Zambia,Q1227,Turkey,repoint,Q6414,Uşak,repoint,Q6414
+1,Western Churchill Province,Q2652,West,Cameroon,Q1038,Canada,drop,,,drop,
+1,Nasarawa State,Q3199,Ra,Fiji Islands,Q1158,Nigeria,repoint,Q4892,Nasarawa,repoint,Q4892
+1,Potosi,Q4553,San Luis Potosí,Mexico,Q1025,Bolivia,repoint,Q2456,Potosí Department,repoint,Q2456
+1,Melsiripura,Q3199,Ra,Fiji Islands,Q1209,Sri Lanka,drop,,,drop,
+1,Adana Province,Q2892,Havana Province,Cuba,Q1227,Turkey,repoint,Q6338,Adana,repoint,Q6338
+1,Kangwon-Do,Q2496,Mato Grosso do Sul,Brazil,Q1206,South Korea,drop,,,drop,
+1,Kainantu,Q3224,Ain,France,Q1170,Papua New Guinea,drop,,,drop,
+1,Sukhbaatar,Q3186,Ba,Fiji Islands,Q1144,Mongolia,repoint,Q4622,Sükhbaatar Province,repoint,Q4622
+1,Östergötlands Län,Q3290,Landes,France,Q1213,Sweden,drop,,,drop,
+1,Nevada,Q6876,Nevada,United States,Q1038,Canada,drop,,,drop,
+1,Bad Bleiberg,Q3186,Ba,Fiji Islands,Q1014,Austria,drop,,,drop,
+1,Halmahera Island,Q3199,Ra,Fiji Islands,Q1102,Indonesia,drop,,,drop,
+1,Hakkari Province,Q4196,Akkar,Lebanon,Q1227,Turkey,repoint,Q6373,Hakkâri,repoint,Q6373
+1,Sirnak Province,Q2150,Cuando Cubango Province,Angola,Q1227,Turkey,drop,,,drop,
+1,Extremadura,Q3199,Ra,Fiji Islands,Q1208,Spain,drop,,,drop,
+1,Karibib District,Q2313,Chapai Nawabganj District,Bangladesh,Q1150,Namibia,drop,,,drop,
+1,Stevens County,Q3594,Győr-Moson-Sopron County,Hungary,Q1235,United States,drop,,,drop,
+1,District of Niari,Q2466,Federation of Bosnia and Herzegovina,Bosnia and Herzegovina,Q1049,Congo,drop,,,drop,
+1,CT,Q6990,Cần Thơ,Vietnam,Q1235,United States,drop,,,drop,
+1,Shiga,Q4031,Vihiga,Kenya,Q1109,Japan,repoint,Q3946,Shiga Prefecture,repoint,Q3946
+1,Bulgan,Q5160,Bulacan,Philippines,Q1144,Mongolia,repoint,Q4608,Bulgan Province,repoint,Q4608
+1,Araucania,Q2781,Arauca,Colombia,Q1043,Chile,drop,,,drop,
+1,Al Buhayrah,Q5558,Al Bahah,Saudi Arabia,Q1064,Egypt,drop,,,drop,
+1,Troms,Q6093,Homs,Syria,Q1164,Norway,drop,,,drop,
+1,Bacau,Q2790,Cauca,Colombia,Q1180,Romania,repoint,Q5375,Bacău County,repoint,Q5375
+1,La Union,Q5193,La Union,Philippines,Q1065,El Salvador,repoint,Q3133,La Unión Department,repoint,Q3133
+1,Ch'Ungch'Ong-Namdo,Q2747,Chongqing,China,Q1161,North Korea,drop,,,drop,
+1,Chitinskaya Oblast',Q6559,Cherkaska oblast,Ukraine,Q1181,Russia,drop,,,drop,
+1,Ostfold,Q2951,Most,Czech Republic,Q1164,Norway,drop,,,drop,
+1,Al Balqa',Q7047,Al Bayda',Yemen,Q1111,Jordan,drop,,,drop,
+1,Varna,Q3339,Var,France,Q1033,Bulgaria,repoint,Q2539,Varna Province,repoint,Q2539
+1,Usulutan,Q5228,Sulu,Philippines,Q1065,El Salvador,repoint,Q3140,Usulután Department,repoint,Q3140
+1,Gumma,Q2106,Guelma,Algeria,Q1109,Japan,drop,,,drop,
+1,Constanta,Q2097,Constantine,Algeria,Q1180,Romania,repoint,Q5386,Constanța County,repoint,Q5386
+1,Burgas,Q5934,Burgos,Spain,Q1033,Bulgaria,repoint,Q2517,Burgas Province,repoint,Q2517
+1,Thies,Q3885,Trieste,Italy,Q1194,Senegal,repoint,Q5582,Thiès Region,repoint,Q5582
+1,Beyla,Q6137,Mbeya,Tanzania,Q1092,Guinea,repoint,Q3474,Beyla Prefecture,repoint,Q3474
+1,An Nil Al Azra,Q3733,Al Anbar,Iraq,Q1210,Sudan,drop,,,drop,
+1,Cuscatlan,Q5024,Muscat,Oman,Q1065,El Salvador,repoint,Q3130,Cuscatlán Department,repoint,Q3130
+1,Limousin,Q4883,Imo,Nigeria,Q1075,France,drop,,,drop,
+1,Hwanghae-Bukto,Q2770,Shanghai,China,Q1161,North Korea,drop,,,drop,
+1,Niassa,Q3635,Assam,India,Q1148,Mozambique,repoint,Q4742,Niassa Province,repoint,Q4742
+1,Galati,Q3829,Latina,Italy,Q1180,Romania,repoint,Q5390,Galați County,repoint,Q5390
+1,Mirab Gojam,Q3655,Mizoram,India,Q1070,Ethiopia,drop,,,drop,
+1,Northern,Q2301,Northern,Bahrain,Q1197,Sierra Leone,repoint,Q5635,Northern Province,repoint,Q5635
+1,Cayman Islands,Q6239,Cat Island,The Bahamas,Q1234,United Kingdom,drop,,,drop,
+1,Siguiri,Q4678,Figuig,Morocco,Q1092,Guinea,repoint,Q3510,Siguiri Prefecture,repoint,Q3510
+1,Dornod,Q4875,Borno,Nigeria,Q1144,Mongolia,repoint,Q4610,Dornod Province,repoint,Q4610
+1,Luanda,Q2626,Kandal,Cambodia,Q1006,Angola,repoint,Q2156,Luanda Province,repoint,Q2156
+1,Hwanghae-Namdo,Q2770,Shanghai,China,Q1161,North Korea,drop,,,drop,
+1,Uige,Q4893,Niger,Nigeria,Q1006,Angola,repoint,Q2161,Uíge Province,repoint,Q2161
+1,Montana,Q6873,Montana,United States,Q1033,Bulgaria,repoint,Q2524,Montana Province,repoint,Q2524
+1,Tete,Q5197,Leyte,Philippines,Q1148,Mozambique,repoint,Q4744,Tete Province,repoint,Q4744
+1,Distrito Federal*,Q2491,Distrito Federal,Brazil,Q1140,Mexico,drop,,,drop,
+1,Olt,Q3405,Volta,Ghana,Q1180,Romania,repoint,Q5402,Olt County,repoint,Q5402
+1,Saitama,Q5578,Matam,Senegal,Q1109,Japan,repoint,Q3945,Saitama Prefecture,repoint,Q3945
+1,Sakhalinskaya Oblast',Q6571,Luhanska oblast,Ukraine,Q1181,Russia,drop,,,drop,
+1,Cleveland,Q4810,Flevoland,Netherlands,Q1234,United Kingdom,drop,,,drop,
+1,Valle D'Aosta,Q4491,Valletta,Malta,Q1107,Italy,drop,,,drop,
+1,Niederosterreich,Q6705,Leicestershire,United Kingdom,Q1014,Austria,drop,,,drop,
+1,Rio Negro,Q2186,Río Negro,Argentina,Q1237,Uruguay,repoint,Q6925,Río Negro,repoint,Q6925
+1,Tougue,Q2138,Touggourt,Algeria,Q1092,Guinea,repoint,Q3512,Tougué Prefecture,repoint,Q3512
+1,Calarasi,Q6967,Lara,Venezuela,Q1180,Romania,repoint,Q5383,Călărași County,repoint,Q5383
+1,Suhbaatar,Q5152,Bataan,Philippines,Q1144,Mongolia,drop,,,drop,
+1,Irian Jaya,Q6314,Ariana,Tunisia,Q1102,Indonesia,drop,,,drop,
+1,Aiwo,Q2773,Taiwan,China,Q1151,Nauru,repoint,Q4775,Aiwo District,repoint,Q4775
+1,Hamgyong-Namdo,Q2621,Kampong Cham,Cambodia,Q1161,North Korea,drop,,,drop,
+1,Hovsgol,Q4507,Gorgol,Mauritania,Q1144,Mongolia,drop,,,drop,
+1,Boffa,Q3771,Offaly,Ireland,Q1092,Guinea,repoint,Q3475,Boffa Prefecture,repoint,Q3475
+1,Ghowr [Ghor],Q4507,Gorgol,Mauritania,Q1000,Afghanistan,drop,,,drop,
+1,Kamchatskaya Oblast',Q6582,Zakarpatska Oblast,Ukraine,Q1181,Russia,drop,,,drop,
+1,Cabanas,Q5293,Canóvanas,Puerto Rico,Q1065,El Salvador,repoint,Q3128,Cabañas Department,repoint,Q3128
+1,Puke,Q6204,Phuket,Thailand,Q1002,Albania,repoint,Q2070,Pukë District,repoint,Q2070
+1,Moskovskaya Oblast',Q6573,Mykolaivska oblast,Ukraine,Q1181,Russia,drop,,,drop,
+1,Mirab Harerge,Q2222,Vorarlberg,Austria,Q1070,Ethiopia,drop,,,drop,
+1,SB,Q5406,Sibiu County,Romania,Q1140,Mexico,drop,,,drop,
+1,Saint Thomas,Q7043,Saint Thomas,Virgin Islands (US),Q1108,Jamaica,repoint,Q3908,Saint Thomas Parish,repoint,Q3908
+1,BN,Q5918,Northern Bahr el Ghazal,South Sudan,Q1140,Mexico,drop,,,drop,
+1,Central district,Q3780,Central District,Israel,Q1028,Botswana,repoint,Q2475,Central District,repoint,Q2475
+1,CO,Q6917,Colonia,Uruguay,Q1140,Mexico,drop,,,drop,
+1,Southern,Q3573,Southern,Hong Kong S.A.R.,Q1248,Zambia,repoint,Q7073,Southern Province,repoint,Q7073
+1,SI,Q6942,Sirdaryo Region,Uzbekistan,Q1140,Mexico,drop,,,drop,
+1,BS,Q6063,Basel-Stadt,Switzerland,Q1140,Mexico,drop,,,drop,
+1,Northern,Q6019,Northern,Sudan,Q1248,Zambia,repoint,Q7071,Northern Province,repoint,Q7071
+1,,Q7065,Central Province,Zambia,Q1170,Papua New Guinea,drop,,,repoint,Q5079
+1,,Q2680,Santa Cruz,Cape Verde,Q1010,Argentina,drop,,,repoint,Q2190
+1,,Q3396,Central,Ghana,Q1248,Zambia,drop,,,repoint,Q7065
+1,Chicha,Q4664,Chichaoua,Morocco,Q1172,Peru,drop,,,drop,
+1,Michoacan,Q6868,Michigan,United States,Q1140,Mexico,drop,,,drop,
+1,Kuril Islands,Q3205,Åland Islands,Finland,Q1181,Russia,drop,,,drop,
+1,Timor Island,Q6239,Cat Island,The Bahamas,Q1102,Indonesia,drop,,,drop,
+1,Alto Alentejo,Q5352,Toa Alta,Puerto Rico,Q1176,Portugal,drop,,,drop,
+1,Buryatia,Q6621,Bury,United Kingdom,Q1181,Russia,drop,,,drop,
+1,Copiapó,Q4439,Cospicua,Malta,Q1043,Chile,drop,,,drop,
+1,Surigao,Q4161,Riga,Latvia,Q1173,Philippines,drop,,,drop,
+1,Guarayos,Q3085,Guayas,Ecuador,Q1025,Bolivia,drop,,,drop,
+1,Khakassia,Q6169,Kalasin,Thailand,Q1181,Russia,drop,,,drop,
+1,Oulu,Q5228,Sulu,Philippines,Q1074,Finland,drop,,,drop,
+1,Cordoba,Q2176,Córdoba,Argentina,Q1208,Spain,repoint,Q5942,Córdoba,repoint,Q5942
+1,Nei Mongol,Q4963,Negotino Municipality,North Macedonia,Q1044,China,drop,,,drop,
+1,Hamgyong-Namdo,Q5549,Domagnano,San Marino,Q1161,North Korea,drop,,,drop,
+1,Ch'Ungch'Ong-Bukto,Q6099,Changhua,Taiwan,Q1058,Democratic Republic of the Congo,drop,,,drop,
+1,Ch'Ungch'Ong-Namdo,Q6099,Changhua,Taiwan,Q1058,Democratic Republic of the Congo,drop,,,drop,
+1,Shandong [Shantung],Q4758,Shan State,Myanmar,Q1044,China,drop,,,drop,
+1,Niederosterreich,Q6693,Herefordshire,United Kingdom,Q1014,Austria,drop,,,drop,
+1,"Bayern [Bavaria, Germany]",Q3546,Bay Islands Department,Honduras,Q1057,Czech Republic,drop,,,drop,
+1,Gangwon-do,Q2750,Guangdong,China,Q1206,South Korea,drop,,,drop,
+1,Erongo,Q3987,Baringo,Kenya,Q1150,Namibia,repoint,Q4761,Erongo Region,repoint,Q4761
+1,Lapland,Q3211,Lapland,Finland,Q1213,Sweden,drop,,,drop,
+1,Toliara,Q2808,Tolima,Colombia,Q1128,Madagascar,repoint,Q4350,Toliara Province,repoint,Q4350
+1,Central,Q3396,Central,Ghana,Q1129,Malawi,repoint,Q4353,Central Region,repoint,Q4353
+1,Dowa,Q5369,Doha,Qatar,Q1129,Malawi,repoint,Q4358,Dowa District,repoint,Q4358
+1,Lilongwe,Q6150,Songwe,Tanzania,Q1129,Malawi,repoint,Q4362,Lilongwe District,repoint,Q4362
+1,Chungcheongnam-do,Q6161,Chachoengsao,Thailand,Q1206,South Korea,drop,,,drop,
+1,Otjozondijupa,Q3215,Ostrobothnia,Finland,Q1150,Namibia,drop,,,drop,
+1,Kommune Kujalleq,Q4064,Khammouane Province,Laos,Q1086,Greenland,drop,,,drop,
+1,Norrbotten,Q2301,Northern,Bahrain,Q1213,Sweden,repoint,Q6047,Norrbotten County,repoint,Q6047
+1,Qaasuitsup,Q3750,Wasit,Iraq,Q1086,Greenland,drop,,,drop,
+1,Tuva,Q5063,Tubas,Palestinian Territory Occupied,Q1181,Russia,drop,,,drop,
+1,Chui,Q2920,Chrudim,Czech Republic,Q1117,Kyrgyzstan,drop,,,drop,
+1,Kujalleq,Q4005,Kwale,Kenya,Q1086,Greenland,drop,,,drop,
+1,Smaland,Q3748,Saladin,Iraq,Q1213,Sweden,drop,,,drop,
+1,Yakutia,Q2025,Paktia,Afghanistan,Q1181,Russia,drop,,,drop,
+1,Labrador,Q6967,Lara,Venezuela,Q1038,Canada,drop,,,drop,
+1,Kola Peninsula,Q4633,Kolašin Municipality,Montenegro,Q1181,Russia,drop,,,drop,

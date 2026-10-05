@@ -1,0 +1,174 @@
+{
+  "conflicted_candidates": 6158,
+  "mechanism": {
+    "ProcMine fuzzy fallback (no exact key; best score worldwide, no floor)": 3610,
+    "ProcMine exact key, shadowed (same name, first country in file order)": 2058,
+    "UMN Matching System v1: different name": 184,
+    "UMN Matching System v1: same name, other country": 138,
+    "Inferlink Extraction v3: different name": 95,
+    "SAND: different name": 32,
+    "UMN Exact Match v1: different name": 25,
+    "SAND: same name, other country": 11,
+    "Inferlink Extraction v3: same name, other country": 4,
+    "Inferlink Extraction v2: different name": 1
+  },
+  "drops": 1012,
+  "drop_reason": {
+    "no state of that name in the country": 793,
+    "state code (e.g. 'CO'), not a name": 179,
+    "no observed_name": 25,
+    "ambiguous inside the country": 15
+  },
+  "top_drops": [
+    {
+      "records": 187,
+      "observed_name": "Orissa",
+      "country": "India",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 93,
+      "observed_name": "Katanga",
+      "country": "Democratic Republic of the Congo",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 50,
+      "observed_name": "CO",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 49,
+      "observed_name": "Territory Of New Caledonia And Dependencies",
+      "country": "France",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 46,
+      "observed_name": "CA",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 43,
+      "observed_name": "Niedersachsen",
+      "country": "Germany",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 28,
+      "observed_name": "Cartago",
+      "country": "Costa Rica",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 19,
+      "observed_name": "Ekaterinburg",
+      "country": "Russia",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 18,
+      "observed_name": "Katanga Province",
+      "country": "Democratic Republic of the Congo",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 16,
+      "observed_name": "MN",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 16,
+      "observed_name": "El Beni",
+      "country": "Bolivia",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 15,
+      "observed_name": "ME",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 15,
+      "observed_name": "Greenland",
+      "country": "Denmark",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 13,
+      "observed_name": "Attapu",
+      "country": "Laos",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 12,
+      "observed_name": "SD",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 12,
+      "observed_name": "Elazig",
+      "country": "Turkey",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 12,
+      "observed_name": "Buryatiya",
+      "country": "Russia",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 12,
+      "observed_name": "San Blas*",
+      "country": "Panama",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 11,
+      "observed_name": "MO",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 10,
+      "observed_name": "SC",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 10,
+      "observed_name": "AR",
+      "country": "United States",
+      "reason": "state code (e.g. 'CO'), not a name"
+    },
+    {
+      "records": 10,
+      "observed_name": "Mexico",
+      "country": "Mexico",
+      "reason": "no state of that name in the country"
+    },
+    {
+      "records": 9,
+      "observed_name": null,
+      "country": "Argentina",
+      "reason": "no observed_name"
+    },
+    {
+      "records": 8,
+      "observed_name": null,
+      "country": "United States",
+      "reason": "no observed_name"
+    },
+    {
+      "records": 7,
+      "observed_name": "Zacapa",
+      "country": "Guatemala",
+      "reason": "no state of that name in the country"
+    }
+  ]
+}

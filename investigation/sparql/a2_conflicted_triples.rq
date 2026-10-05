@@ -1,0 +1,27 @@
+# A2. Every conflicted case as distinct (observed_name, chosen state id, recorded
+# country ids) with a record count. GROUP_CONCAT order is unspecified: sort the
+# country ids offline before re-aggregating (all conflicted records seen so far carry
+# exactly one country, so this does not bite today). Feed the rows to
+# reference/state_repair.py exactly as investigation/p2_records.py does.
+PREFIX mo: <https://minmod.isi.edu/ontology/>
+SELECT ?observed_name ?state ?countries (COUNT(*) AS ?records)
+WHERE {
+  SELECT ?ce ?observed_name ?state
+         (GROUP_CONCAT(DISTINCT ?cid; separator=" ") AS ?countries)
+  WHERE {
+    ?li mo:state_or_province ?ce .
+    ?ce mo:normalized_uri ?st .
+    ?st mo:country ?stc .
+    ?li mo:country/mo:normalized_uri ?c .
+    FILTER NOT EXISTS {
+      ?li mo:country/mo:normalized_uri ?c2 .
+      FILTER(STRAFTER(STR(?c2), "/resource/") = STR(?stc))
+    }
+    OPTIONAL { ?ce mo:observed_name ?observed_name }
+    BIND(STRAFTER(STR(?c), "/resource/") AS ?cid)
+    BIND(STRAFTER(STR(?st), "/resource/") AS ?state)
+  }
+  GROUP BY ?ce ?observed_name ?state
+}
+GROUP BY ?observed_name ?state ?countries
+ORDER BY DESC(?records)

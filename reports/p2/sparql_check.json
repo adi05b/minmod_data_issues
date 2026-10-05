@@ -1,0 +1,17 @@
+{
+  "buckets": [
+    "mrdata_mrds/b017.json.lz4",
+    "mrdata_mrds/b009.json.lz4",
+    "mrdata_mrds/b053.json.lz4",
+    "mrdata_mrds/b057.json.lz4",
+    "mrdata_mrds/b029.json.lz4",
+    "mrdata_mrds/b037.json.lz4",
+    "mrdata_deposit/b035.json.lz4",
+    "doi-researchgate-net-publication-369107635-critical-minerals-potential-of-brazil/b015.json.lz4",
+    "geology_and_mineral_resources/b010.json.lz4",
+    "geological_survey_of_alabama/b046.json.lz4",
+    "mrdata_pp577/b059.json.lz4"
+  ],
+  "triples": 2371240,
+  "all_agree": true
+}

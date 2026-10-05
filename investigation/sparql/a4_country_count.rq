@@ -1,0 +1,13 @@
+# A4. How many distinct normalized countries do records with a normalized state carry.
+PREFIX mo: <https://minmod.isi.edu/ontology/>
+SELECT ?n_countries (COUNT(*) AS ?records)
+WHERE {
+  SELECT ?li (COUNT(DISTINCT ?c) AS ?n_countries)
+  WHERE {
+    ?li mo:state_or_province/mo:normalized_uri ?st .
+    OPTIONAL { ?li mo:country/mo:normalized_uri ?c }
+  }
+  GROUP BY ?li
+}
+GROUP BY ?n_countries
+ORDER BY ?n_countries
