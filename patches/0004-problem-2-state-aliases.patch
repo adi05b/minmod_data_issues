@@ -1,0 +1,489 @@
+From 102da1cc055f21480c63ce8a61d807881b2e5769 Mon Sep 17 00:00:00 2001
+From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
+Date: Thu, 8 Oct 2026 00:58:06 +0000
+Subject: [PATCH] Resolve state aliases from an "alt names" column at merge
+ time
+
+The repair drops a state when the record's own name matches nothing in the
+recorded country. Many of those names are the same place under another
+name (Orissa for Odisha, Niedersachsen for Lower Saxony). This reads an
+optional "alt names" column from state_or_province.csv, pipe-separated like
+country.csv's, and lets the repair match on it.
+
+Aliases are a fourth, last tier: exact folded name only, reached only when
+the real-name, admin-word-free and state-code tiers all find nothing. Real
+names and codes always win, so an alias can turn a drop into a repoint but
+can never change or block a match made without it. Two states of one
+country sharing an alias stay ambiguous and resolve to nothing.
+
+They are used for matching only. The entity step writes them into
+state_or_province.json, which the ETL merge reads through
+FileEntityService; StateOrProvince.from_dict ignores the key, so Postgres
+and the KG never see them and no migration is needed. The Postgres-backed
+EntityService (API saves, GeoChem loader) has no aliases and behaves as
+before. Without the column, or with it empty, the entity JSON and every
+resolution are byte-for-byte what they were.
+
+Tests cover an alias resolving, a real name beating an alias, a shared
+alias, the empty and absent column, and, on all 5,084 states, that aliases
+cannot alter any existing match. Two data checks fail if an alias in the
+CSV equals a real name in its country or does not resolve to its own
+state; point MINMOD_ENTITY_DIR at a ta2-minmod-data checkout to run them
+on the real table.
+---
+ minmodkg/etl/kgrel_entity.py      |  25 ++-
+ minmodkg/misc/state_repair.py     |  33 +++-
+ minmodkg/services/kgrel_entity.py |  18 +-
+ tests/misc/test_state_repair.py   | 263 ++++++++++++++++++++++++++++++
+ 4 files changed, 331 insertions(+), 8 deletions(-)
+ create mode 100644 tests/misc/test_state_repair.py
+
+diff --git a/minmodkg/etl/kgrel_entity.py b/minmodkg/etl/kgrel_entity.py
+index 910e18e..615e8a9 100644
+--- a/minmodkg/etl/kgrel_entity.py
++++ b/minmodkg/etl/kgrel_entity.py
+@@ -106,9 +106,18 @@ class EntityDeserFn:
+     def invoke(self, infile: InputFile, outdir: Path) -> list[Path]:
+         records = self.read_file(infile.path)
+         clsname = records[0].__class__.__name__
++        dicts = [r.to_dict() for r in records]
++        if infile.path.name == "state_or_province.csv":
++            # aliases ride along in the JSON for the merge-time state repair
++            # only; StateOrProvince.from_dict ignores them, so they never reach
++            # Postgres, and to_kg() leaves them out of the KG
++            aliases = self.read_state_or_province_aliases(infile.path)
++            for d in dicts:
++                if d["id"] in aliases:
++                    d["aliases"] = aliases[d["id"]]
+ 
+         serde.json.ser(
+-            {clsname: [r.to_dict() for r in records]},
++            {clsname: dicts},
+             outdir / f"{infile.path.stem}.json",
+             indent=2,
+         )
+@@ -278,6 +287,20 @@ class EntityDeserFn:
+             )
+         return records
+ 
++    @staticmethod
++    def read_state_or_province_aliases(infile: Path) -> dict[str, list[str]]:
++        """The optional `alt names` column: other names sources use for a state
++        ("Orissa" for Odisha), pipe-separated like country.csv's. Empty or absent
++        for most rows; only the merge-time state repair uses them."""
++        raw_records = serde.csv.deser(infile, deser_as_record=True)
++        aliases = {}
++        for raw_record in raw_records:
++            names = [s.strip() for s in (raw_record.get("alt names") or "").split("|")]
++            names = [s for s in names if s != ""]
++            if len(names) > 0:
++                aliases[raw_record["minmod_id"]] = names
++        return aliases
++
+     @staticmethod
+     def read_unit(infile: Path) -> list[Unit]:
+         raw_records = serde.csv.deser(infile, deser_as_record=True)
+diff --git a/minmodkg/misc/state_repair.py b/minmodkg/misc/state_repair.py
+index 3487866..ca515d0 100644
+--- a/minmodkg/misc/state_repair.py
++++ b/minmodkg/misc/state_repair.py
+@@ -21,6 +21,10 @@ The rule is deliberately narrow:
+   stopwords dropped ("La Paz" -> "La Paz Department"), then the exact
+   ``state_code`` ("CO" -> Colorado). Codes come last so a real name always
+   beats a coincidental code;
++* only when none of those tiers hits anything, it tries the state's aliases
++  (the ``alt names`` column: "Orissa" -> Odisha), exact folded name only.
++  Real names and codes always win, so adding an alias can turn a drop into a
++  repoint but never changes or blocks a match the table already makes;
+ * a record with no ``observed_name`` is re-resolved by the chosen state's own
+   name instead (Florida, Uruguay -> Florida, United States);
+ * a unique hit replaces the normalized_uri; no hit, or more than one, drops
+@@ -34,7 +38,7 @@ from __future__ import annotations
+ import re
+ import unicodedata
+ from dataclasses import dataclass, field
+-from typing import Iterable, Optional, Sequence
++from typing import Iterable, Mapping, Optional, Sequence
+ 
+ from minmodkg.typing import InternalID
+ 
+@@ -108,18 +112,27 @@ def drop_admin_words(folded: str) -> str:
+ 
+ @dataclass
+ class StateCountryIndex:
+-    """State -> country, plus per-country name and code indexes for re-resolution."""
++    """State -> country, plus per-country name, code and alias indexes for
++    re-resolution."""
+ 
+     state_country: dict[InternalID, Optional[InternalID]] = field(default_factory=dict)
+     state_name: dict[InternalID, str] = field(default_factory=dict)
+     _exact: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
+     _folded: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
+     _code: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
++    _alias: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
+ 
+     @classmethod
+-    def build(cls, states: Iterable) -> StateCountryIndex:
++    def build(
++        cls,
++        states: Iterable,
++        aliases: Optional[Mapping[InternalID, Sequence[str]]] = None,
++    ) -> StateCountryIndex:
+         """``states`` is any iterable of objects with .id, .name, .country and,
+-        optionally, .state_code (without it, the code tier never hits)."""
++        optionally, .state_code (without it, the code tier never hits).
++        ``aliases`` maps a state id to other names sources use for it; without
++        it, the alias tier never hits."""
++        aliases = aliases or {}
+         self = cls()
+         for s in states:
+             self.state_country[s.id] = s.country
+@@ -136,6 +149,12 @@ class StateCountryIndex:
+                 self._code.setdefault(s.country, {}).setdefault(
+                     code.strip().upper(), []
+                 ).append(s.id)
++            for alias in aliases.get(s.id, ()):
++                key = fold_name(alias)
++                if key:
++                    self._alias.setdefault(s.country, {}).setdefault(key, []).append(
++                        s.id
++                    )
+         return self
+ 
+     def resolve(
+@@ -147,7 +166,10 @@ class StateCountryIndex:
+         with "Berat District" in the same country; only then the admin-word-free
+         form, which is what lets "La Paz" reach "La Paz Department"; and only
+         then the state code, case-insensitive, so a real name always beats a
+-        coincidental code.
++        coincidental code. Aliases come last and are reached only when every
++        tier before found nothing: an ambiguous real name stays ambiguous, and
++        an alias can never take a name the table already resolves. They match
++        exactly, never with administrative words dropped.
+         """
+         if not observed_name or not country_ids:
+             return None
+@@ -156,6 +178,7 @@ class StateCountryIndex:
+             (self._exact, folded),
+             (self._folded, drop_admin_words(folded)),
+             (self._code, observed_name.strip().upper()),
++            (self._alias, folded),
+         ):
+             hits: list[InternalID] = []
+             for cid in country_ids:
+diff --git a/minmodkg/services/kgrel_entity.py b/minmodkg/services/kgrel_entity.py
+index 14f3ccc..3f7b440 100644
+--- a/minmodkg/services/kgrel_entity.py
++++ b/minmodkg/services/kgrel_entity.py
+@@ -76,16 +76,24 @@ class EntityService:
+         return self.crs_name
+ 
+     def get_state_or_province_index(self) -> StateCountryIndex:
+-        """Every state with its country, name and code, for the merge-time repair."""
++        """Every state with its country, name, code and aliases, for the
++        merge-time repair."""
+         if (
+             not hasattr(self, "state_or_province_index")
+             or self.state_or_province_index is None
+         ):
+             self.state_or_province_index = StateCountryIndex.build(
+-                self.get_state_or_province_idmap().values()
++                self.get_state_or_province_idmap().values(),
++                self.get_state_or_province_aliases(),
+             )
+         return self.state_or_province_index
+ 
++    def get_state_or_province_aliases(self) -> dict[InternalID, list[str]]:
++        """Other names of each state, used only by the merge-time repair. They
++        are not stored in Postgres, so this service has none; the ETL merge
++        reads them from the entity files (FileEntityService)."""
++        return {}
++
+     def get_deposit_type_idmap(self) -> dict[InternalID, DepositType]:
+         if self.deposit_type_idmap is None:
+             self.deposit_type_idmap = {dt.id: dt for dt in self.get_deposit_types()}
+@@ -218,6 +226,12 @@ class FileEntityService(EntityService):
+         ]
+         return [cls.from_dict(record) for record in records]
+ 
++    def get_state_or_province_aliases(self) -> dict[InternalID, list[str]]:
++        records = serde.json.deser(
++            self.entity_dir / f"{StateOrProvince.__tablename__}.json"
++        )[StateOrProvince.__name__]
++        return {r["id"]: r["aliases"] for r in records if r.get("aliases")}
++
+ 
+ class RemoteEntityService(EntityService):
+ 
+diff --git a/tests/misc/test_state_repair.py b/tests/misc/test_state_repair.py
+new file mode 100644
+index 0000000..1295658
+--- /dev/null
++++ b/tests/misc/test_state_repair.py
+@@ -0,0 +1,263 @@
++from __future__ import annotations
++
++import os
++import shutil
++from dataclasses import dataclass
++from pathlib import Path
++from typing import Optional
++
++import serde.json
++from minmodkg.etl.kgrel_entity import EntityDeserFn
++from minmodkg.misc.state_repair import StateCountryIndex, drop_admin_words, fold_name
++from minmodkg.models.kgrel.entities.state_or_province import StateOrProvince
++from minmodkg.services.kgrel_entity import FileEntityService
++from statickg.models.file_and_path import BaseType, InputFile, RelPath
++
++ENTITY_DIR = Path(__file__).parent.parent / "resources/kgdata/entities"
++
++
++@dataclass
++class State:
++    id: str
++    name: str
++    country: Optional[str]
++    state_code: Optional[str] = None
++
++
++IN, PK, AL, BO, CO = "IN", "PK", "AL", "BO", "CO"
++STATES = [
++    State("odisha", "Odisha", IN, "OR"),
++    State("punjab_in", "Punjab", IN, "PB"),
++    State("punjab_pk", "Punjab", PK, "PB"),
++    State("berat_county", "Berat County", AL, "01"),
++    State("berat_district", "Berat District", AL, "BR"),
++    State("la_paz", "La Paz Department", BO, "L"),
++    State("oruro", "Oruro Department", BO, "O"),
++    State("colorado", "Colorado", CO, "CO"),
++    State("boyaca", "Boyacá", CO, "BOY"),
++]
++
++
++def test_alias_resolves():
++    idx = StateCountryIndex.build(STATES, {"odisha": ["Orissa"]})
++    assert idx.resolve("Orissa", [IN]) == "odisha"
++    # folded like real names: case, accents and punctuation do not matter
++    assert idx.resolve("ORISSA", [IN]) == "odisha"
++    assert idx.resolve("Orissá", [IN]) == "odisha"
++    # and through the repair of a state that contradicts the recorded country
++    assert idx.repair("punjab_pk", "Orissa", [IN]) == ("repoint", "odisha")
++
++
++def test_alias_stays_in_its_country():
++    idx = StateCountryIndex.build(STATES, {"odisha": ["Orissa"]})
++    assert idx.resolve("Orissa", [PK]) is None
++
++
++def test_alias_is_exact_only():
++    # aliases never go through the admin-word-free tier
++    idx = StateCountryIndex.build(STATES, {"odisha": ["Orissa"]})
++    assert idx.resolve("Orissa State", [IN]) is None
++
++
++def test_real_name_beats_an_alias():
++    # "Punjab" is a real name in India; the same string as an alias of another
++    # Indian state must not take it
++    idx = StateCountryIndex.build(STATES, {"odisha": ["Punjab"]})
++    assert idx.resolve("Punjab", [IN]) == "punjab_in"
++
++
++def test_same_alias_on_two_states_of_one_country_is_ambiguous():
++    idx = StateCountryIndex.build(
++        STATES, {"odisha": ["Kalinga"], "punjab_in": ["Kalinga"]}
++    )
++    assert idx.resolve("Kalinga", [IN]) is None
++    assert idx.repair("punjab_pk", "Kalinga", [IN]) == ("drop", None)
++
++
++def test_same_alias_in_two_countries_is_not_ambiguous():
++    idx = StateCountryIndex.build(
++        STATES, {"odisha": ["Kalinga"], "punjab_pk": ["Kalinga"]}
++    )
++    assert idx.resolve("Kalinga", [IN]) == "odisha"
++    assert idx.resolve("Kalinga", [PK]) == "punjab_pk"
++
++
++def test_alias_never_changes_a_match_made_without_it():
++    aliases = {
++        # "La Paz" resolves today through the admin-word-free tier
++        "oruro": ["La Paz"],
++        # "CO" resolves today through the code tier
++        "boyaca": ["CO"],
++        # "Berat" is ambiguous today (Berat County / Berat District): it must
++        # stay ambiguous, not fall through to an alias
++        "berat_district": ["Berat"],
++    }
++    idx = StateCountryIndex.build(STATES, aliases)
++    assert idx.resolve("La Paz", [BO]) == "la_paz"
++    assert idx.resolve("CO", [CO]) == "colorado"
++    assert idx.resolve("Berat", [AL]) is None
++
++
++def test_no_aliases_behaves_exactly_as_before():
++    states = _states(ENTITY_DIR)
++    before = StateCountryIndex.build(states)
++    for aliases in (None, {}, {s.id: [] for s in states}, {states[0].id: [" "]}):
++        assert StateCountryIndex.build(states, aliases) == before
++
++
++def test_aliases_cannot_break_any_existing_match():
++    """On the real 5,084 states: every real name, admin-word-free name and code
++    that resolves today becomes an alias of a different state in its country.
++    Each must still resolve to what it resolves to without aliases."""
++    states = _states(ENTITY_DIR)
++    by_country: dict[str, list[StateOrProvince]] = {}
++    for s in states:
++        by_country.setdefault(s.country, []).append(s)
++
++    probes: set[tuple[str, str]] = set()
++    for s in states:
++        probes.add((s.name, s.country))
++        probes.add((drop_admin_words(fold_name(s.name)), s.country))
++        if s.state_code:
++            probes.add((s.state_code, s.country))
++
++    plain = StateCountryIndex.build(states)
++    expected = {}
++    aliases: dict[str, list[str]] = {}
++    for name, country in sorted(probes):
++        target = plain.resolve(name, [country])
++        if target is None:
++            continue
++        decoy = next((s for s in by_country[country] if s.id != target), None)
++        if decoy is None:
++            continue
++        expected[(name, country)] = target
++        aliases.setdefault(decoy.id, []).append(name)
++
++    noisy = StateCountryIndex.build(states, aliases)
++    assert len(expected) > 9000
++    for (name, country), target in expected.items():
++        assert noisy.resolve(name, [country]) == target, (name, country)
++
++
++def test_alt_names_column_is_read_into_the_entity_json(tmp_path: Path):
++    entity_dir = tmp_path / "entities"
++    entity_dir.mkdir()
++    shutil.copy(ENTITY_DIR / "country.csv", entity_dir)
++    (entity_dir / "state_or_province.csv").write_text(
++        "minmod_id,id,name,country_id,country_code,country_name,state_code,type,latitude,longitude,alt names\r\n"
++        "Q3700,4013,Odisha,101,IN,India,OR,,20.9516658,85.0985236,Orissa\r\n"
++        "Q3701,4015,Punjab,101,IN,India,PB,,31.1471305,75.3412179, Panjab |  | Pañjāb \r\n"
++        "Q3702,4014,Puducherry,101,IN,India,PY,,11.9415915,79.8083133,\r\n"
++        "Q3703,4012,Nagaland,101,IN,India,NL,,26.1584354,94.5624426,|",
++        encoding="utf-8",
++    )
++    outdir = tmp_path / "out"
++    outdir.mkdir()
++    (tmp_path / "work").mkdir()
++    EntityDeserFn(tmp_path / "work").invoke(
++        infile=InputFile.from_relpath(
++            RelPath(BaseType.REPO, tmp_path, "entities/state_or_province.csv")
++        ),
++        outdir=outdir,
++    )
++    records = serde.json.deser(outdir / "state_or_province.json")["StateOrProvince"]
++    assert [r.get("aliases") for r in records] == [
++        ["Orissa"],
++        ["Panjab", "Pañjāb"],
++        None,
++        None,
++    ]
++    # Postgres loads these through from_dict, which leaves aliases out
++    assert StateOrProvince.from_dict(records[0]).to_dict() == {
++        "id": "Q3700",
++        "name": "Odisha",
++        "country": "Q1101",
++        "state_code": "OR",
++    }
++
++    entser = FileEntityService(outdir)
++    assert entser.get_state_or_province_aliases() == {
++        "Q3700": ["Orissa"],
++        "Q3701": ["Panjab", "Pañjāb"],
++    }
++    assert entser.get_state_or_province_index().resolve("Orissa", ["Q1101"]) == "Q3700"
++
++
++def test_entity_json_is_unchanged_without_alt_names(tmp_path: Path):
++    """No `alt names` column, or an empty one, writes exactly the JSON it did
++    before the column existed."""
++    header = "minmod_id,id,name,country_id,country_code,country_name,state_code,type,latitude,longitude"
++    rows = [
++        "Q3700,4013,Odisha,101,IN,India,OR,,20.9516658,85.0985236",
++        "Q3701,4015,Punjab,101,IN,India,PB,,31.1471305,75.3412179",
++    ]
++    outputs = []
++    for i, text in enumerate(
++        [
++            "\r\n".join([header] + rows),
++            "\r\n".join([header + ",alt names"] + [r + "," for r in rows]),
++        ]
++    ):
++        entity_dir = tmp_path / f"entities{i}"
++        entity_dir.mkdir()
++        shutil.copy(ENTITY_DIR / "country.csv", entity_dir)
++        (entity_dir / "state_or_province.csv").write_text(text, encoding="utf-8")
++        outdir = tmp_path / f"out{i}"
++        outdir.mkdir()
++        (tmp_path / f"work{i}").mkdir()
++        EntityDeserFn(tmp_path / f"work{i}").invoke(
++            infile=InputFile.from_relpath(
++                RelPath(BaseType.REPO, entity_dir, "state_or_province.csv")
++            ),
++            outdir=outdir,
++        )
++        outputs.append((outdir / "state_or_province.json").read_bytes())
++    assert outputs[0] == outputs[1]
++    assert b"aliases" not in outputs[0]
++
++
++# The checks below run on an entity directory: this repo's copy by default, or
++# a ta2-minmod-data checkout with MINMOD_ENTITY_DIR=<checkout>/data/entities.
++DATA_ENTITY_DIR = Path(os.environ.get("MINMOD_ENTITY_DIR", ENTITY_DIR))
++
++
++def test_no_alias_equals_a_real_name_in_its_country():
++    """Real names win over aliases, so such an alias would be dead vocabulary
++    that silently resolves to the other state. Catch it instead."""
++    states = _states(DATA_ENTITY_DIR)
++    by_id = {s.id: s for s in states}
++    real = {(s.country, fold_name(s.name)): s for s in states}
++    clashes = [
++        (sid, alias, real[(by_id[sid].country, fold_name(alias))].id)
++        for sid, names in _aliases(DATA_ENTITY_DIR).items()
++        for alias in names
++        if (by_id[sid].country, fold_name(alias)) in real
++    ]
++    assert clashes == []
++
++
++def test_every_alias_resolves_to_its_own_state():
++    """Also catches an alias two states of one country share, and one that an
++    admin-word-free name or a state code of the same country already takes."""
++    states = _states(DATA_ENTITY_DIR)
++    by_id = {s.id: s for s in states}
++    aliases = _aliases(DATA_ENTITY_DIR)
++    idx = StateCountryIndex.build(states, aliases)
++    dead = [
++        (sid, alias, idx.resolve(alias, [by_id[sid].country]))
++        for sid, names in aliases.items()
++        for alias in names
++        if idx.resolve(alias, [by_id[sid].country]) != sid
++    ]
++    assert dead == []
++
++
++def _states(entity_dir: Path) -> list[StateOrProvince]:
++    return EntityDeserFn.read_state_or_province(entity_dir / "state_or_province.csv")
++
++
++def _aliases(entity_dir: Path) -> dict[str, list[str]]:
++    return EntityDeserFn.read_state_or_province_aliases(
++        entity_dir / "state_or_province.csv"
++    )
+-- 
+2.43.0
+

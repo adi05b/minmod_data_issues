@@ -1,0 +1,59 @@
+observed_name,recorded_country,target_minmod_id,target_name,points,agree,disagree,uninformative,disagreeing_points,verdict
+Aktyubinsk,Kazakhstan,Q3971,Aktobe Region,6,5,0,1,,stands
+Al Bahr Al Ahmar,Egypt,Q3122,Red Sea,2,2,0,0,,stands
+Al Balqa',Jordan,Q3961,Balqa,1,0,1,0,Aqaba 244 km,rejected
+Al Buhayrah,Egypt,Q3103,Beheira,1,0,1,0,Aswan 693 km,rejected
+Al Kaf,Tunisia,Q6324,Kef,2,1,1,0,Gafsa 126 km,stands
+An Nil Al Azra,Sudan,Q6012,Blue Nile,1,1,0,0,,stands
+Atlantico Nort,Nicaragua,Q4855,North Caribbean Coast,2,2,0,0,,stands
+Attapu,Laos,Q4059,Attapeu Province,13,13,0,0,,stands
+Buryatia,Russia,Q5463,Republic of Buryatia,1,1,0,0,,stands
+Buryatiya,Russia,Q5463,Republic of Buryatia,12,12,0,0,,stands
+Chitinskaya Oblast',Russia,Q5496,Zabaykalsky Krai,1,0,1,0,Amur 131 km,rejected
+Chui,Kyrgyzstan,Q4052,Chuy Region,0,0,0,0,,stands
+Chungcheongnam-do,South Korea,Q5910,South Chungcheong Province,1,1,0,0,,stands
+Distrito Federal*,Mexico,Q4536,Ciudad de México,1,1,0,0,,stands
+Eastern Highland,Papua New Guinea,Q5082,Eastern Highlands Province,0,0,0,0,,stands
+Evvoia,Greece,Q3424,Euboea,6,6,0,0,,stands
+Ghowr [Ghor],Afghanistan,Q2010,Ghōr,1,1,0,0,,stands
+Gumma,Japan,Q3920,Gunma Prefecture,1,1,0,0,,stands
+Hamgyong-Namdo,North Korea,Q4912,South Hamgyong Province,2,2,0,0,,stands
+Hentiy,Mongolia,Q4615,Khentii Province,4,4,0,0,,stands
+Hong Kong Special Administrative Region,China,Q2757,Hong Kong SAR,2,2,0,0,,stands
+Hovsgol,Mongolia,Q4617,Khövsgöl Province,1,1,0,0,,stands
+Hwanghae-Bukto,North Korea,Q4907,North Hwanghae Province,1,1,0,0,,stands
+Hwanghae-Namdo,North Korea,Q4913,South Hwanghae Province,1,0,1,0,Hamgyŏng-bukto 365 km,rejected
+Irkutskaya Oblast',Russia,Q5425,Irkutsk,2,2,0,0,,stands
+Kamchatskaya Oblast',Russia,Q5431,Kamchatka Krai,1,1,0,0,,stands
+Kangwon-Do,South Korea,Q5900,Gangwon Province,1,1,0,0,,stands
+Kareliya,Russia,Q5467,Republic of Karelia,3,2,1,0,Perm' 1180 km,stands
+Karnten,Austria,Q2215,Carinthia,6,6,0,0,,stands
+Khakassia,Russia,Q5468,Republic of Khakassia,1,1,0,0,,stands
+Kondoz [Kunduz],Afghanistan,Q2019,Kunduz Province,2,2,0,0,,stands
+Kostenay Oblast,Kazakhstan,Q3979,Kostanay Region,1,0,0,1,,stands
+Lappi,Finland,Q3211,Lapland,5,5,0,0,,stands
+Limassol,Cyprus,Q2905,Limassol District (Leymasun),2,1,0,1,,stands
+Michoacan,Mexico,Q4545,Michoacán de Ocampo,1,1,0,0,,stands
+Moskovskaya Oblast',Russia,Q5448,Moscow Oblast,1,1,0,0,,stands
+Nei Mongol,China,Q2760,Inner Mongolia,0,0,0,0,,stands
+Nicosia,Cyprus,Q2906,Nicosia District (Lefkoşa),4,3,0,1,,stands
+Niederosterreich,Austria,Q2216,Lower Austria,2,2,0,0,,stands
+Niedersachsen,Germany,Q3383,Lower Saxony,43,42,1,0,Bayern 145 km,stands
+North-West Frontier,Pakistan,Q5030,Khyber Pakhtunkhwa,3,3,0,0,,stands
+North-Western,Zambia,Q7072,Northwestern Province,6,6,0,0,,stands
+North-Western Province,Zambia,Q7072,Northwestern Province,0,0,0,0,,stands
+Oberosterreich,Austria,Q2220,Upper Austria,2,2,0,0,,stands
+Orissa,India,Q3657,Odisha,187,184,3,0,Andhra Pradesh 55 km; Chhattisgarh 57 km; West Bengal 156 km,stands
+Otjozondijupa,Namibia,Q4773,Otjozondjupa Region,1,1,0,0,,stands
+Pulau Pinang,Malaysia,Q4389,Penang,5,0,5,0,Sabah 1783 km; Sabah 1833 km; Sabah 1847 km; Sabah 1848 km; Sabah 1858 km,rejected
+REGIÓN AUTÓNOMA DE LA COSTA CARIBE NORTE,Nicaragua,Q4855,North Caribbean Coast,0,0,0,0,,stands
+Sakhalinskaya Oblast',Russia,Q5476,Sakhalin,1,1,0,0,,stands
+San Blas*,Panama,Q5071,Guna Yala,12,11,0,1,,stands
+Shandong [Shantung],China,Q2769,Shandong,1,1,0,0,,stands
+Steiermark,Austria,Q2218,Styria,6,5,1,0,Kärnten 59 km,stands
+Suhbaatar,Mongolia,Q4622,Sükhbaatar Province,1,1,0,0,,stands
+Tuva,Russia,Q5485,Tuva Republic,2,2,0,0,,stands
+Valle D'Aosta,Italy,Q3790,Aosta Valley,1,1,0,0,,stands
+Yakutia,Russia,Q5475,Sakha Republic,0,0,0,0,,stands
+Zufar,Oman,Q5022,Dhofar,2,2,0,0,,stands
+Östergötlands Län,Sweden,Q6049,Östergötland County,1,0,1,0,Jämtland 601 km,rejected

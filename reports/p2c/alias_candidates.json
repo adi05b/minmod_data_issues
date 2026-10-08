@@ -1,0 +1,51 @@
+{
+  "drop_groups": 159,
+  "drop_records": 737,
+  "blocked": {
+    "groups": 11,
+    "records": 198
+  },
+  "new_rows": {
+    "groups": 2,
+    "records": 24
+  },
+  "alias_pass": {
+    "groups": 146,
+    "records": 515
+  },
+  "proposed": {
+    "groups": 52,
+    "records": 366,
+    "distinct_target_rows": 49,
+    "by_reason": {
+      "renamed": 7,
+      "other language": 15,
+      "transliteration": 23,
+      "longer official name": 7
+    }
+  },
+  "no_suggestion": {
+    "groups": 94,
+    "records": 149,
+    "of_which_rejected_on_coordinates": {
+      "groups": 6,
+      "records": 10
+    }
+  },
+  "checks": {
+    "candidates_recovered_if_all_approved": 366,
+    "candidates_changed_that_resolved_before": 0,
+    "alias_equals_real_name": 0,
+    "alias_not_resolving_to_its_row": 0,
+    "coordinates_checked": true
+  },
+  "projection_with_new_rows_and_every_proposal": {
+    "conflicted_candidates": 6158,
+    "repointed_without_change": 5421,
+    "recovered_by_new_rows": 24,
+    "recovered_by_aliases": 366,
+    "still_dropped": 347,
+    "still_dropped_blocked": 198,
+    "still_dropped_no_suggestion": 149
+  }
+}

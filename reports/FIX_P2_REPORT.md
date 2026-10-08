@@ -584,13 +584,18 @@ index 7a7c08e..fb11295 100644
   - Until the next data load refills the table, rows already in Postgres have `NULL` codes. For user edits made through the API in that window, tier 3 simply never hits.
 - **`location.py:116`**, as you corrected; the brief had `:113`.
 - **The merge cache bump (`merge-v106` → `merge-v107`, `etl/mineral_site.py:401`) is deliberately not in this patch.** The P1+P4 PR carries it. This fix sits inside the same cached `MergeFn.invoke`, so it also needs that bump to take effect.
+  - **Update (alias pass, 2026-10-08):** `merge-v107` has since been built on the dev server by the P1+P4 PR, so this branch needs `merge-v108` or later. Not changed on the branch: the version is decided once the merge order is known. The merge cache key is the site files and the same-as file only, **not the entity files**, so a change to `state_or_province.csv` (the new rows, aliases) does not re-run a merge that is already cached.
+- **A second cache has the same problem, and this branch already depends on it (flagged, not changed).** `EntityDeserFn.VERSION = "v107"` (`etl/kgrel_entity.py:80`) names the entity-transform cache, `transform-v107.sqlite`, keyed on the CSV's path and content hash only. This branch changed what `read_state_or_province` writes (`state_code`, and now `aliases`) without changing that version. On a server that has already transformed the current `state_or_province.csv` (v107 dates from March 2025), the cached `state_or_province.json` has neither field, so at merge time the code tier and the alias tier never hit, and migration 005's column stays `NULL`. A changed CSV forces a re-transform, but only with the new code already deployed. Read from the cache code (`libactor` keys on the serialised arguments; `FileSqliteBackend` reuses the output files), not reproduced on a server.
 - Two other callers of `MineralSiteAndInventory.from_raw_site` were left on the default `state_index=None`: `tests/conftest.py:190` and `tests/utils.py:32`. Both are test helpers.
 
 ### Deploying it
 
-1. Apply `migrations/005_state_or_province_state_code.up.sql` before starting the new API (as the README asks for every migration).
-2. Merge the P1+P4 PR's cache bump with or before this, or the merged table won't be rebuilt.
-3. Reload. The entity load fills `state_code`, and the merge rebuilds `location_view` and `dedup_mineral_site`.
+Updated 2026-10-08 for the alias pass; both cache versions are still to be decided:
+
+1. **Data repo change first.** Merge the `ta2-minmod-data` change (the Niamey and Ekaterinburg rows, and the approved `alt names`) before the kg build that should use it. The merge cache does not see entity files, so data landing after a v108 build would be inert there.
+2. **Then the kg build, with both versions bumped:** `MergeFn`'s `merge-v106` to `merge-v108` or later (`etl/mineral_site.py:401`), and `EntityDeserFn.VERSION` past `v107` (`etl/kgrel_entity.py:80`), so the entity JSON is rebuilt with `state_code` and `aliases` even where a build with old code already cached the new CSV.
+3. Apply `migrations/005_state_or_province_state_code.up.sql` before starting the new API (as the README asks for every migration).
+4. Reload. The entity load fills `state_code`, and the merge rebuilds `location_view` and `dedup_mineral_site`.
 
 ---
 
@@ -660,6 +665,8 @@ The top 10 of the 737 records that still drop:
 **Five alias rows recover 267 of the 737 records (36.2%).** Adding Karnten → Carinthia and Steiermark → Styria makes seven rows and 279 records (37.9%). I measured this, not just judged it: each alias was added as an extra name of the existing state, and every dropped record was re-run through the rule (`investigation/p2b_alias_sizing.py`). 🟢
 
 **Scope** (not built; it lands in ta2-minmod-data): add an `aliases` column to `state_or_province.csv`, `|`-separated like `country.csv`'s `alt names`. MinMod would then read it into `StateOrProvince` alongside `state_code`, and the index would add each alias as another name at tiers 1 and 2. Michoacan → Michoacán de Ocampo and Valle d'Aosta → Aosta Valley are the same kind of row.
+
+> **Superseded by the alias pass ([P2_ALIAS_PASS.md](P2_ALIAS_PASS.md)).** The column is `alt names`, matching `country.csv`. Aliases are not on the `StateOrProvince` model or in Postgres, and they form a fourth, exact-only tier after the code tier, so they can never change a match made without them.
 
 ## The 72 country-name-repeat records: for Adriana to confirm
 

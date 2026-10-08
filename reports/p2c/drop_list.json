@@ -1,0 +1,12 @@
+{
+  "entities_dir": "/home/user/minmod_data_issues/data-p2/data/entities",
+  "aliases_in_table": 0,
+  "state_candidates": 418313,
+  "conflicted_candidates": 6158,
+  "conflicted_records": 6155,
+  "repointed_candidates": 5421,
+  "dropped_candidates": 737,
+  "dropped_records": 735,
+  "drop_groups": 159,
+  "same_outcomes_as_part_b": true
+}
