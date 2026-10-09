@@ -1,0 +1,79 @@
+{
+  "before": {
+    "states": 5084,
+    "own_name": {
+      "itself": 5058,
+      "nothing": 26
+    },
+    "own_name_to_another_entity": [],
+    "own_name_to_nothing": [
+      "Arecibo (Puerto Rico)",
+      "Arecibo (Puerto Rico)",
+      "Bayamon (Puerto Rico)",
+      "Bayamón (Puerto Rico)",
+      "Caguas (Puerto Rico)",
+      "Caguas (Puerto Rico)",
+      "Carolina (Puerto Rico)",
+      "Carolina (Puerto Rico)",
+      "Chiayi (Taiwan)",
+      "Chiayi (Taiwan)",
+      "Guaynabo (Puerto Rico)",
+      "Guaynabo (Puerto Rico)",
+      "Hsinchu (Taiwan)",
+      "Hsinchu (Taiwan)",
+      "Mayagüez (Puerto Rico)",
+      "Mayagüez (Puerto Rico)",
+      "Ponce (Puerto Rico)",
+      "Ponce (Puerto Rico)",
+      "San Juan (Puerto Rico)",
+      "San Juan (Puerto Rico)",
+      "Toa Baja (Puerto Rico)",
+      "Toa Baja (Puerto Rico)",
+      "Trujillo Alto (Puerto Rico)",
+      "Trujillo Alto (Puerto Rico)",
+      "Zagreb (Croatia)",
+      "Zagreb (Croatia)"
+    ],
+    "aliases": {}
+  },
+  "after": {
+    "states": 5086,
+    "own_name": {
+      "itself": 5060,
+      "nothing": 26
+    },
+    "own_name_to_another_entity": [],
+    "own_name_to_nothing": [
+      "Arecibo (Puerto Rico)",
+      "Arecibo (Puerto Rico)",
+      "Bayamon (Puerto Rico)",
+      "Bayamón (Puerto Rico)",
+      "Caguas (Puerto Rico)",
+      "Caguas (Puerto Rico)",
+      "Carolina (Puerto Rico)",
+      "Carolina (Puerto Rico)",
+      "Chiayi (Taiwan)",
+      "Chiayi (Taiwan)",
+      "Guaynabo (Puerto Rico)",
+      "Guaynabo (Puerto Rico)",
+      "Hsinchu (Taiwan)",
+      "Hsinchu (Taiwan)",
+      "Mayagüez (Puerto Rico)",
+      "Mayagüez (Puerto Rico)",
+      "Ponce (Puerto Rico)",
+      "Ponce (Puerto Rico)",
+      "San Juan (Puerto Rico)",
+      "San Juan (Puerto Rico)",
+      "Toa Baja (Puerto Rico)",
+      "Toa Baja (Puerto Rico)",
+      "Trujillo Alto (Puerto Rico)",
+      "Trujillo Alto (Puerto Rico)",
+      "Zagreb (Croatia)",
+      "Zagreb (Croatia)"
+    ],
+    "aliases": {
+      "itself": 53
+    }
+  },
+  "found_itself_before_but_not_after": []
+}

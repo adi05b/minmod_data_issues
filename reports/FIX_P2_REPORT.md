@@ -592,7 +592,7 @@ index 7a7c08e..fb11295 100644
 
 Updated 2026-10-08 for the alias pass; both cache versions are still to be decided:
 
-1. **Data repo change first.** Merge the `ta2-minmod-data` change (the Niamey and Ekaterinburg rows, and the approved `alt names`) before the kg build that should use it. The merge cache does not see entity files, so data landing after a v108 build would be inert there.
+1. **Data repo change first.** Merge the `ta2-minmod-data` change (the Niamey and Zacapa rows, and the approved `alt names`) before the kg build that should use it. The merge cache does not see entity files, so data landing after a v108 build would be inert there.
 2. **Then the kg build, with both versions bumped:** `MergeFn`'s `merge-v106` to `merge-v108` or later (`etl/mineral_site.py:401`), and `EntityDeserFn.VERSION` past `v107` (`etl/kgrel_entity.py:80`), so the entity JSON is rebuilt with `state_code` and `aliases` even where a build with old code already cached the new CSV.
 3. Apply `migrations/005_state_or_province_state_code.up.sql` before starting the new API (as the README asks for every migration).
 4. Reload. The entity load fills `state_code`, and the merge rebuilds `location_view` and `dedup_mineral_site`.

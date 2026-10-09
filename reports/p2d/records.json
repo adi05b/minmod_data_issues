@@ -1,0 +1,42 @@
+{
+  "after_entities": "/home/user/ta2-minmod-data/data/entities",
+  "after_table": {
+    "rows": 5086,
+    "new_rows": [
+      "Q7085",
+      "Q7086"
+    ],
+    "rows_with_aliases": 50,
+    "alias_values": 53
+  },
+  "state_candidates": 418313,
+  "records_with_a_state": 418286,
+  "conflicted_candidates": 6158,
+  "dropped": {
+    "before": {
+      "candidates": 737,
+      "records": 735
+    },
+    "after": {
+      "candidates": 340,
+      "records": 338
+    }
+  },
+  "recovered": {
+    "alias": 385,
+    "new row Q7086 Zacapa Department": 7,
+    "new row Q7085 Niamey": 5
+  },
+  "after_drops_by_kind": {
+    "blocked": 198,
+    "no suggestion": 142
+  },
+  "transitions_before_to_after": {
+    "drop -> drop": 340,
+    "drop -> repoint": 397,
+    "keep -> keep": 412155,
+    "repoint -> repoint": 5421
+  },
+  "changed_other_than_drop_to_repoint": 0,
+  "changed_examples": []
+}

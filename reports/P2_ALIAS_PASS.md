@@ -2,6 +2,12 @@
 
 *2026-10-08. Phases 0, 2, 3 (up to the candidate list) and 4. Phase 5 waits for the approved aliases.*
 
+> **Update 2026-10-09, after Amandeep's decisions** ([P2_PHASE5.md](P2_PHASE5.md)):
+> - The code is on `fix/p2-state-repair` as `a888391`, pushed by Aditi; it has the same tree as `102da1c`, which was never pushed.
+> - The Ekaterinburg row was replaced by Zacapa Department (Q7086), and Ekaterinburg is now an alt name of Sverdlovsk.
+> - All 52 proposals were approved and are in the `alt names` column.
+> - The data patch is now `patches/ta2-minmod-data-niamey-zacapa-alt-names.patch` (three commits); the single-commit patch named below is gone.
+
 ## Where everything is
 
 | | repo | branch | commit |

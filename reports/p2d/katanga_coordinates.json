@@ -1,0 +1,10 @@
+{
+  "records": 111,
+  "usable": 97,
+  "breakdown": {
+    "usable": 97,
+    "no location": 8,
+    "outside DR Congo": 5,
+    "round placeholder": 1
+  }
+}

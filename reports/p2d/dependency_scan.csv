@@ -1,0 +1,16 @@
+recorded_country,observed_name,target_country,match,records,today
+United States,Georgia,Georgia,1 exact,2691,keep Q6851 Georgia x2691
+United States,Puerto Rico,Puerto Rico,1 exact,731,keep Q6889 Puerto Rico x731
+Denmark,Greenland,Greenland,1 exact,82,no state chosen x67; dropped x15
+United Kingdom,Montserrat,Montserrat,1 exact,3,dropped x3
+Serbia,Kosovo,Kosovo,1 exact,2,no state chosen x2
+Morocco,Western Sahara,Western Sahara,1 exact,1,no state chosen x1
+United Kingdom,Cayman Islands,Cayman Islands,1 exact,1,dropped x1
+France,Department Of Guadeloupe,Guadeloupe,2 admin,36,keep Q3269 Guadeloupe x36
+France,Department Of Martinique,Martinique,2 admin,6,keep Q3301 Martinique x6
+Australia,Territory Of Christmas Island,Christmas Island,2 admin,5,dropped x5
+Australia,Territory of Christmas Island,Christmas Island,2 admin,1,no state chosen x1
+France,Territory Of French Polynesia,French Polynesia,2 admin,1,keep Q3263 French Polynesia x1
+France,Department Of Guiana [French Guiana],French Guiana,3 tokens,166,keep Q3262 French Guiana x166
+United Kingdom,British Virgin Islands,Virgin Islands (British),3 tokens,2,dropped x2
+France,Territory Of New Caledonia And Dependencies,New Caledonia,4 contains,49,dropped x49
