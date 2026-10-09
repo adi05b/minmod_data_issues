@@ -1,0 +1,366 @@
+{
+  "conflicted_in_base": 5856,
+  "outcome": {
+    "A": {
+      "state repointed": 5185,
+      "state emptied": 671
+    },
+    "B": {
+      "state repointed": 5543,
+      "state emptied": 313
+    },
+    "C": {
+      "state repointed": 5543,
+      "state emptied": 313
+    }
+  },
+  "conflicted_anywhere": {
+    "base": 5856,
+    "A": 0,
+    "B": 0,
+    "C": 0
+  },
+  "rebuilt_entities": 5936,
+  "merged_with_state_delta_vs_base": {
+    "A": -671,
+    "B": -313,
+    "C": -313
+  },
+  "merged_with_country_delta_vs_base": {
+    "A": 0,
+    "B": 0,
+    "C": 0
+  },
+  "country_value_changed_vs_base": {
+    "A": 7,
+    "B": 7,
+    "C": 77
+  },
+  "base_A": {
+    "entities_with_different_inputs": 5927,
+    "input_fields": {
+      "member location_view": 6155,
+      "partial state_or_province": 6143,
+      "partial country": 3
+    },
+    "changes": {
+      "state value changed otherwise": 5850,
+      "inputs differ, country and state the same": 77,
+      "country value changed": 1
+    },
+    "country_moves": {
+      "Canada -> United States": 1
+    },
+    "states_filled": {},
+    "unexpected": [
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0200ab064d1f23368ac703f8789169194114421955c172b55e2bc1a95184e2f0e0__inferlink",
+        "state": [
+          [
+            "Q3186"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02028cde67ee14736512d54a601b69aca1b439fcb9bde828b3e1f9274720a0bcad__inferlink",
+        "state": [
+          [
+            "Q6876"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0202df58d4d9fca30dda22e70e60f3a4c4ce0d826bba0453d7b43bd46970ad2836__inferlink",
+        "state": [
+          [
+            "Q2313"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0206bec189ad5f0ab7a8d89ca04e652145091a6347dd0fcb53db2f05b6e4df0de7__inferlink",
+        "state": [
+          [
+            "Q3186"
+          ],
+          [
+            "Q3461"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02075c9ac4218257ced5dfd62292ebeea21d5d26b5329c1f8302b940117738ef46__inferlink",
+        "state": [
+          [
+            "Q4015"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0207bae2ce3ae7a61fc77bb2e6bdd24e6210355b5d7c8df60225caef6ab4d6bf75__inferlink",
+        "state": [
+          [
+            "Q3186"
+          ],
+          [
+            "Q5272"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__020a4d7651f9cc5146ad2061b1c48ca0ff140eb30b7c0a9b5a2878942aff752b16__inferlink",
+        "state": [
+          [
+            "Q5998"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__021639dd82455469880eabc73dc0bd32cac7bd5b0483e21cb875e7dcc7ce9de43b__inferlink",
+        "state": [
+          [
+            "Q5643"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__021ab8a5fe0ac66d6d7bd552dd44f4142148664233474be1d70ed05ec2a06427c1__inferlink",
+        "state": [
+          [
+            "Q6876",
+            "Q3199"
+          ],
+          [
+            "Q6876"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__021c1446132f9a25c69d97437586151f0700b11bedb2dc2146065224353baeb19f__inferlink",
+        "state": [
+          [
+            "Q3186"
+          ],
+          [
+            "Q5942"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__021fe1cf6bc14b33ebd5b116b6135a7d510007e775d914f87df62ea860598a904c__inferlink",
+        "state": [
+          [
+            "Q3186"
+          ],
+          [
+            "Q3461"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__022513c39fa4e92fb35d33a742eed6dda037bd96ca815470c3e2bd52132633bf30__inferlink",
+        "state": [
+          [
+            "Q3199"
+          ],
+          [
+            "Q4349"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02278ee916bb2d182236a14e2c850cda4ce944ec466e46329194d78a370ee8754a__inferlink",
+        "state": [
+          [
+            "Q3199"
+          ],
+          [
+            "Q4892"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__0228350b8aa9e550f7c7f54572c6831870a4865a4431f6ba247cf4c9cd6fa129b6__inferlink",
+        "state": [
+          [
+            "Q4743"
+          ],
+          [
+            "Q7029"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__022b3d59cc1cf69fbfc7568ea9481a6c28bf70ad5bf92170f7913b6ee73832accc__inferlink",
+        "state": [
+          [
+            "Q2645"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__022ce09269f3ae4d8b13033adb100af4be052ed8a749ff77ee323c3e671b294523__inferlink",
+        "state": [
+          [
+            "Q5427"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__022cf0ee87da3612a528af909d05ff8f6042c9f7af96f1c82d6cd776e7eb31852f__inferlink",
+        "state": [
+          [
+            "Q6152"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__022f2b8816338dcae223cf6e0013d24901f9d1b43ea293bf6336b760b47e914f68__inferlink",
+        "state": [
+          [
+            "Q6897"
+          ],
+          [
+            "Q6391"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__023270daf4b4c58bb22e9f25ccba07beeed99de543289e4687b499190836e77139__inferlink",
+        "state": [
+          [
+            "Q2049"
+          ],
+          []
+        ]
+      },
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02338f41e38d4b0b946bf87bf672ccc27f5418cebc16c71d1095b236c5dab6d19d__inferlink",
+        "state": [
+          [
+            "Q2855"
+          ],
+          []
+        ]
+      }
+    ]
+  },
+  "A_B": {
+    "entities_with_different_inputs": 360,
+    "input_fields": {
+      "member location_view": 397,
+      "partial state_or_province": 392
+    },
+    "changes": {
+      "state filled (was empty)": 358,
+      "state value changed otherwise": 2
+    },
+    "country_moves": {},
+    "states_filled": {
+      "Odisha": 152,
+      "Lower Saxony": 43,
+      "Sverdlovsk": 19,
+      "Attapeu Province": 13,
+      "Republic of Buryatia": 12,
+      "Guna Yala": 12,
+      "Zacapa Department": 7,
+      "Northwestern Province": 6,
+      "Aktobe Region": 6,
+      "Styria": 6,
+      "Euboea": 6,
+      "Carinthia": 6,
+      "Niamey": 5,
+      "Lapland": 5,
+      "Nicosia District (Lefkoşa)": 4,
+      "Khentii Province": 4,
+      "North Caribbean Coast": 3,
+      "Tuva Republic": 3,
+      "Khyber Pakhtunkhwa": 3,
+      "Republic of Karelia": 3,
+      "South Hamgyong Province": 2,
+      "Lower Austria": 2,
+      "Red Sea": 2,
+      "Dhofar": 2,
+      "Kef": 2,
+      "Hong Kong SAR": 2,
+      "Irkutsk": 2,
+      "Limassol District (Leymasun)": 2,
+      "Upper Austria": 2,
+      "Kostanay Region": 1,
+      "Gangwon Province": 1,
+      "Chuy Region": 1,
+      "Sakha Republic": 1,
+      "Inner Mongolia": 1,
+      "Shandong": 1,
+      "South Chungcheong Province": 1,
+      "Otjozondjupa Region": 1,
+      "Sükhbaatar Province": 1,
+      "Kunduz Province": 1,
+      "Ghōr": 1,
+      "Sakhalin": 1,
+      "Kamchatka Krai": 1,
+      "Aosta Valley": 1,
+      "Gunma Prefecture": 1,
+      "North Hwanghae Province": 1,
+      "Blue Nile": 1,
+      "Moscow Oblast": 1,
+      "Khövsgöl Province": 1,
+      "Ciudad de México": 1,
+      "Michoacán de Ocampo": 1,
+      "Republic of Khakassia": 1
+    },
+    "unexpected": [
+      {
+        "id": "dedup_site__api-cdr-land-v1-docs-documents__02d8f8dace81368c588e8de83ead2378f5489bb60d4867ada97687cbec2c5a50a9__inferlink",
+        "state": [
+          [
+            "Q5080"
+          ],
+          [
+            "Q5080",
+            "Q5082"
+          ]
+        ]
+      },
+      {
+        "id": "dedup_site__doi-org-10-5382-econgeo-2018-4590__ozernoe-1706__usc",
+        "state": [
+          [
+            "Q5462"
+          ],
+          [
+            "Q5463"
+          ]
+        ]
+      }
+    ]
+  },
+  "B_C": {
+    "entities_with_different_inputs": 71,
+    "input_fields": {
+      "member location_view": 72,
+      "partial country": 72
+    },
+    "changes": {
+      "country value changed": 70,
+      "inputs differ, country and state the same": 1
+    },
+    "country_moves": {
+      "France -> New Caledonia": 48,
+      "Denmark -> Greenland": 15,
+      "Australia -> Christmas Island": 4,
+      "United Kingdom -> Montserrat": 3
+    },
+    "states_filled": {},
+    "unexpected": []
+  }
+}

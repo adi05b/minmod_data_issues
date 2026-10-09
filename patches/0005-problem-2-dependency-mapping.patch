@@ -1,0 +1,311 @@
+From cbac0a9fbb93a76eb26d06459bfde9e90eed95a7 Mon Sep 17 00:00:00 2001
+From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
+Date: Fri, 9 Oct 2026 01:22:49 +0000
+Subject: [PATCH] Move a dropped dependency's record to the dependency's
+ country
+
+A record from the sovereign's side sometimes names one of its
+dependencies as the state ("Greenland" under Denmark, "Territory Of New
+Caledonia And Dependencies" under France). The dependency has its own
+entry in country.csv and no state row under the sovereign, so the repair
+can only drop the state. With this, the record's country becomes the
+dependency and the state stays empty.
+
+It is an explicit, reviewed list of (sovereign, dependency, names),
+matched on the exact folded name, and it applies only to a state the
+repair would otherwise drop: a state that is kept or repointed is never
+touched, and resolve and repair are unchanged. The list starts with
+France/New Caledonia, Denmark/Greenland, Australia/Christmas Island and
+United Kingdom/Montserrat. China/Taiwan and the homonym states (Georgia,
+Niger, Luxembourg, Mali) are excluded explicitly; listing one raises.
+
+Only the view changes: location, and so the KG, keeps the source's
+country. On the pinned data 72 records move (49, 15, 5, 3) and no state
+candidate's outcome changes.
+---
+ minmodkg/misc/state_repair.py                 |  76 +++++++++++-
+ .../models/kgrel/custom_types/location.py     |  18 ++-
+ tests/misc/test_state_repair.py               | 112 ++++++++++++++++++
+ 3 files changed, 201 insertions(+), 5 deletions(-)
+
+diff --git a/minmodkg/misc/state_repair.py b/minmodkg/misc/state_repair.py
+index ca515d0..c132c91 100644
+--- a/minmodkg/misc/state_repair.py
++++ b/minmodkg/misc/state_repair.py
+@@ -28,7 +28,12 @@ The rule is deliberately narrow:
+ * a record with no ``observed_name`` is re-resolved by the chosen state's own
+   name instead (Florida, Uruguay -> Florida, United States);
+ * a unique hit replaces the normalized_uri; no hit, or more than one, drops
+-  it and leaves ``observed_name`` in place for a curator.
++  it and leaves ``observed_name`` in place for a curator;
++* a state that would be dropped, and whose ``observed_name`` is a listed
++  dependency of a recorded country (``DEPENDENCIES``: "Greenland" under
++  Denmark), moves the record to the dependency's own country instead, with no
++  state. Only an explicit list, and only for drops: a state that resolves is
++  never touched.
+ 
+ It never guesses: there is no fuzzy matching.
+ """
+@@ -90,6 +95,39 @@ STOPWORDS = frozenset(
+     {"of", "de", "del", "la", "el", "los", "las", "the", "du", "da", "dos", "das", "do"}
+ )
+ 
++# Dependencies that have their own entry in country.csv and no state row under
++# their sovereign: (sovereign, dependency, the names a state field uses for it).
++# A record whose recorded country is the sovereign and whose state would be
++# dropped, but names the dependency exactly (folded), is the dependency's
++# record. Pairs are added only after review.
++DEPENDENCIES: tuple[tuple[InternalID, InternalID, tuple[str, ...]], ...] = (
++    # France -> New Caledonia
++    (
++        "Q1075",
++        "Q1154",
++        ("New Caledonia", "Territory of New Caledonia and Dependencies"),
++    ),
++    # Denmark -> Greenland
++    ("Q1059", "Q1086", ("Greenland",)),
++    # Australia -> Christmas Island
++    ("Q1013", "Q1045", ("Christmas Island", "Territory of Christmas Island")),
++    # United Kingdom -> Montserrat
++    ("Q1234", "Q1146", ("Montserrat",)),
++)
++
++# Never dependencies, whatever the list says: a state that shares a country's
++# name is that state (Georgia is a US state), and China/Taiwan is not this
++# repair's to decide.
++NOT_DEPENDENCIES: frozenset[tuple[InternalID, InternalID]] = frozenset(
++    {
++        ("Q1044", "Q1216"),  # China / Taiwan
++        ("Q1235", "Q1081"),  # United States / Georgia
++        ("Q1158", "Q1157"),  # Nigeria / Niger
++        ("Q1020", "Q1126"),  # Belgium / Luxembourg
++        ("Q1092", "Q1132"),  # Guinea / Mali (Mali Prefecture)
++    }
++)
++
+ _NON_ALNUM = re.compile(r"[^a-z0-9]+")
+ # NFKD does not decompose the Turkish dotless i, so "Elazığ" would fold to
+ # "elaz g"; map it (and the dotted capital) before normalising.
+@@ -121,19 +159,29 @@ class StateCountryIndex:
+     _folded: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
+     _code: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
+     _alias: dict[InternalID, dict[str, list[InternalID]]] = field(default_factory=dict)
++    _dependency: dict[InternalID, dict[str, InternalID]] = field(default_factory=dict)
+ 
+     @classmethod
+     def build(
+         cls,
+         states: Iterable,
+         aliases: Optional[Mapping[InternalID, Sequence[str]]] = None,
++        dependencies: Iterable[
++            tuple[InternalID, InternalID, Sequence[str]]
++        ] = DEPENDENCIES,
+     ) -> StateCountryIndex:
+         """``states`` is any iterable of objects with .id, .name, .country and,
+         optionally, .state_code (without it, the code tier never hits).
+         ``aliases`` maps a state id to other names sources use for it; without
+-        it, the alias tier never hits."""
++        it, the alias tier never hits. ``dependencies`` is the reviewed list of
++        (sovereign, dependency, names)."""
+         aliases = aliases or {}
+         self = cls()
++        for sovereign, dependency, dep_names in dependencies:
++            if (sovereign, dependency) in NOT_DEPENDENCIES:
++                raise ValueError(f"{sovereign} -> {dependency} is not a dependency")
++            for name in dep_names:
++                self._dependency.setdefault(sovereign, {})[fold_name(name)] = dependency
+         for s in states:
+             self.state_country[s.id] = s.country
+             self.state_name[s.id] = s.name
+@@ -220,3 +268,27 @@ class StateCountryIndex:
+             key = self.state_name.get(state_id)
+         fixed = self.resolve(key, country_ids)
+         return ("repoint", fixed) if fixed else ("drop", None)
++
++    def dependency(
++        self,
++        state_id: InternalID,
++        observed_name: Optional[str],
++        country_ids: Sequence[InternalID],
++    ) -> Optional[tuple[InternalID, InternalID]]:
++        """(sovereign, dependency) when this state candidate would be dropped and
++        its ``observed_name`` is a listed name of a dependency of one of the
++        recorded countries; None otherwise, and always None for a candidate the
++        repair keeps or repoints. The caller replaces the sovereign with the
++        dependency in the record's countries; the state stays dropped."""
++        if (
++            not observed_name
++            or self.repair(state_id, observed_name, country_ids)[0] != "drop"
++        ):
++            return None
++        folded = fold_name(observed_name)
++        hits = [
++            (cid, self._dependency[cid][folded])
++            for cid in dict.fromkeys(country_ids)
++            if folded in self._dependency.get(cid, {})
++        ]
++        return hits[0] if len(hits) == 1 else None
+diff --git a/minmodkg/models/kgrel/custom_types/location.py b/minmodkg/models/kgrel/custom_types/location.py
+index 6054e1b..cdfde1b 100644
+--- a/minmodkg/models/kgrel/custom_types/location.py
++++ b/minmodkg/models/kgrel/custom_types/location.py
+@@ -156,14 +156,26 @@ class LocationView(GeoCoordinate):
+             # A state that sits in none of the recorded countries is re-resolved
+             # inside them, or dropped. Only the view changes: `location` is what
+             # goes to the KG, and keeps the source's observed_name for curators.
++            # A dropped state that names a listed dependency of a recorded
++            # country ("Greenland" under Denmark) moves the record to that
++            # dependency's country instead; all decided against the recorded
++            # countries, then applied.
+             states = []
++            moves = {}
+             for ent in location.state_or_province:
+                 if ent.normalized_uri is None:
+                     continue
+-                _, state = state_index.repair(
+-                    NS_MR.id(ent.normalized_uri), ent.observed_name, view.country
+-                )
++                state_id = NS_MR.id(ent.normalized_uri)
++                _, state = state_index.repair(state_id, ent.observed_name, view.country)
+                 if state is not None:
+                     states.append(state)
++                    continue
++                move = state_index.dependency(state_id, ent.observed_name, view.country)
++                if move is not None:
++                    moves[move[0]] = move[1]
+             view.state_or_province = states
++            if moves:
++                view.country = list(
++                    dict.fromkeys(moves.get(c, c) for c in view.country)
++                )
+         return view
+diff --git a/tests/misc/test_state_repair.py b/tests/misc/test_state_repair.py
+index 1295658..32f71ea 100644
+--- a/tests/misc/test_state_repair.py
++++ b/tests/misc/test_state_repair.py
+@@ -6,6 +6,7 @@ from dataclasses import dataclass
+ from pathlib import Path
+ from typing import Optional
+ 
++import pytest
+ import serde.json
+ from minmodkg.etl.kgrel_entity import EntityDeserFn
+ from minmodkg.misc.state_repair import StateCountryIndex, drop_admin_words, fold_name
+@@ -261,3 +262,114 @@ def _aliases(entity_dir: Path) -> dict[str, list[str]]:
+     return EntityDeserFn.read_state_or_province_aliases(
+         entity_dir / "state_or_province.csv"
+     )
++
++
++# Dependencies: a dropped state that names a listed dependency of a recorded
++# country moves the record to the dependency's country.
++
++DK, GL, NO, AT = "DK", "GL", "NO", "AT"
++DEP_STATES = STATES + [
++    State("burgenland", "Burgenland", AT, "1"),
++    State("rogaland", "Rogaland", NO, "11"),
++    State("hovedstaden", "Hovedstaden", DK, "84"),
++]
++DEPS = [(DK, GL, ("Greenland",))]
++
++
++def test_dependency_moves_a_dropped_state():
++    idx = StateCountryIndex.build(DEP_STATES, dependencies=DEPS)
++    # ProcMine picked Burgenland (Austria) for "Greenland" on a Danish record
++    assert idx.repair("burgenland", "Greenland", [DK]) == ("drop", None)
++    assert idx.dependency("burgenland", "Greenland", [DK]) == (DK, GL)
++    assert idx.dependency("burgenland", "GREENLAND", [DK, NO]) == (DK, GL)
++
++
++def test_dependency_never_touches_a_state_that_resolves():
++    # Denmark with its own "Greenland" row: the repair repoints, nothing moves
++    states = DEP_STATES + [State("dk_greenland", "Greenland", DK)]
++    idx = StateCountryIndex.build(states, dependencies=DEPS)
++    assert idx.repair("burgenland", "Greenland", [DK]) == ("repoint", "dk_greenland")
++    assert idx.dependency("burgenland", "Greenland", [DK]) is None
++
++
++def test_dependency_needs_a_contradiction():
++    idx = StateCountryIndex.build(DEP_STATES, dependencies=DEPS)
++    assert idx.repair("hovedstaden", "Greenland", [DK]) == ("keep", "hovedstaden")
++    assert idx.dependency("hovedstaden", "Greenland", [DK]) is None
++
++
++def test_dependency_needs_a_listed_name_exactly():
++    idx = StateCountryIndex.build(DEP_STATES, dependencies=DEPS)
++    assert idx.dependency("burgenland", "Greenland Region", [DK]) is None
++    assert idx.dependency("burgenland", None, [DK]) is None
++
++
++def test_dependency_needs_its_sovereign_recorded():
++    idx = StateCountryIndex.build(DEP_STATES, dependencies=DEPS)
++    assert idx.repair("burgenland", "Greenland", [NO]) == ("drop", None)
++    assert idx.dependency("burgenland", "Greenland", [NO]) is None
++
++
++def test_excluded_pairs_cannot_be_listed():
++    from minmodkg.misc.state_repair import DEPENDENCIES, NOT_DEPENDENCIES
++
++    assert not {(s, d) for s, d, _ in DEPENDENCIES} & NOT_DEPENDENCIES
++    for sovereign, dependency in NOT_DEPENDENCIES:
++        with pytest.raises(ValueError):
++            StateCountryIndex.build([], dependencies=[(sovereign, dependency, ("x",))])
++
++
++def test_dependencies_against_the_real_tables():
++    """Each listed pair names two countries of country.csv, and its names have
++    no state row under the sovereign: a dependency the table also models as a
++    state (Puerto Rico, Guadeloupe) resolves, and must not be listed."""
++    from minmodkg.misc.state_repair import DEPENDENCIES
++
++    countries = {
++        c.id for c in EntityDeserFn.read_country(DATA_ENTITY_DIR / "country.csv")
++    }
++    states = _states(DATA_ENTITY_DIR)
++    idx = StateCountryIndex.build(states, _aliases(DATA_ENTITY_DIR))
++    for sovereign, dependency, dep_names in DEPENDENCIES:
++        assert sovereign in countries and dependency in countries
++        assert sovereign != dependency
++        for name in dep_names:
++            assert idx.resolve(name, [sovereign]) is None, (sovereign, name)
++
++
++def test_no_state_moves_by_its_own_name():
++    states = _states(DATA_ENTITY_DIR)
++    idx = StateCountryIndex.build(states, _aliases(DATA_ENTITY_DIR))
++    assert [s.id for s in states if idx.dependency(s.id, s.name, [s.country])] == []
++
++
++def test_location_view_moves_the_country():
++    from minmodkg.models.kg.base import NS_MR
++    from minmodkg.models.kg.candidate_entity import CandidateEntity
++    from minmodkg.models.kgrel.custom_types.location import Location, LocationView
++
++    idx = StateCountryIndex.build(_states(ENTITY_DIR))
++
++    def cand(id=None, name=None):
++        return CandidateEntity(
++            source="test",
++            confidence=1.0,
++            observed_name=name,
++            normalized_uri=NS_MR.uristr(id) if id else None,
++        )
++
++    # France and Colombia recorded; ProcMine picked the Federal Dependencies
++    # of Venezuela for New Caledonia
++    location = Location(
++        country=[cand("Q1075"), cand("Q1047")],
++        state_or_province=[
++            cand("Q6964", "Territory Of New Caledonia And Dependencies")
++        ],
++    )
++    view = LocationView.from_location(location, {}, idx)
++    assert view.country == ["Q1154", "Q1047"]
++    assert view.state_or_province == []
++    # the KG side keeps what the source said
++    assert [NS_MR.id(c.normalized_uri) for c in location.country] == ["Q1075", "Q1047"]
++    # without the index, nothing moves
++    assert LocationView.from_location(location, {}, None).country == ["Q1075", "Q1047"]
+-- 
+2.43.0
+
