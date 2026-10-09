@@ -1,0 +1,16 @@
+{
+  "entities_with_different_inputs": 3,
+  "input_fields": {
+    "member location_view": 3,
+    "partial country": 3
+  },
+  "changes": {
+    "country value changed": 3
+  },
+  "country_moves": {
+    "United Kingdom -> Virgin Islands (British)": 2,
+    "United Kingdom -> Cayman Islands": 1
+  },
+  "states_filled": {},
+  "unexpected": []
+}

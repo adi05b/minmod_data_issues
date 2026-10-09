@@ -1,0 +1,61 @@
+From 6d8be01e9539d80a72387eb15e2ce09a25dc1a99 Mon Sep 17 00:00:00 2001
+From: Aditi Bombe <196845785+adi05b@users.noreply.github.com>
+Date: Fri, 9 Oct 2026 02:08:26 +0000
+Subject: [PATCH] Add British Virgin Islands and Cayman Islands to the
+ dependency list
+
+Two more United Kingdom records name a British Overseas Territory as the
+state: "British Virgin Islands" (2) and "Cayman Islands" (1). Each has
+its own entry in country.csv and no state row under the United Kingdom,
+so the repair drops the state. Reviewed and approved: these records now
+move to the territory's country, like Montserrat.
+
+On the pinned data, against the list as it was: 3 records and 3 merged
+entities change, each only by its country (United Kingdom -> Virgin
+Islands (British) 2, -> Cayman Islands 1); no state candidate's outcome
+changes.
+---
+ minmodkg/misc/state_repair.py   |  4 ++++
+ tests/misc/test_state_repair.py | 11 +++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/minmodkg/misc/state_repair.py b/minmodkg/misc/state_repair.py
+index c132c91..bc60acb 100644
+--- a/minmodkg/misc/state_repair.py
++++ b/minmodkg/misc/state_repair.py
+@@ -113,6 +113,10 @@ DEPENDENCIES: tuple[tuple[InternalID, InternalID, tuple[str, ...]], ...] = (
+     ("Q1013", "Q1045", ("Christmas Island", "Territory of Christmas Island")),
+     # United Kingdom -> Montserrat
+     ("Q1234", "Q1146", ("Montserrat",)),
++    # United Kingdom -> Virgin Islands (British)
++    ("Q1234", "Q1243", ("British Virgin Islands", "Virgin Islands (British)")),
++    # United Kingdom -> Cayman Islands
++    ("Q1234", "Q1040", ("Cayman Islands",)),
+ )
+ 
+ # Never dependencies, whatever the list says: a state that shares a country's
+diff --git a/tests/misc/test_state_repair.py b/tests/misc/test_state_repair.py
+index 32f71ea..73bd0f5 100644
+--- a/tests/misc/test_state_repair.py
++++ b/tests/misc/test_state_repair.py
+@@ -343,6 +343,17 @@ def test_no_state_moves_by_its_own_name():
+     assert [s.id for s in states if idx.dependency(s.id, s.name, [s.country])] == []
+ 
+ 
++def test_one_sovereign_several_dependencies():
++    # United Kingdom records; the states ProcMine stored for them are foreign
++    idx = StateCountryIndex.build(_states(ENTITY_DIR))
++    uk = "Q1234"
++    # Cat Island (The Bahamas) stored for "Cayman Islands"
++    assert idx.dependency("Q6239", "Cayman Islands", [uk]) == (uk, "Q1040")
++    # United States Virgin Islands stored for "British Virgin Islands"
++    assert idx.dependency("Q6896", "British Virgin Islands", [uk]) == (uk, "Q1243")
++    assert idx.dependency("Q6239", "Montserrat", [uk]) == (uk, "Q1146")
++
++
+ def test_location_view_moves_the_country():
+     from minmodkg.models.kg.base import NS_MR
+     from minmodkg.models.kg.candidate_entity import CandidateEntity
+-- 
+2.43.0
+

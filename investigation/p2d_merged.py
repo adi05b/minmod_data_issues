@@ -16,6 +16,8 @@ process and does not fit in 14 GB here. It only reads the merged files, so:
                             over every partial and member), with the code on
                             the path: run it with that run's own code
   report <entities> <out dir>   reads the files above, writes merged.json
+  pair <entities> <rebuilt x> <rebuilt y> <diff x y> <out>
+                            one more pair of runs, over its own diff
 
 Any entity outside a diff has identical inputs in both runs, so its final
 merged entity is identical too: the diffs make the comparison complete.
@@ -126,6 +128,53 @@ def rebuild(run: Path, ids_file: Path, out: Path) -> None:
     print(f"{run.name}: rebuilt {len(res)} merged entities with {minmodkg.__file__}")
 
 
+def compare(rx: dict, ry: dict, d: dict, owner, names, cname) -> dict:
+    """What changes, entity by entity, between two runs over the entities whose
+    inputs differ (any other entity is identical, same election code)."""
+
+    def bad(e):
+        return any(owner.get(s) and owner[s] not in e["country"]["value"] for s in e["state_or_province"]["value"])
+
+    ch, moved, filled, unexpected = collections.Counter(), collections.Counter(), collections.Counter(), []
+    for e in d["ids"]:
+        a, b = rx[e], ry[e]
+        cv = a["country"]["value"] != b["country"]["value"]
+        sv = a["state_or_province"]["value"] != b["state_or_province"]["value"]
+        if cv:
+            ch["country value changed"] += 1
+            moved[" | ".join(cname.get(c, c) for c in a["country"]["value"]) + " -> "
+                  + " | ".join(cname.get(c, c) for c in b["country"]["value"])] += 1
+        if sv:
+            if not a["state_or_province"]["value"]:
+                ch["state filled (was empty)"] += 1
+                for s in b["state_or_province"]["value"]:
+                    filled[names.get(s, s)] += 1
+            else:
+                ch["state value changed otherwise"] += 1
+                unexpected.append({"id": e, "state": [a["state_or_province"]["value"], b["state_or_province"]["value"]]})
+        if not cv and not sv:
+            ch["inputs differ, country and state the same"] += 1
+        if bad(b) and not bad(a):
+            ch["newly conflicted"] += 1
+            unexpected.append({"id": e, "newly conflicted": b})
+    return {"entities_with_different_inputs": len(d["ids"]), "input_fields": d["fields"],
+            "changes": dict(ch.most_common()), "country_moves": dict(moved.most_common()),
+            "states_filled": dict(filled.most_common()), "unexpected": unexpected[:20]}
+
+
+def pair(entities: Path, rebuilt_x: Path, rebuilt_y: Path, diff_xy: Path, out: Path) -> None:
+    """One pair of runs, over that pair's diff (both rebuilt for those ids)."""
+    owner = state_country(entities)
+    names = {s["minmod_id"]: s["name"] for s in csv.DictReader(open(entities / "state_or_province.csv", encoding="utf-8"))}
+    cname = {c["minmod_id"]: c["name"] for c in csv.DictReader(open(entities / "country.csv", encoding="utf-8"))}
+    d = json.loads(diff_xy.read_text())
+    rx, ry = json.loads(rebuilt_x.read_text()), json.loads(rebuilt_y.read_text())
+    assert set(d["ids"]) <= set(rx) and set(d["ids"]) <= set(ry)
+    res = compare(rx, ry, d, owner, names, cname)
+    out.write_text(json.dumps(res, indent=2, ensure_ascii=False))
+    print(json.dumps(res, indent=2, ensure_ascii=False))
+
+
 def report(entities: Path, work: Path, out: Path) -> None:
     owner = state_country(entities)
     names = {s["minmod_id"]: s["name"] for s in csv.DictReader(open(entities / "state_or_province.csv", encoding="utf-8"))}
@@ -162,35 +211,11 @@ def report(entities: Path, work: Path, out: Path) -> None:
             for r in ("A", "B", "C")},
     }
     for pair, (x, y) in (("base_A", ("base", "A")), ("A_B", ("A", "B")), ("B_C", ("B", "C"))):
-        ch, moved, filled, unexpected = collections.Counter(), collections.Counter(), collections.Counter(), []
-        for e in D[pair]["ids"]:
-            a, b = R[x][e], R[y][e]
-            cv = a["country"]["value"] != b["country"]["value"]
-            sv = a["state_or_province"]["value"] != b["state_or_province"]["value"]
-            if cv:
-                ch["country value changed"] += 1
-                moved[" | ".join(cname.get(c, c) for c in a["country"]["value"]) + " -> "
-                      + " | ".join(cname.get(c, c) for c in b["country"]["value"])] += 1
-            if sv:
-                if not a["state_or_province"]["value"]:
-                    ch["state filled (was empty)"] += 1
-                    for s in b["state_or_province"]["value"]:
-                        filled[names.get(s, s)] += 1
-                else:
-                    ch["state value changed otherwise"] += 1
-                    unexpected.append({"id": e, "state": [a["state_or_province"]["value"], b["state_or_province"]["value"]]})
-            if not cv and not sv:
-                ch["inputs differ, country and state the same"] += 1
-            if bad(b) and not bad(a):
-                ch["newly conflicted"] += 1
-                unexpected.append({"id": e, "newly conflicted": b})
-        res[pair] = {"entities_with_different_inputs": len(D[pair]["ids"]), "input_fields": D[pair]["fields"],
-                     "changes": dict(ch.most_common()), "country_moves": dict(moved.most_common()),
-                     "states_filled": dict(filled.most_common()), "unexpected": unexpected[:20]}
+        res[pair] = compare(R[x], R[y], D[pair], owner, names, cname)
     out.write_text(json.dumps(res, indent=2, ensure_ascii=False))
     print(json.dumps(res, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
     cmd, args = sys.argv[1], [Path(a) for a in sys.argv[2:]]
-    {"candidates": candidates, "diff": diff, "rebuild": rebuild, "report": report}[cmd](*args)
+    {"candidates": candidates, "diff": diff, "rebuild": rebuild, "report": report, "pair": pair}[cmd](*args)

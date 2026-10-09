@@ -1,6 +1,6 @@
 # Problem 2, Phase 5: the approved aliases and new rows, measured
 
-*2026-10-09. After Amandeep's decisions. Option A (the dependency mapping) has its own report, [P2_OPTION_A.md](P2_OPTION_A.md); its merged-entity effect is measured here too (run C).*
+*2026-10-09. After Amandeep's decisions. Option A (the dependency mapping) has its own report, [P2_OPTION_A.md](P2_OPTION_A.md); its merged-entity effect is measured here too (runs C and D).*
 
 ## What is measured
 
@@ -64,7 +64,8 @@ Four local runs of the same ETL stages Part B used (`investigation/p2_etl.yml`),
 | base | `83f9b7b`, no repair (Part B's baseline) | pristine `3a086a5` |
 | A | `a888391`, the repair and the alias code | pristine, so no aliases and the alias code is inert |
 | B | `a888391` | the fork branch: new rows and `alt names` |
-| C | `cbac0a9`, plus Option A | the fork branch |
+| C | `f01a385` (patch 0005): plus Option A, four pairs | the fork branch |
+| D | patch 0006 on `f01a385`: plus the two UK pairs | the fork branch |
 
 **How it was measured here, and why it is still exact:**
 - **The memory limit:** the pipeline's last step builds all 419,098 merged entities in one process, and the kernel killed it at 13.9 GB (this container's limit). So the runs stop after the merge (`investigation/p2d_run_merge.py`).
@@ -97,18 +98,19 @@ Four local runs of the same ETL stages Part B used (`investigation/p2_etl.yml`),
 - **70 change country:** France → New Caledonia 48, Denmark → Greenland 15, Australia → Christmas Island 4, United Kingdom → Montserrat 3. No state changes.
 - **1 keeps Australia.** A moved Christmas Island record shares its entity with a record carrying Australia / Western Australia, and the election prefers the record that carries both.
 - **0 newly conflicted.**
-- **Where the 313 emptied states are now:** 70 are in their dependency's country, with the state empty by design (New Caledonia's provinces will be filled from coordinates later), and 4 were already recorded as Greenland. The rest are led by DR Congo, 109: the blocked Katanga records.
+- **C → D (patch 0006, the two UK pairs; `reports/p2d/merged_uk_dependencies.json`):** exactly 3 entities have different inputs, and all 3 change country only: United Kingdom → Virgin Islands (British) 2, → Cayman Islands 1. No state changes, nothing newly conflicted.
+- **Where the 313 emptied states are now (D):** 73 are in their dependency's country, with the state empty by design (New Caledonia's provinces will be filled from coordinates later), and 4 were already recorded as Greenland. The rest are led by DR Congo, 109: the blocked Katanga records.
 
 **The acceptance counts move like this against the baseline:**
 
-| | A | B | C |
-|---|--:|--:|--:|
-| `merged_with_state` | −671 | **−313** | −313 |
-| `merged_with_country` (entities with any country) | 0 | 0 | **0** |
-| entities whose country value changed | 7 | 7 | **77** |
-| `state_country_conflicts` | 5,856 → 0 | 5,856 → 0 | 5,856 → 0 |
+| | A | B | C | D |
+|---|--:|--:|--:|--:|
+| `merged_with_state` | −671 | **−313** | −313 | −313 |
+| `merged_with_country` (entities with any country) | 0 | 0 | 0 | **0** |
+| entities whose country value changed | 7 | 7 | 77 | **80** |
+| `state_country_conflicts` | 5,856 → 0 | 5,856 → 0 | 5,856 → 0 | 5,856 → 0 |
 
-The 7 country changes in A and B are Part B's pairing fix (`9d68111`): all 7 are among the 5,856 conflicted entities. Option A adds 70. **`merged_with_country` stays the same as a count**, because Option A changes which country, never whether there is one. See [P2_OPTION_A.md](P2_OPTION_A.md) for what that means for `run_acceptance.sh`.
+The 7 country changes in A and B are Part B's pairing fix (`9d68111`): all 7 are among the 5,856 conflicted entities. Option A adds 73 (70 with patch 0005, 3 more with 0006). **`merged_with_country` stays the same as a count**, because Option A changes which country, never whether there is one. See [P2_OPTION_A.md](P2_OPTION_A.md) for what that means for `run_acceptance.sh`.
 
 ## Katanga: usable WGS84 coordinates (Amandeep's request)
 
@@ -129,12 +131,15 @@ export CFG_FILE=upstream-p2/tests/resources/config.yml     # ta2-minmod-kg @ a88
 .venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-base data-p2  # code 83f9b7b
 .venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-A data-p2     # code a888391
 .venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-B <fork>      # code a888391
-.venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-C <fork>      # code cbac0a9
+.venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-C <fork>      # code f01a385 (patch 0005)
+.venv-p2/bin/python investigation/p2d_run_merge.py investigation/p2_etl.yml kg-D <fork>      # code f01a385 + patch 0006
 p2d_merged.py candidates <run> <fork>/data/entities cand_<run>.json          # for each run
 p2d_merged.py diff kg-base kg-A diff_base_A.json   # and A B, B C
 # union of the candidates and diffs -> union.json, then for each run, with that run's code:
 p2d_merged.py rebuild <run> union.json rebuilt_<run>.json
 p2d_merged.py report <fork>/data/entities <work dir> reports/p2d/merged.json
+# patch 0006: diff kg-C kg-D, rebuild both for those ids, then
+p2d_merged.py pair <fork>/data/entities rebuilt_C.json rebuilt_D.json diff_C_D.json reports/p2d/merged_uk_dependencies.json
 # kg tests on the real table
 MINMOD_ENTITY_DIR=<fork>/data/entities python -m pytest tests/misc/test_state_repair.py   # in ta2-minmod-kg
 ```

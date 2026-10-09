@@ -4,7 +4,9 @@
     "France -> New Caledonia: New Caledonia, Territory of New Caledonia and Dependencies",
     "Denmark -> Greenland: Greenland",
     "Australia -> Christmas Island: Christmas Island, Territory of Christmas Island",
-    "United Kingdom -> Montserrat: Montserrat"
+    "United Kingdom -> Montserrat: Montserrat",
+    "United Kingdom -> Virgin Islands (British): British Virgin Islands, Virgin Islands (British)",
+    "United Kingdom -> Cayman Islands: Cayman Islands"
   ],
   "excluded": [
     "Belgium / Luxembourg",
@@ -15,17 +17,19 @@
   ],
   "records": 451526,
   "state candidates": 418313,
-  "view unchanged": 451454,
-  "view changed": 72,
+  "view unchanged": 451451,
+  "view changed": 75,
   "state_candidates_with_a_different_repair_outcome": 0,
   "records_moved": {
     "France | Territory Of New Caledonia And Dependencies -> New Caledonia": 49,
     "Denmark | Greenland -> Greenland": 15,
     "Australia | Territory Of Christmas Island -> Christmas Island": 5,
-    "United Kingdom | Montserrat -> Montserrat": 3
-  },
-  "pending_review_same_shape": {
+    "United Kingdom | Montserrat -> Montserrat": 3,
     "United Kingdom | British Virgin Islands -> Virgin Islands (British)": 2,
     "United Kingdom | Cayman Islands -> Cayman Islands": 1
+  },
+  "records_changed_since_previous_list": {
+    "United Kingdom -> Virgin Islands (British)": 2,
+    "United Kingdom -> Cayman Islands": 1
   }
 }

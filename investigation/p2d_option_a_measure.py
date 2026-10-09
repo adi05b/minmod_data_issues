@@ -11,8 +11,8 @@ and with the reviewed list. Must hold:
     dependency, its states unchanged, and only when one of its candidates is
     dropped and names that dependency.
 
-Also lists the dropped groups that have the same shape but are not on the
-list (pending review), and checks the excluded pairs never move.
+Also compares the list before its last additions (PREVIOUS) with the list as
+it is: only records naming an added dependency may change between the two.
 
     CFG_FILE=<option-a code>/tests/resources/config.yml PYTHONPATH=<option-a code> \\
       .venv-p2/bin/python investigation/p2d_option_a_measure.py <entities dir>
@@ -43,12 +43,12 @@ states = EntityDeserFn.read_state_or_province(ENT / "state_or_province.csv")
 aliases = EntityDeserFn.read_state_or_province_aliases(ENT / "state_or_province.csv")
 plain = StateCountryIndex.build(states, aliases, dependencies=())
 listed = StateCountryIndex.build(states, aliases)
-# dependency-shaped pairs seen in the dropped list, for review (not applied)
-PENDING = (
-    ("Q1234", "Q1040", ("Cayman Islands",)),  # United Kingdom -> Cayman Islands
-    ("Q1234", "Q1243", ("British Virgin Islands", "Virgin Islands (British)")),  # United Kingdom -> Virgin Islands (British)
-)
-pending = StateCountryIndex.build(states, aliases, dependencies=PENDING)
+# the pairs added last (approved after review): United Kingdom -> Virgin
+# Islands (British) and United Kingdom -> Cayman Islands
+ADDED = {("Q1234", "Q1243"), ("Q1234", "Q1040")}
+assert ADDED <= {(s, d) for s, d, _ in DEPENDENCIES}
+previous = StateCountryIndex.build(
+    states, aliases, dependencies=[x for x in DEPENDENCIES if (x[0], x[1]) not in ADDED])
 
 
 def scan(path: str) -> dict:
@@ -58,7 +58,7 @@ def scan(path: str) -> dict:
     from minmodkg.models.kgrel.custom_types.location import Location, LocationView
 
     out = collections.Counter()
-    moves, pending_moves, candidate_changes = collections.Counter(), collections.Counter(), []
+    moves, since_previous, candidate_changes = collections.Counter(), collections.Counter(), []
     for r in json.load(open(path, encoding="utf-8")):
         if not r.get("location_info"):
             continue
@@ -76,9 +76,12 @@ def scan(path: str) -> dict:
             out["state candidates"] += 1
             if plain.repair(sid, c.observed_name, cs) != listed.repair(sid, c.observed_name, cs):
                 candidate_changes.append(MineralSiteIdent.from_dict(r).id)
-            p = pending.dependency(sid, c.observed_name, cs)
-            if p is not None:
-                pending_moves[(cname[p[0]], c.observed_name, cname[p[1]])] += 1
+        p = LocationView.from_location(loc, {}, previous)
+        if (p.country, p.state_or_province) != (b.country, b.state_or_province):
+            assert p.state_or_province == b.state_or_province, (p, b)
+            swap = [(x, y) for x, y in zip(p.country, b.country) if x != y]
+            assert len(swap) == 1 and swap[0] in ADDED, (p.country, b.country)
+            since_previous[(cname[swap[0][0]], cname[swap[0][1]])] += 1
         if (a.country, a.state_or_province) == (b.country, b.state_or_province):
             out["view unchanged"] += 1
             continue
@@ -93,19 +96,19 @@ def scan(path: str) -> dict:
                  and listed.dependency(NS_MR.id(c.normalized_uri), c.observed_name, cs) == swap[0]]
         assert names, swap
         moves[(cname[swap[0][0]], names[0], cname[swap[0][1]])] += 1
-    return {"counts": out, "moves": moves, "pending": pending_moves, "candidate_changes": candidate_changes}
+    return {"counts": out, "moves": moves, "since_previous": since_previous, "candidate_changes": candidate_changes}
 
 
 def main() -> None:
     files = sorted(glob.glob(str(DATA / "mineral-sites/*/*/*.json")))
     with ProcessPoolExecutor() as ex:
         parts = list(ex.map(scan, files, chunksize=8))
-    counts, moves, pend = collections.Counter(), collections.Counter(), collections.Counter()
+    counts, moves, since = collections.Counter(), collections.Counter(), collections.Counter()
     changed_candidates = []
     for p in parts:
         counts += p["counts"]
         moves += p["moves"]
-        pend += p["pending"]
+        since += p["since_previous"]
         changed_candidates += p["candidate_changes"]
     res = {
         "entities_dir": str(ENT),
@@ -114,7 +117,7 @@ def main() -> None:
         **dict(counts),
         "state_candidates_with_a_different_repair_outcome": len(changed_candidates),
         "records_moved": {f"{s} | {o} -> {d}": n for (s, o, d), n in moves.most_common()},
-        "pending_review_same_shape": {f"{s} | {o} -> {d}": n for (s, o, d), n in pend.most_common()},
+        "records_changed_since_previous_list": {f"{s} -> {d}": n for (s, d), n in since.most_common()},
     }
     out = ROOT / "reports/p2d/option_a_records.json"
     out.parent.mkdir(parents=True, exist_ok=True)
