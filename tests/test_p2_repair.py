@@ -190,8 +190,11 @@ def test_port_matches_reference_on_every_state_and_country():
 
 def test_from_location_on_the_corpus():
     """LocationView.from_location with the index, on every raw record: it must equal
-    the per-candidate repair, never touch the input, and give 5,421 / 737."""
-    acts = collections.Counter()
+    the per-candidate repair, never touch the input, and give 5,421 / 737. The
+    country is never repaired; it changes only by a listed Option A move (a dropped
+    state naming a dependency of a recorded country), on 75 records."""
+    listed = {(s, d) for s, d, _ in upstream.DEPENDENCIES}
+    acts, moved = collections.Counter(), collections.Counter()
     for f in sorted(glob.glob(str(DATA / "mineral-sites/*/*/*.json"))):
         for r in json.load(open(f)):
             if not r.get("location_info"):
@@ -202,15 +205,33 @@ def test_from_location_on_the_corpus():
             plain = LocationView.from_location(loc, {})
             fixed = LocationView.from_location(loc, {}, IDX)
             assert loc.to_dict() == snapshot  # the raw location is never mutated
-            assert fixed.country == plain.country  # the country is never repaired
-            expected = []
+            expected, moves = [], {}
             for c in loc.state_or_province:
                 if c.normalized_uri is None:
                     continue
-                act, sid = IDX.repair(NS_MR.id(c.normalized_uri), c.observed_name, plain.country)
+                state = NS_MR.id(c.normalized_uri)
+                act, sid = IDX.repair(state, c.observed_name, plain.country)
                 if act != "keep":
                     acts[act] += 1
                 if sid is not None:
                     expected.append(sid)
+                    continue
+                move = IDX.dependency(state, c.observed_name, plain.country)
+                if move is not None:
+                    assert move in listed
+                    moves[move[0]] = move[1]
             assert fixed.state_or_province == expected
+            if moves:
+                assert fixed.country == list(dict.fromkeys(moves.get(c, c) for c in plain.country))
+                moved.update(moves.items())
+            else:
+                assert fixed.country == plain.country
     assert dict(acts) == {"repoint": 5421, "drop": 737}
+    assert dict(moved) == {
+        ("Q1075", "Q1154"): 49,  # France -> New Caledonia
+        ("Q1059", "Q1086"): 15,  # Denmark -> Greenland
+        ("Q1013", "Q1045"): 5,  # Australia -> Christmas Island
+        ("Q1234", "Q1146"): 3,  # United Kingdom -> Montserrat
+        ("Q1234", "Q1243"): 2,  # United Kingdom -> Virgin Islands (British)
+        ("Q1234", "Q1040"): 1,  # United Kingdom -> Cayman Islands
+    }
